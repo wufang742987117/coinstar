@@ -1,0 +1,37 @@
+<div class="digiDepAddress paddingTop">
+    <div class="addressCard deposit minHeightCard nga-fast nga-stagger-fast nga-fade" ng-hide="iosGuide">
+        <h1 class="appTitle">{{"MOBILE.TITLE"|translate}}</h1>
+        <p class="appInfo">{{"MOBILE.INFO"|translate}}</p>
+
+        <div class="appButton iosButton" ng-mouseover="qrCode(ios.download_url)">
+            <a ng-click="iosView()">
+            <p style="color:white;">Iphone版</p>
+            <img ng-src="../img/ios.png" class="mobileIcons">
+            </a>
+        </div>
+
+        <div class="appButton androidButton" ng-mouseover="qrCode(android.download_url)">
+            <a href="{{android.download_url}}">
+            <p style="color:white;">Android版</p>
+            <img ng-src="../img/android.png" class="mobileIcons">
+            </a>
+        </div>
+
+
+        <canvas id="qrcode" class="bigQR"></canvas>
+
+        <img ng-src="../img/iphone.png" class="bigIphone">
+    </div>
+
+    <div class="addressCard deposit minHeightCard nga-slow nga-stagger-slow nga-slide-right" ng-show="iosGuide">
+        <h1>{{'MOBILE.TITLE_IOS'|translate}}</h1>
+        <p>{{'MOBILE.INFO_IOS'|translate}}</p>
+
+        <div ng-repeat="items in iosPictures" class="iosPictures">
+            <h3 style="color:white;">{{items}}: {{"IPHONE."+items|translate}}</h3>
+            <img src="../img/ios/{{items}}.png">
+        </div>
+
+    </div>
+</div>
+</div>

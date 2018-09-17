@@ -1,0 +1,224 @@
+.Recharge{
+	position: fixed;
+	background: rgba(0,0,0,0.6);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+/*	display: none;*/
+}
+.recharge_bod{
+	 overflow: hidden;
+	/*position: absolute;*/
+	/*width:700px;
+	height: 600px;*/
+	/*top: 50%;
+	left: 50%;
+	margin:-300px 0 0 -350px;*/
+	/*background:#373a4c;*/
+}
+.rege_title{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	font-size: 16px;
+	text-indent: 20px;
+	float: left;
+	position: relative;
+	background:#4e5b85;
+}
+.rege_title a{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	display: inline-block;
+	right: 0;
+	top: 0;
+	text-indent: 0;
+	color: #fff;
+	font-weight: bold;
+}
+.rege_addre{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	margin-top: 30px;
+	padding: 0 20px;
+	box-sizing: border-box;
+	color: #fff;
+}
+.rege_addre a{
+	float: right;
+	color: #6182e9;
+	height: 20px;
+	line-height: 20px;
+	display:inline-block;
+}
+.rege_addre a:hover{
+	text-decoration: underline;
+}
+.addre_fs{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 20px;
+	box-sizing: border-box;
+	color: #fff;
+	font-size:20px;
+	margin: 30px 0;
+	float: left;
+}
+.assets_ewm{
+	width: 100%;
+	float: left;
+	background: url(../images/img/assets_ewm.jpg) center top no-repeat;
+	background-size: 200px;
+	margin-top:30px;
+	font-size: 12px;
+	/*text-align: center;*/
+	/*padding-top: 250px;*/
+	line-height: 30px;
+	color: #aaa;
+	box-sizing: border-box;
+	margin: 50px 0;
+}
+.rege_inp{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding: 0 20px;
+	box-sizing: border-box;
+	float: left;
+}
+.rege_inp select,.rege_inp input{
+	width: 100%;
+	height: 30px;
+	float: left;
+	box-sizing: border-box;
+	margin-top:50px;
+	background: none;
+	border: none;
+	border-bottom: 3px solid #454c79;
+	color: #888;
+	padding: 0;
+}
+.rege_inp select option{
+	background: #000;
+	color: #fff;
+}
+.rege_inp input[type=password]{
+	width: 280px;
+}
+.rege_inp .email_yzm{
+	width: 210px;
+	margin-left:30px;
+}
+.rege_inp>a,.btn_set{
+	width: 110px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    float: right;
+    right: 30px;
+    top: 290px;
+    color: #fff;
+    background: #6182e9;
+    text-align: center;
+    border-radius: 4px !important;
+    font-size: 12px;
+    margin-top:50px;
+}
+.rege_inp>a:hover{
+	background: #00b07b;
+}
+.rege_sm{
+	width: 100%;
+	height: 50px;
+	overflow: hidden;
+	float: left;
+	padding: 0 20px;
+	box-sizing: border-box;
+	line-height: 25px;
+	margin: 70px 0 30px;
+	color: #aaa;
+}
+.txBtn{
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	float: left;
+	display: inline-block;
+	background: #6182e9;
+	color: #fff;
+	margin: 20px 0 0 20px;
+}
+.txBtn:hover{
+	text-decoration: none;
+	background:#00b07b;
+}
+
+.type-button {
+	background: none!important;
+    color: #6182e9!important;
+    position: absolute;
+    left: 218px;
+    top: 295px;
+}
+
+
+
+
+@media (max-width: 768px) {
+	.button_500 {
+		left: auto!important;
+	}
+	.rege_addre{
+		padding:0;
+		margin-top: 30px;
+	}
+	.rege_inp{
+		padding: 0;
+	}
+	.rege_inp select, .rege_inp input{
+		margin-top: 30px;
+	}
+	.rege_inp input[type=password]{
+		width: 100%;
+	}
+	.rege_inp .email_yzm{
+		width: 50%!important;
+		margin-left: 0;
+	}
+	.rege_inp>a, .btn_set{
+		width: 40%;
+		margin-top: 30px;
+		top:195px;
+		right: 0;
+	}
+	.type-button{
+		left:275px;
+	}
+	.rege_sm{
+		margin: 30px 0;
+		padding: 0;
+	}
+	.txBtn{
+		width: 100%;
+		margin: 20px 0;
+	}
+	.addre_fs{
+		height:auto;
+		overflow: hidden;
+		padding: 0;
+		font-size: 12px;
+		margin-bottom:0;
+	}
+	.assets_ewm{
+		margin:20px 0 0 0;
+	}
+}

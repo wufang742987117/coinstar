@@ -1,0 +1,508 @@
+.trade-contaner {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+}
+
+.tc_h3 {
+		color: #fff;
+    font-size: 20px;
+    padding: 35px;
+}
+.account_tc table td {
+	padding: 10px 0;
+	display: inline-block;
+}
+
+.account_tc table tr td:nth-child(1) {
+	width: 120px;
+}
+
+.account_tc table tr td input {
+		width: 160px;
+		border: 0;
+    border-bottom: 1px solid #8ba8ff;
+    background: none;
+}
+}
+
+.account_tc table tr td:nth-child(2) {
+	width: 40%;
+	text-align: right;
+}
+
+.tc_p {
+	  color: #fff;
+    padding: 10px 35px;
+}
+
+.trade-content {
+    height: 900px;
+    width: 100%;
+    padding: 30px;
+}
+.detail-content {
+    position: relative;
+    width: 100%;
+    height: 515px;
+    padding-left: 630px;
+}
+.detail-list {
+    position: absolute;
+    left: 0;
+    width: 610px;
+    height: 100%;
+    background: #181b2a;
+}
+.detail-chart {
+    width: 100%;
+    height: 100%;
+    background: #181b2a;
+}
+.height300 {
+    height: 380px!important;
+    /* margin-top: 20px; */
+    margin: 10px 0;
+}
+
+.list-l,.list-r {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+.list-l {
+    border-right: 2px solid #000;
+}
+
+.trade_content_mt60 {
+	margin-bottom: 60px;;
+}
+
+.l-title,.r-title {
+    width: 100%;
+    height: 30px;
+    background: #21253b;
+}
+
+.wrap-icon:nth-child(2),.wrap-icon:nth-child(3) {
+    margin-left: 5px;
+}
+
+.wrap-icon:nth-child(1) {
+    background: url(../images/icon/icon_all.png) no-repeat center;
+    background-size: 25px;
+}
+.wrap-icon:nth-child(2) {
+    background: url(../images/icon/icon_up.png) no-repeat center;
+    background-size: 25px;
+}
+.wrap-icon:nth-child(3) {
+    background: url(../images/icon/icon_down.png) no-repeat center;
+    background-size: 25px;
+}
+.wrap-icon {
+    width: 50px;
+    background-color: #4e5b85!important;
+    float: left;
+    height: 100%;
+    cursor: pointer;
+}
+
+.wrap-icon:hover {
+	opacity: .6;
+}
+
+.title_select {
+	opacity: .6!important;
+}
+
+.r-title-wrap {
+    width: 100px;
+    height: 100%;
+    background-color: #4e5b85;
+    color: #9ea3b9;
+    text-align: center;
+    line-height: 30px;
+}
+
+.l-wrap,.r-wrap {
+    height: 470px;
+    padding:0 5px;
+    overflow-y: auto;
+}
+
+.l-wrap ul:hover,.r-wrap ul:hover,.detail-scroll table tr:hover {
+	background: #484646;
+}
+
+.lselect {
+	background: #484646;
+}
+
+.l-wrap ul {
+	cursor: pointer;
+}
+
+.l-wrap::-webkit-scrollbar,.r-wrap::-webkit-scrollbar{
+    width: 3px;
+    background-color: #111c22;
+    border-radius: 5px!important;
+    overflow: hidden;
+}
+
+.l-wrap::-webkit-scrollbar-thumb,.r-wrap::-webkit-scrollbar-thumb {
+	background:#404142;
+	border-radius:4px;
+}
+
+.list-l ul li ,.list-r ul li{
+    display: inline-block;
+    color: #c7cce6;
+    display: inline-block;
+    color: #c7cce6;
+    width: 32.3%;
+    text-align: center;
+		font-size: 12px;
+	overflow-x: hidden;
+	vertical-align: middle;
+    /* padding: 10px; */
+    /* box-sizing: border-box; */
+
+}
+
+.list-title div {
+	cursor: pointer;
+}
+
+.ul-title li {
+    font-size: 16px;
+    padding: 15px 0 0;
+}
+
+.l-wrap li,.r-wrap li {
+    line-height: 25px;
+}
+.l-wrap li:nth-child(3),.r-wrap li:nth-child(3) {
+   /* padding-left: 15px;*/
+}
+
+.list-title {
+    width: 100%;
+    height: 30px;
+    background: #21253b;
+}
+.list-title div {
+    float: left;
+    width: 100px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+    color: #9ea3b9;
+}
+.list-title-select {
+    background: #4e5b85;
+    color: #9ea3b9;
+	cursor: default!important;
+}
+
+.list-title div:hover {
+	background: #4e5b85;
+	color: #9ea3b9;
+}
+
+.sell_buy_wrap li {
+    display: inline-block;
+    width: 50%;
+    height: 300px;
+}
+.sell_semit {
+    float: right;
+}
+
+.account-info {
+    padding: 20px 10px;
+    font-size: 16px!important;
+    color: #4e5b85;
+}
+
+.account-info table {
+    width: 100%;
+    cursor: default;
+    font-weight: 400;
+    border-collapse: collapse;
+    border: none;
+    font-weight: 400;
+    transition: background .3s,border .3s;
+}
+.account-info table td{
+    font-size: 16px;
+}
+.price,.number,.password {
+    width: 100%;
+    border-bottom: 1px solid #8ba8ff;
+    position: relative;
+    margin: 20px 0;
+    padding: 5px 0;
+}
+
+.price label,.number label {
+    font-size: 16px!important;
+    position: absolute;
+    right: 0;
+}
+
+.price input,.number input,.password input{
+    border: 0;
+    font-size: 16px!important;
+    background: none;
+}
+
+.inputbgtype::-webkit-input-placeholder{
+    color: #4e5b85;
+}
+
+.select_type{
+    height: 25px;
+}
+
+.select_type li {
+    width: 23%!important;
+    height: 25px;
+    text-align: center;
+    background: #4e5b85;
+    color: #c6cbe5;
+    line-height: 25px;
+		cursor: pointer;
+}
+
+.select_type li:hover {
+	background: #fff;
+	color: #4e5b85;
+}
+
+.type_select {
+	background: #fff!important;
+	color: #4e5b85!important;
+}
+
+.total-tab {
+    margin: 20px 0;
+}
+
+.buy_button {
+    width: 100%;
+    height: 30px;
+    line-height: 20px;
+    background: #6182e9;
+    border: 0;
+    color: #fff;
+}
+.sell_button {
+    width: 100%;
+    height: 30px;
+    line-height: 20px;
+    background: #fff;
+    border: 0;
+    color: #6182e9;
+}
+
+.history-detail table {
+    width: 100%;
+    color: #9ea3b9;
+
+}
+.history-detail {
+	height: 100%;
+	background: #181b2a;
+}
+
+.history-detail table th {
+    font-size: 14px;
+    text-align: center;
+    line-height: 50px;
+	width: 10%;
+}
+
+.history-detail table td {
+    text-align: center;
+		width: 10%;
+		line-height: 25px;
+}
+
+.detail-scroll {
+    max-height: 280px;
+    overflow-y: auto;
+}
+.detail-scroll::-webkit-scrollbar {
+	width: 3px;
+	background-color: #111c22;
+	border-radius: 5px!important;
+	overflow: hidden;
+}
+
+.detail-scroll::-webkit-scrollbar-thumb {
+	background:#404142;
+	border-radius:4px;
+}
+
+.trade_empty {
+    min-height: 280px;
+    line-height: 280px;
+    text-align: center;
+    color: #9ea3b9;
+    font-size: 14px;
+}
+
+.height350 {
+	height: 335px!important;
+}
+
+ .headroom {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0
+    transition:all .2s ease-in-out
+  }
+  .headroom--unpinned {
+    top:10px;
+  }
+  .headroom--pinned {
+    top: 0;
+  }
+  .scrollspy-example {
+    height: 1200px;
+    overflow: auto;
+    position: relative;
+  } 
+	
+@media screen and (min-width:768px)
+{
+  /* .top_pc{
+	 display: block;
+	} */
+	.top_mobile {
+		display: none;
+	}
+	
+}
+	
+@media screen and (max-width:768px)
+{
+	.l-wrap, .r-wrap {
+		height: 130px;
+	}
+	.trade-content {
+		height: auto!important;
+	}
+	.history-detail table th {
+		padding: 10px 0;
+	}
+	.history-detail {
+		margin-top: 10px;
+	}
+  .top_pc{
+	 display: none;
+	}
+	.top_mobile {
+		display: block;
+	}
+	.trade-content {
+		padding: 0;
+	}
+	.mk {
+		font-size: 20px;
+	}
+	.down_icon {
+		top:10px;
+		right: 5px;
+	}
+	.mobile_ul_1,.mobile_ul_2 {
+		overflow: hidden;
+	}
+	.mobile_ul_1 {
+		margin-top: 20px;
+	}
+	.mobile_ul_1 li {
+		float: left;
+		width: 33%;
+		text-align: center;
+		color: #fff;
+	}
+	.mobile_ul_2 li {
+		float: left;
+		width: 33%;
+		text-align: center;
+		color: #fff;
+	}
+	.trade-contaner-app {
+		margin-top: 45px!important;
+	}
+	.detail-content {
+		height: auto!important;
+		padding: 0!important;
+	}
+	.detail-list {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+	}
+	.list-l, .list-r {
+		height: 190px;
+		width: 100%;
+	}
+	.detail-chart {
+		height: 400px;
+		margin: 10px 0;
+	}
+	.select_type li {
+		width: 47%!important;
+		margin: 5px 0;
+	}
+	.select_type,.sell_buy_wrap li {
+		height: auto!important;
+	}
+	.price label, .number label {
+		top: 0;
+	}
+	
+	.history-detail table th {
+		line-height: 20px;
+	}
+	.history-detail table td {
+		width: 25%;
+	}
+	.list-title div {
+		width: 50%;
+	}
+	.trade-contaner {
+		overflow: hidden;
+	}
+	.finance_tab a {
+		width: 50%;
+		text-align: center;
+	}
+	.assets_list {
+		padding: 0;
+	}
+	.height-auto {
+		height: auto!important;
+	}
+}
+
+@media screen  and (max-width:375px) {
+	.mk {
+		font-size: 14px!important;
+	}
+	.trade-contaner {
+		overflow: hidden;
+	}
+	.down_icon {
+		top:5px;
+		right: 5px;
+	}
+}
+

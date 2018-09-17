@@ -1,0 +1,281 @@
+<div class="common-container home-content-ico">
+    <!-- <div class="coinstar_cyb">
+        coinstar正式推出新子品牌“coinstar创业板”<a href="javascript://">进入</a>
+    </div> -->
+    <!--banner-->
+	<div class="index_banner wrap wrap-index">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel"  data-interval="5000" style="height: 100%">
+			<ol class="carousel-indicators">
+				<li  data-target="#myCarousel" data-slide-to="0" class="active">
+				</li>
+				<li  data-target="#myCarousel" data-slide-to="1">
+				</li>
+				<li  data-target="#myCarousel" data-slide-to="2">
+				</li>
+				<li  data-target="#myCarousel" data-slide-to="3">
+				</li>
+				<li  data-target="#myCarousel" data-slide-to="4">
+				</li>
+				<li  data-target="#myCarousel" data-slide-to="5">
+				</li>
+			</ol>
+			<div class="carousel-inner inner-content">
+				<!--banner图-->
+				<div class="item active">
+						<img src="/assets/images/banner/h_banner_1.jpg">
+				</div>
+				<div class="item" style="height: 100%">
+						<img src="/assets/images/banner/h_banner_2.jpg">
+				</div>
+				<div class="item" style="height: 100%">
+						<img src="/assets/images/banner/h_banner_3.jpg" >
+				</div>
+				<div class="item" style="height: 100%">
+						<img src="/assets/images/banner/h_banner_4.jpg">
+				</div>
+				<div class="item" style="height: 100%">
+						<img src="/assets/images/banner/h_banner_5.jpg" >
+				</div>
+				<div class="item" style="height: 100%">
+						<img src="/assets/images/banner/h_banner_6.jpg">
+				</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>	
+    </div>
+    <!-- <div class="index_banner" style="height: auto;">
+        <h1>资产透明公开，收入返还用户</h1>
+        <p>coinstar是世界首家资产透明的数字资产交易平台，会将平台80%的收入定期分配给CT持有者。</p>
+    </div> -->
+    <!--main-->
+    <div class="index_main">
+        <!--公告&帮助&新闻-->
+        <div class="main_news" style="display: none;">
+            <ul>
+                <li>公告<a href="/#!/noticeMore" class="more-notic">更多</a></li>
+                <li ng-repeat="notice in param.noticeslist" ng-click="getDetailUrl(notice.id)">
+                    <label>「{{notice.publication_date|date:'yyyy-MM-dd'}}」</label><h2>{{notice.subject}}</h2>
+                </li>
+            </ul>
+            <!--<ul>-->
+                <!--<li>帮助</li>-->
+                <!--<li><label>「07-03」</label><h2>FCoin账号注册</h2></li>-->
+                <!--<li><label>「07-03」</label><h2>提充币到账时间及限额</h2></li>-->
+                <!--<li><label>「07-03」</label><h2>介绍</h2></li>-->
+            <!--</ul>-->
+            <ul>
+                <li>新闻<a href="/#!/newsMore" class="more-notic">更多</a></li>
+                <li ng-repeat="new in param.newslist" ng-click="getDetailUrl(new.id)">
+                    <label>「{{new.publication_date|date:'yyyy-MM-dd'}}」</label><h2>{{new.subject}}</h2>
+                </li>
+            </ul>
+        </div>
+		
+		
+		<div class="region_table" ng-repeat="item in plateDateArr">
+			<h1 ng-if="language=='zh_TW'||!language">{{item.zh_Name}}</h1>
+			<h1 ng-if="language=='en'">{{item.en_Name}}</h1>
+			<div>
+				<ul style="background: #e0dfdf!important;">
+					<li>{{'HOME_PAIR'|translate}}</li>
+					<li>{{'HOME.LAST_PRICE'|translate}}</li>
+					<li>{{'HOME_CURRENCT_T_3'|translate}}</li>
+					<li>{{'HOME_CURRENCT_T_4'|translate}}</li>
+					<li>{{'HOME_CURRENCT_T_5'|translate}}</li>
+					<li>{{'HOME_CURRENCT_T_6'|translate}}</li>
+					<li>{{'HOME_CURRENCT_T_7'|translate}}</li>
+				</ul>
+				<ul ng-repeat="v in item.data">
+					<li>{{v.assets}}</li>
+					<li>{{v.last | amount| number:8 }}</li>
+					<li>{{v.high24h | amount| number: 8 }}</li>
+					<li>{{v.low24h | amount| number: 8 }}</li>
+					<li>{{v.vol24h | amount | number:2}}</li>
+					<li ng-class="{true:'down-color',false:'up-color'}[v.quote_change <0]"><span ng-if="v.quote_change >= 0">+</span>{{v.quote_change | number: 2}}%</li>
+					<li><a href="/#!/trade"></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div ng-if="plateDateArr.length==0">
+			<div class="region_table" >
+					<h1>{{'HOME_MAIN_BANKUAI_1'|translate}}</h1>
+					<div>
+						<ul style="background: #e0dfdf!important;">
+							<li>{{'HOME_PAIR'|translate}}</li>
+							<li>{{'HOME.LAST_PRICE'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_3'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_4'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_5'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_6'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_7'|translate}}</li>
+						</ul>
+						<ul>
+							<li style="width: 100%;text-align: center;">{{'TRADE.NO_QUOTES'|translate}}</li>
+						</ul>
+					</div>
+			</div>
+			<div class="region_table" >
+					<h1>{{'HOME_MAIN_BANKUAI_2'|translate}}</h1>
+					<div>
+						<ul style="background: #e0dfdf!important;">
+							<li>{{'HOME_PAIR'|translate}}</li>
+							<li>{{'HOME.LAST_PRICE'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_3'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_4'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_5'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_6'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_7'|translate}}</li>
+						</ul>
+						<ul>
+							<li style="width: 100%;text-align: center;">{{'TRADE.NO_QUOTES'|translate}}</li>
+						</ul>
+					</div>
+			</div>
+		</div>
+		
+		
+		
+       <!-- <div class="region_table">
+            <h1>{{'HOME_VALUE_BOARD'|translate}}</h1>
+				<div>
+					<ul style="background: #e0dfdf!important;">
+							<li>{{'HOME_PAIR'|translate}}</li>
+							<li>{{'HOME.LAST_PRICE'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_3'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_4'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_5'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_6'|translate}}</li>
+							<li>{{'HOME_CURRENCT_T_7'|translate}}</li>
+					</ul>
+					<ul>
+							<li>BTC/USDT</li>
+							<li>{{btcUsdtDataList.last | amount| number:8 }}</li>
+							<li>{{btcUsdtDataList.high24h | amount| number: 8 }}</li>
+							<li>{{btcUsdtDataList.low24h | amount| number: 8 }}</li>
+							<li>{{btcUsdtDataList.vol24h | amount | number:2}}</li>
+							<li ng-class="{true:'down-color',false:'up-color'}[btcUsdtDataList.quote_change <0]"><span ng-if="btcUsdtDataList.quote_change >= 0">+</span>{{btcUsdtDataList.quote_change | number: 2}}%</li>
+							<li><a href="/#!/trade"></a></li>
+					</ul>
+					<ul>
+							<li>ETH/USDT</li>
+							<li>{{ethUsdtDataList.last | amount| number:8 }}</li>
+							<li>{{ethUsdtDataList.high24h | amount| number: 8 }}</li>
+							<li>{{ethUsdtDataList.low24h | amount| number: 8 }}</li>
+							<li>{{ethUsdtDataList.vol24h | amount | number:2}}</li>
+							<li ng-if="ethUsdtDataList" ng-class="{true:'down-color',false:'up-color'}[ethUsdtDataList.quote_change <0]"><span ng-if=ethUsdtDataList.quote_change >= 0">+</span>{{ethUsdtDataList.quote_change | number: 2}}%</li>
+							<li ng-if="!ethUsdtDataList" class="up-color">+0.00%</li>
+							<li><a href="/#!/trade"></a></li>
+					</ul>
+				</div>
+        </div>
+        <div class="region_table">
+            <h1>{{'HOME_Innovation_Board'|translate}}</h1>
+			<div>
+				<ul style="background: #e0dfdf!important;">
+						<li>{{'HOME_PAIR'|translate}}</li>
+						<li>{{'HOME.LAST_PRICE'|translate}}</li>
+						<li>{{'HOME_CURRENCT_T_3'|translate}}</li>
+						<li>{{'HOME_CURRENCT_T_4'|translate}}</li>
+						<li>{{'HOME_CURRENCT_T_5'|translate}}</li>
+						<li>{{'HOME_CURRENCT_T_6'|translate}}</li>
+						<li>{{'HOME_CURRENCT_T_7'|translate}}</li>
+				</ul>
+				<ul>
+						<li>DSCB/USDT</li>
+						<li>{{dscbUsdtDataList.last | amount| number:8 }}</li>
+						<li>{{dscbUsdtDataList.high24h | amount| number: 8 }}</li>
+						<li>{{dscbUsdtDataList.low24h | amount| number: 8 }}</li>
+						<li>{{dscbUsdtDataList.vol24h | amount | number:2}}</li>
+						<li ng-class="{true:'down-color',false:'up-color'}[dscbUsdtDataList.quote_change <0]">
+							<span>+</span>{{dscbUsdtDataList.quote_change | number: 2}}%
+						</li>
+						<li><a href="/#!/trade"></a></li>
+				</ul>
+			</div>
+        </div>
+        <div class="region_table">
+            <h1>{{'HOME_Warning_Board'|translate}}</h1>
+            <div>
+							<ul>
+									<li style="width: 100%;text-align: center;">{{'TRADE.NO_QUOTES'|translate}}</li>
+							</ul>
+						</div>
+        </div> -->
+        <!--coinstar优势-->
+        <div class="advantage_bod" style="display: none;">
+            <h1>coinstar优势</h1>
+            <ul>
+                <li class="advantage-select" data-id="1">顶级技术</li>
+                <li data-id="2">公开透明</li>
+                <li data-id="3">自治生态</li>
+                <li data-id="4">安全</li>
+                <li data-id="5">审计认证</li>
+                <li data-id="6">专业团队</li>
+            </ul>
+        </div>
+        <!--自治生态-->
+        <div class="advantage_bod" ng-if="advantage_bod_type=='3'" style="display: none;">
+            <h1>自治生态</h1>
+            <p>
+                coinstar不是传统意义的公司，它迈出了数字交易平台向社区进化的关键一步。<br />
+                coinstar是一个所有FT持有者共有、共治、共享的社区型组织。
+            </p>
+        </div>
+		<div class="advantage_bod" ng-if="advantage_bod_type=='2'" style="display: none;">
+			<h1>公开透明</h1>
+			<p>
+				世界范围内首个实时公开透明的交易平台，建立实时的资产与交易数据查询验证机制，并面向公众公开
+			</p>
+		</div>
+		<div class="advantage_bod" ng-if="advantage_bod_type=='1'" style="display: none;">
+			<h1>顶级技术</h1>
+			<p>
+				金融级别的速度和稳定，交易高效有保障；国际顶尖团队自主研发撮合系统，能够每秒处理200万笔交易<br>证券级先进算法，支持GTT、GTC、FOK、IOC等多种专业交易指令，为交易者提供专业量化支持。
+			</p>
+		</div>
+		<div class="advantage_bod" ng-if="advantage_bod_type=='4'" style="display: none;">
+			<h1>安全</h1>
+			<p>
+				多维度，分层防护。安全防护体系，严格保护用户资金安全。
+			</p>
+		</div>
+		<div class="advantage_bod" ng-if="advantage_bod_type=='5'" style="display: none;">
+			<h1>审计认证</h1>
+			<p>
+				无偏性零知识订单加密通过 CertEurope6 的 PKI-on-blockchain 服务提供的密钥完成。定期外部审计，并获得 ANSSI7 提供的安全认证。
+			</p>
+		</div>
+		<div class="advantage_bod" ng-if="advantage_bod_type=='6'" style="display: none;">
+			<h1>专业团队</h1>
+			<p>
+				来自世界顶级金融机构和科技公司，具有华尔街和加密金融经验的专业开发团队自主研发撮合系统。<br>专业产品设计团队打造产品细节，交易操作便捷，追求极致用户体验。
+			</p>
+		</div>
+        <!--历程-->
+        <div class="course" style="display: none;">
+            <p></p>
+        </div>
+    </div>
+    <!--合作伙伴-->
+    <div class="cooperation_bod">
+        <h1>{{'HOME_Partner'|translate}}</h1>
+        <ul>
+            <li>台灣第一銀行</br>First Bank of Taiwan</li>
+            <li>台灣區塊鏈及加密貨幣協會</br>Taiwan Blockchain and Cryptocurrency Association</li>
+            <li>Voyage Fund</li>
+            <li>蠻子基金</br>Manzi Fund</li>
+            <li>台灣健保基金</br>Taiwan Health Insurance</li>
+            <li>鴻儒睿興集團</li>
+        </ul>
+    </div>
+</div>
+
+<a href="javascript://" class="footer_telegram">{{'HOME_FOOT_TIP'|translate}}</a>

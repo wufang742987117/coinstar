@@ -1,0 +1,140 @@
+{
+  "LOGIN.TITLE"               : "Login",
+  "LOGIN.USERNAME"            : "Telefonnummer",
+  "LOGIN.USERNAME_REQ"        : "Die Eingabe einer Email-Adresse oder Telefonnummer ist erforderlich.",
+  "LOGIN.PASSWORD"            : "Passwort",
+  "LOGIN.PASSWORD_REQ"        : "Ein Passwort ist erforderlich.",
+  "LOGIN.REGISTER"            : "Registrieren",
+  "LOGIN.FORGOT"							: "Passwort vergessen?",
+  "LOGIN.BUTTON"              : "Login",
+  "LOGIN.ERROR"								: "Ungueltige Zugangsdaten",
+  "LOGIN.WRONG_USERNAME"			: "Keine gueltige E-Mail Adresse oder Telefonnummer",
+  "LOGIN.PASSWORD_LONG"				: "Das eingegebene PAsswort ist zu kurz.",
+
+  "REGISTER.TITLE"            : "Registieren",
+  "REGISTER.MOBILE_NUMBER"    : "Mobile number",
+  "REGISTER.MOBILE_NUMBER_REQ": "Mobile number is required",
+  "REGISTER.CHECK_CODE"       : "Check code",
+  "REGISTER.CHECK_CODE_REQ"   : "Check code is required",
+  "REGISTER.CANCEL"           : "Cancel",
+  "REGISTER.BUTTON"           : "Register",
+  "REGISTER.SEND"							: "Send",
+
+  "SIDEBAR.ACCOUNT"           : "account",
+  "SIDEBAR.TRADING"           : "trading desk",
+  "SIDEBAR.DEPOSIT"           : "deposit",
+  "SIDEBAR.WITHDRAW"          : "withdraw",
+  "SIDEBAR.ORDERS"            : "orders",
+  "SIDEBAR.HISTORY"           : "history",
+  "SIDEBAR.SETTINGS"          : "settings",
+  "SIDEBAR.LOGOUT"            : "logout",
+
+  "SETTING.MOBILE_NUMBER"			: "Mobile Number",
+	"SETTING.EMAIL"							: "Email",
+  "SETTING.ID_PASSPORT"				: "ID/Passport",
+  "SETTING.GOOGLE"						: "Google Authenticator",
+  "SETTING.BIND"							: "bind",
+  "SETTING.UPDATE"						: "update",
+	"SETTING.SECURITY_TITLE"		: "Security",
+  "SETTING.PASSWORD"					: "Password",
+  "SETTING.CHANGE_PASSWORD"		: "change",
+  "SETTING.SECOND_PASSWORD"		: "Secondary Authentication",
+  "SETTING.SECURITY_SETTING"	: "Setting",
+	"SETTING.API_TITLE"					: "API",
+
+  "TOPBAR.HOME"								: "Startseite",
+  "TOPBAR.TRADING"						: "Handel",
+  "TOPBAR.ACCOUNT"						: "Depotuebersicht",
+  "TOPBAR.HISTORY"						: "History",
+  "TOPBAR.SETTINGS"						: "Einstellungen",
+  "TOPBAR.NEWS"								: "News",
+  "TOPBAR.SUPPORT"						: "Hilfe",
+  "TOPBAR.TOTAL_ASSET"				: "Depotwert",
+  "TOPBAR.DEPOSIT"						: "deposit",
+
+  "ORDERBOOK.TITLE"       		: "Orderbuch",
+  "ORDERBOOK.ASK"         		: "Ask",
+  "ORDERBOOK.BID"         		: "Bid",
+
+  "TRADE.CREATE_BUYING_ORDER" : "Kauforder erstellen",
+  "TRADE.CREATE_SELLING_ORDER" : "Verkauforder erstellen",
+  "TRADE.CREATE_STOP_LOSS_ORDER" : "Create stop loss order",
+  "TRADE.AMOUNT"          		: "Anzahl",
+  "TRADE.LIMIT"           		: "Limit",
+  "TRADE.BUY"             		: "Kaufen",
+  "TRADE.SELL"             		: "Verkaufen",
+  "TRADE.STOP_LOSS"           : "Stop loss",
+  "TRADE.TRADING"							: "Handel",
+  "TRADE.OPEN_ORDERS"					: "Offene Auftraege",
+  "TRADE.TOTAL_ASSET"					: "Total Asset",
+  "TRADE.ORDER_TIME"					: "Zeit",
+  "TRADE.ORDER_PRICE"					: "Limit",
+  "TRADE.ORDER_VOLUME"				: "Volumen",
+  "TRADE.BUY_SELL"						: "Buy / Sell",
+  "TRADE.RESIDUAL_VOL"				: "verbleibend",
+  "TRADE.STATUS"							: "Status",
+  "TRADE.LAST_PRICE"					: "aktueller Kurs",
+  "TRADE.SELL_ORDERS"					: "Verkauf Orders",
+  "TRADE.PRICE"								: "Preis",
+  "TRADE.VOLUME"							: "Volumen",
+  "TRADE.BUY_ORDERS"					: "Kauf Orders",
+  "TRADE.LIMIT_ORDER"					: "Limit Order",
+  "TRADE.MARKET_ORDER"				: "Market Order",
+  "TRADE.YOU_HAVE"						: "You have",
+  "TRADE.LEAST" 							: "Least",
+  "TRADE.TOTAL"								: "total",
+  "TRADE.FEE"									: "fee",
+  "TRADE.ERROR"								: "Error",
+  "TRADE.ALL"									: "All",
+  "TRADE.CANCEL"							: "Cancel",
+
+  "HISTORY.MARKET"						: "Market",
+  "HISTORY.AMOUNT"						: "Amount",
+  "HISTORY.FEE"								: "Fee",
+  "HISTORY.PRICE"							: "Price",
+  "HISTORY.TOTAL"							: "Total",
+  "HISTORY.DATE"							: "Date",
+  "HISTORY.ADDRESS"						: "Address",
+  "HISTORY.STATUS"						: "Status",
+  "HISTORY.SUCCESS"						: "Success",
+  "HISTORY.METHOD"						: "Method",
+  "HISTORY.ASSET"							: "Asset",
+  "HISTORY.TOTAL_AMOUNT"			: "Total Amount",
+  "HISTORY.PENDING"						: "Pending",
+  "HISTORY.TRANSFER_CODE"			: "Transfer Code",
+
+
+  "ACCOUNT.TITLE"							: "Account",
+  "ACCOUNT.TOTAL_ASSET"				: "Total Asset",
+  "ACCOUNT.FROZEN&"						: "Frozen &nbsp",
+  "ACCOUNT.AMOUNT&"						: "Amount &nbsp",
+  "ACCOUNT.WITHDRAWAL"				: "Withdrawal",
+  "ACCOUNT.DEPOSIT"						: "Deposit",
+  "ACCOUNT.TOTAL_POSITION"		: "Total position",
+  "ACCOUNT.AVAILABLE"					: "Available",
+  "ACCOUNT.FROZEN"						: "Frozen",
+  "ACCOUNT.AMOUNT"						: "Amount"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

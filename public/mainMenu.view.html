@@ -1,0 +1,75 @@
+
+    <div class="header-wrap" id="header-common">
+        <!-- <div class="coinstar_cyb" ng-if="ishash=='home'">
+            coinstar正式推出新子品牌“coinstar创业板”<a href="javascript://">进入</a>
+        </div> -->
+        <div class="top_main" ng-class="{'trade_top_color':ishash=='trade'}" id="header-home">
+            <!--logo-->
+            <div class="conistar_logo" onclick="window.location.href='index.html'">
+                <label>Beta</label>
+            </div>
+            <!--未登录nav-->
+            <ul class="nav_list" ng-if="ishash!='trade'" ng-show="rightToggleShow_mobile">
+                <li ng-click="rightToggChange_mobile()"  ng-class="{'nav_click':ishash=='home'}"><a href="/#!/home">{{'INDEX_TOP_MENU_1'|translate}}</a></li>
+                <li ng-click="rightToggChange_mobile()" ng-class="{'nav_click':ishash=='trade'}"><a href="/#!/trade">{{'INDEX_TOP_MENU_2'|translate}}</a></li>
+				<li ng-click="rightToggChange_mobile()" ng-class="{'nav_click':ishash=='c2c'}"><a href="/#!/c2c">{{'C2C_TRADE'|translate}}</a></li>
+                <li ng-click="rightToggChange_mobile()" ng-class="{'nav_click':ishash=='taiwan_asset'}"><a href="/#!/taiwan_asset">{{'TAI_WAN_ZCMX'|translate}}</a></li>
+				<li ng-click="rightToggChange_mobile()" ng-class="{'nav_click':ishash=='trade_tc'}"><a href="/#!/trade_tc">{{'TAI_WAN_FZJJ'|translate}}</a></li>
+				<li ng-click="rightToggChange_mobile()"><a target="_blank" href="/assets/images/COINSTAR_WHITE_BOOK.pdf">{{'INDEX_TOP_MENU_3'|translate}}</a></li>
+            </ul>
+            <!--right状态栏-->
+            <div class="right_zt" ng-class="{'height-auto':rightToggleShow_mobile==false}">
+                <!--语言种类-->
+                <ul class="language" ng-controller="LangController">
+					<dl class="select_lang">
+						<dt>
+							{{language_type}}
+						</dt>
+						<dd>
+							<a href="javascript:void(0);" data-lang="en" ng-click="setLanguage('English')">English</a>
+							<a href="javascript:void(0);" data-lang="zh"  ng-click="setLanguage('繁體中文')">繁體中文</a>
+						</dd>
+					</dl>
+                    <!-- <li ng-click="teamShowSet()">{{select}}</li>
+                    <ul ng-show="teamShow" class="lang_team" ng-model="select">
+						<li ng-click="setLanguage('美式英文')">美式英文</li>
+						<li ng-click="setLanguage('美式英文')">美式英文</li>
+					</ul> -->
+                </ul>
+                <!--登录注册-->
+                <div class="login_btn_top top_pc" ng-if="!_username">
+                    <a href="/#!/login"   ng-class="{'login_btn_bg':ishash=='login'}">{{'LOGIN.TITLE'|translate}}</a>
+                    <a href="/#!/register" ng-class="{'login_btn_bg':ishash=='register'}">{{'REGISTER.TITLE'|translate}}</a>
+                </div>
+				
+				<div class="login_btn_top top_mobile" ng-if="!_username&&rightToggleShow_mobile">
+					<a href="/#!/login" ng-click="rightToggChange_mobile()"  ng-class="{'login_btn_bg':ishash=='login'}">{{'LOGIN.TITLE'|translate}}</a>
+					<a href="/#!/register" ng-click="rightToggChange_mobile()" ng-class="{'login_btn_bg':ishash=='register'}">{{'REGISTER.TITLE'|translate}}</a>
+				</div>
+				<div class="login_btn_top top_mobile" ng-if="_username&&rightToggleShow_mobile">
+					<a href="/#!/logout" ng-click="rightToggChange_mobile()" class="btn_out">{{'SIDEBAR.LOGOUT'|translate}}</a>
+				</div>
+                <!--用户名-->
+                <div class="username top_pc" ng-if="_username">
+                    <label ng-click="rightToggle()">{{_username | getUsernameFormat}}</label>
+                </div>
+				
+				<div class="username top_mobile">
+					<label ng-click="rightToggle_mobile()"><b ng-if="_username">{{_username | getUsernameFormat}}</b></label>
+				</div>
+            </div>
+        </div>
+        <!--侧边栏菜单-->
+        <div class="menu_bod" ng-show="rightToggleShow">
+            <a href="/#!/trade" ng-class="{'mod-select':ishash=='trade'}" ng-click="rightToggChange()">{{'INDEX_TOP_MENU_2'|translate}}</a>
+            <a href="/#!/account/details" ng-class="{'mod-select':ishashtwo=='details'}" ng-click="rightToggChange()">{{'TRADE.TOTAL_ASSET'|translate}}</a>
+            <a href="/#!/account/dataanalysis" ng-class="{'mod-select':ishashtwo=='dataanalysis'}" ng-click="rightToggChange()">{{'FIN_DETAIL'|translate}}</a>
+            <a href="/#!/order" ng-class="{'mod-select':ishash=='order'}" ng-click="rightToggChange()">{{'ORDER_MANAGE'|translate}}</a>
+            <a href="/#!/setting/menu" ng-class="{'mod-select':ishashtwo=='menu'}" ng-click="rightToggChange()">{{'SIDEBAR.SETTINGS'|translate}}</a>
+            <a href="/#!/logout">{{'SIDEBAR.LOGOUT'|translate}}</a>
+        </div>
+    </div>
+<ui-view></ui-view>
+
+
+

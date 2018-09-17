@@ -1,0 +1,185 @@
+<div class="common-main trade_desk" style="margin-top: 0;">
+  <!--<div class="common-main-title">-->
+  <!--<div class="container">-->
+  <!--<span class="zh-title">买卖交易</span>-->
+  <!--<span class="en-title hidden-xs"><span class="line">|</span>EXCHANGE</span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <div class="container trade-main trade-main2">
+    <!-- 侧栏开始 -->
+
+
+    <div class="trade-left trade-left2">
+      <!-- 币种结束 -->
+      <!-- 委托信息开始 -->
+      <div class="trade-module delegate-information">
+        <div class="module-title">
+          <h4>委托信息</h4>
+          <div class="stalls">
+            档位
+            <select ng-options="stall.label as stall.value for stall in delegateStalls" ng-model="delegateCount" ng-change="changeDelegateCount()"></select>
+          </div>
+        </div>
+        <div class="module-con">
+          <table>
+            <thead>
+            <tr>
+              <th width="40%">单价({{activeTicker.trading_pair.ask_asset_symbol}})</th>
+              <th width="30%">数量({{activeTicker.asset}})</th>
+              <th width="30%">深度</th>
+            </tr>
+            </thead>
+          </table>
+          <div class="scroll" id="delegate-scroll">
+            <div class="trade-empty" ng-if="delegateData.ask.length==0">暂无委买</div>
+            <table>
+              <thead>
+              <tr style="border-bottom: none;height: 0;">
+                <th width="40%"></th>
+                <th width="30%"></th>
+                <th width="30%"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="v in delegateData.ask.slice().reverse() track by $index" ng-click="syncLimit('limitBuyData', v)">
+                <!-- {{'ORDERBOOK.BID'|translate}}{{delegateData.ask.length-$index}} &nbsp; -->
+                <td><span class="down">{{v[0] | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span></td>
+                <td>{{v[1] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</td>
+                <td>{{v[2] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="hr"></div>
+          <div class="scroll">
+            <div class="trade-empty" ng-if="delegateData.bid.length==0">暂无委卖</div>
+            <table>
+              <thead>
+              <tr style="border-bottom: none;height: 0;">
+                <th width="40%"></th>
+                <th width="30%"></th>
+                <th width="30%"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- {{'ORDERBOOK.ASK'|translate}}{{$index+1}} &nbsp; -->
+              <tr ng-repeat="v in delegateData.bid track by $index" ng-click="syncLimit('limitSellData', v)">
+                <td><span class="up">{{v[0] | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span></td>
+                <td>{{v[1] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</td>
+                <td>{{v[2] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- 委托信息结束 -->
+      <!-- 实时成交开始 -->
+      <div class="trade-module rt-transactions">
+        <div class="module-title">
+          <h4>实时成交</h4>
+        </div>
+        <div class="module-con">
+          <table>
+            <thead>
+            <tr>
+              <th width="40%">时间</th>
+              <th width="30%">单价({{activeTicker.trading_pair.ask_asset_symbol}})</th>
+              <th width="30%">数量({{activeTicker.asset}})</th>
+            </tr>
+            </thead>
+          </table>
+          <div class="scroll" id="realtime-scroll">
+            <div class="trade-empty" ng-if="realtimeData.length==0">暂无实时成交</div>
+            <table>
+              <thead>
+              <tr style="border-bottom: none;height: 0;">
+                <th width="40%%"></th>
+                <th width="30%"></th>
+                <th width="30%"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="v in realtimeData.slice().reverse() track by $index">
+                <td>{{v.date | date: 'HH:mm:ss'}}</td>
+                <td ng-class="{'SELL':'down','BUY':'up'}[v.side]">
+                  <span ng-if="v.side=='BUY'">{{v.price | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span>
+                  <span ng-if="v.side=='SELL'">{{v.price | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span>
+                </td>
+                <td>
+                  <span ng-if="v.side=='BUY'">{{v.amount | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</span>
+                  <span ng-if="v.side=='SELL'">{{v.amount | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- 实时成交结束 -->
+    </div>
+    <!-- 侧栏结束 -->
+
+    <!-- 主要开始 -->
+    <div class="trade-right trade-right2">
+      <!-- 币种信息开始 -->
+      <div class="trade-module trade-preview">
+        <div class="top">
+          <div class="split">
+            <div class="inner">
+              <small>最新价</small>
+              <!--<span>{{BtcToUsdt}}</span>-->
+              <span class="number">{{activeTicker.last | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span>
+              <!--<span class="number" ng-class="{true:'down',false:'up'}[activeTicker.quote_change<0]" ng-if="language=='en' && tickersSelectedGroup=='BTC' && lastApp==1">${{(activeTicker.last | amount | number: activeTicker.trading_pair.ask_asset_decimals) *BtcToUsdt |number:2}}</span>-->
+              <span class="number" ng-class="{true:'down',false:'up'}[activeTicker.quote_change<0]" ng-if="tickersSelectedGroup=='BTC' && lastApp==1">￥{{(activeTicker.last | amount | number: activeTicker.trading_pair.ask_asset_decimals )*BtcToUsdt*dataUStoRMB |number:2}}</span>
+            </div>
+          </div>
+          <div class="split">
+            <div class="inner">
+              <small>24h涨跌幅</small>
+              <span class="number" ng-class="{true:'down',false:'up'}[activeTicker.quote_change<0]">
+              <div style="display: inline;" ng-if="activeTicker.quote_change >= 0">+</div>{{activeTicker.quote_change | number: 2}}%
+            </span>
+            </div>
+          </div>
+          <div class="split">
+            <div class="inner">
+              <small>24h涨跌</small>
+              <span class="number" ng-class="{true:'down',false:'up'}[activeTicker.difference<0]">
+              <div style="display: inline;" ng-if="activeTicker.difference >= 0">+</div>{{activeTicker.difference | amount | number: activeTicker.trading_pair.ask_asset_decimals}}
+            </span>
+            </div>
+          </div>
+          <div class="split">
+            <div class="inner">
+              <small>24h最高价</small>
+              <span class="number">{{activeTicker.high24h | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span>
+            </div>
+          </div>
+          <div class="split">
+            <div class="inner">
+              <small>24h最低价</small>
+              <span class="number">{{activeTicker.low24h | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <span>{{'TRADE.VOL'|translate}}: {{activeTicker.vol24h | amount | number: 2}} {{activeTicker.asset}}</span>
+        </div>
+      </div>
+      <!-- 币种信息结束 -->
+      <!-- k线图开始 -->
+      <div class="trade-module trade-k">
+        <!-- <a class="trade-k-a" target="_blank" ng-if="activeTicker.trading_pair.chart_url" href="{{activeTicker.trading_pair.chart_url | trustAsResourceUrl}}">{{'TRADE.FULLSCREEN'|translate}}</a> -->
+        <!-- <iframe ng-src="{{activeTicker.trading_pair.chart_url | trustAsResourceUrl}}" frameborder="0" style="width: 100%;height: 100%;"></iframe> -->
+        <!-- <div style="height: 396px; line-height: 396px; font-size: 18px; color: #999999;text-align: center;">K线图</div> -->
+
+        <div ng-controller="ChartController" style="width: 100%;height: 100%;">
+          <div id="graph-container" style="width: 100%;height: 100%;"></div>
+        </div>
+      </div>
+      <!-- k线图结束 -->
+    </div>
+    <!-- 主要结束 -->
+  </div>
+</div>

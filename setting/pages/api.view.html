@@ -1,0 +1,20 @@
+<div class="login_bod" auto-height>
+    <form name="form" novaildate class="form-horizontal isform">
+        <div class="login_main register_main" ng-show="showTpass && !hideTpassInput" style="width: 500px;">
+			<h1>{{'Xgh_Obtain'|translate}} API</h1>
+			<div class="apikey" ng-show="api.needPost || api.haveGet">
+				<div class="apikey-t">{{"SETTING.API_KEY"|translate}}</div>
+				<div class="apikey-c" style="margin-bottom: 20px;">{{result.apikey}}</div>
+				<div class="apikey-t">{{"SETTING.SIGNATURE"|translate}}</div>
+				<div class="apikey-c">{{result.signature}}</div>
+				<!-- <p>{{"SETTING.API_KEY"|translate}}</p>
+				<p disabled="disabled" class="input APIsign" style="color:#777;height:40px;line-height:40px;">{{result.apikey}}</p>
+				<p>{{"SETTING.SIGNATURE"|translate}}</p>
+				<p disabled="disabled" class="input APIsign">{{result.signature}}</p> -->
+			</div>
+			<label ng-if="!setting.tpass">{{'Xgh_Capital.cipher'|translate}}</label>
+			<input type="password" placeholder="{{'Xgh_password'|translate}}" id="passward" ng-minlength="8" name="tpass" ng-model="tpass"/>
+			<input type="text" style="margin-top: 20px;" value="{{'Xgh_Confirm'|translate}}" class="login_btn btn" ng-click="postApi()" ng-disabled="!tpass">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,53 @@
+<div class="common-container common-wrap trade-contaner" auto-height>
+    <div class="assets_title order_title">
+    	<h1>{{'Xgh_Financial.details'|translate}}：</h1>
+    	<div>
+    		<!--<select ng-change="getAssetHistory()" ng-model="symbols">
+    			<option ng-repeat="v in balances" ng-value="{{v.symbol}}">{{v.symbol}}</option>
+    		</select>-->
+				<select ng-model="selectAsset" class="type-ul-select" ng-options="value.symbol for value in balances" ng-change="getAssetHistory()">
+					
+				</select>
+    	</div>
+    </div>
+    <!--列表-->
+    <div class="assets_list finance_list">
+    	<!--TAB-->
+    	<div class="finance_tab">
+    		<a href="javascript://" ng-class="{'fTab_click': type =='deposit'}" ng-click="History('deposit')">{{'Xgh_Recharge'|translate}}</a>
+    		<a href="javascript://" ng-class="{'fTab_click': type =='withdrawalsHash'}" ng-click="History('withdrawalsHash')">{{'Xgh_Embody'|translate}}</a>
+    	</div>
+    	<!--充值提现-->
+		<div class="assets_bod_overflow">
+			<ul>
+				<li>
+					<div>{{'Xgh_time'|translate}}</div>
+					<div>{{'Xgh_state'|translate}}</div>
+					<div>{{'Xgh_currency'|translate}}</div>
+					<div>{{'Xgh_Number'|translate}}</div>
+				</li>
+				<li ng-repeat="its in detailList">
+					<div>{{its.created_at |  date:'yyyy-MM-dd HH:mm:ss'}}</div>
+					<div>
+						<label ng-if="its.status=='COMPLETE'">{{'ACCOUNT.A_WITHDRAWAL_SUCCESS'|translate}}</label>
+						<label ng-if="its.status=='CANCELLED'">{{'ACCOUNT.REFUSE'|translate}}</label>
+						<label ng-if="its.status=='PENDING' || its.state=='REQUESTED'">{{'STATUS.PENDING'|translate}}</label>
+						<label class="applying" ng-if="its.status=='REQUESTED'">{{'ACCOUNT.DEPOSIT_REQUEST'|translate}}</label>
+					</div>
+					<div>{{its.asset}}</div>
+					<div><td>{{its.amount/100000000}}</td></div>
+				</li>
+				<li ng-if="detailList.length==0" style="height: 400px;color: #fff;text-align: center;line-height: 400px;">
+					{{'Xgh_No.record'|translate}}
+				</li>
+			</ul>
+		</div>
+		
+		<div class="page-btn" ng-show="params.totalItems">
+			<ul class="page_500" style="background: none;" uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" items-per-page="20" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+		</div>
+		<!--<div class="page-btn">
+			<ul uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+		</div>-->
+    </div>
+</div>

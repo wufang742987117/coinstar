@@ -1,0 +1,420 @@
+
+<!--交易头部-->
+<header class="header-wrap headroom" id="header">
+    <div class="top_main top_pc">
+        <!--logo-->
+        <div class="conistar_logo" onclick="window.location.href='#'">
+            <label>Beta</label>
+        </div>
+        <!--交易数据-->
+        <ul class="transaction_data">
+            <li >
+                <div ng-click="toggleUL()" id="clickArea">
+                    <label >{{'TRADE_MARKET_TIP'|translate}}</label><br />
+                    <img src="../assets/images/icon/xl_jt.png" alt="" class="down_icon">
+                    <b style="width: 90px;">{{activeTicker.trading_pair.bid_asset_symbol}}/{{activeTicker.trading_pair.ask_asset_symbol}}</b>
+                </div>
+
+                <ul ng-if="toggleShow" class="ul-asset-list">
+                    <li ng-repeat="item in tickersData" value="{{item.name}}" ng-click="defayltChange(item)">
+                        <span >{{item.trading_pair.bid_asset_symbol}}/{{item.trading_pair.ask_asset_symbol}}</span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <label>{{'HOME.LAST_PRICE'|translate}}</label><br />
+                <b>{{activeTicker.last/1e8 | formatNumber}}
+                <span ng-if="activeTicker.trading_pair.ask_asset_symbol=='BTC'||activeTicker.trading_pair.ask_asset_symbol=='GCC'">&yen;{{exchangeRate(activeTicker.last, activeTicker.trading_pair.ask_asset_symbol, activeTicker.trading_pair.bid_asset_symbol, 'RMB')}}</span></b>
+            </li>
+            <li>
+                <label>{{'HOME_CURRENCT_T_6'|translate}}</label><br />
+                <b><div style="display: inline;" ng-if="activeTicker.quote_change >= 0">+</div>{{activeTicker.quote_change | number: 2}}%</b>
+            </li>
+            <li>
+                <label>{{'HOME_CURRENCT_T_3'|translate}}</label><br />
+                <b>{{activeTicker.high24h | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</b>
+            </li>
+            <li>
+                <label>{{'HOME_CURRENCT_T_4'|translate}}</label><br />
+                <b>{{activeTicker.low24h | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</b>
+            </li>
+            <li>
+                <label>{{'HOME_CURRENCT_T_5'|translate}}</label><br />
+                <b>{{activeTicker.vol24h | amount | number: 2}} {{activeTicker.asset}}</b>
+            </li>
+        </ul>
+        <!--right状态栏-->
+        <div class="right_zt">
+            <!--语言种类-->
+            <ul class="language" ng-controller="LangController">
+				<dl class="select_lang">
+					<dt>
+						{{language_type}}
+					</dt>
+					<dd>
+						<a href="javascript:void(0);" data-lang="en" ng-click="setLanguage('English')">English</a>
+						<a href="javascript:void(0);" data-lang="zh"  ng-click="setLanguage('繁體中文')">繁體中文</a>
+					</dd>
+				</dl>
+			</ul>
+            <!--登录注册-->
+            <div class="login_btn_top" ng-if="!_username">
+                <a href="/#!/login" class="login_btn_top">{{'LOGIN.TITLE'|translate}}</a>
+                <a href="/#!/register">{{'REGISTER.TITLE'|translate}}</a>
+            </div>
+            <!--用户名-->
+            <div class="username" ng-if="_username">
+                <label ng-click="rightToggle()">{{_username | getUsernameFormat}}</label>
+            </div>
+        </div>
+    </div>
+	<div class="top_main top_mobile" style="background: #262a40;">
+			<div class="col-xs-6" style="color:#fff;padding-right:0;width: 53%;">
+				<div ng-click="toggleUL()" id="clickArea">
+						<label class="mk">{{'TRADE_MARKET_TIP'|translate}}</label>
+						<img src="../assets/images/icon/xl_jt.png" alt="" class="down_icon">
+						<b style="width: 90px;margin:0 10px;" class="mk">{{activeTicker.trading_pair.bid_asset_symbol}}/{{activeTicker.trading_pair.ask_asset_symbol}}</b>
+				</div>
+
+				<ul ng-if="toggleShow" class="ul-asset-list">
+					<li ng-repeat="item in tickersData" value="{{item.name}}" ng-click="defayltChange(item)">
+							<span >{{item.trading_pair.bid_asset_symbol}}/{{item.trading_pair.ask_asset_symbol}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	 <!--侧边栏菜单-->
+    <div class="menu_bod" ng-show="rightToggleShow">
+        <a href="/#!/trade" class="mod-select" ng-click="rightToggChange()">{{'INDEX_TOP_MENU_2'|translate}}</a>
+        <a href="/#!/account/details" ng-click="rightToggChange()">{{'TRADE.TOTAL_ASSET'|translate}}</a>
+        <a href="/#!/account/dataanalysis" ng-click="rightToggChange()">{{'FIN_DETAIL'|translate}}</a>
+        <a href="/#!/order" ng-click="rightToggChange()">{{'ORDER_MANAGE'|translate}}</a>
+        <a href="/#!/setting/menu" ng-click="rightToggChange()">{{'SIDEBAR.SETTINGS'|translate}}</a>
+        <a href="/#!/logout">{{'SIDEBAR.LOGOUT'|translate}}</a>
+    </div>
+</header>
+
+
+<div class="common-container common-wrap trade-contaner trade-contaner-app trade_content_mt60">
+	<div class="top_mobile" style="background: #181b2a;padding: 20px 0;">
+		<ul class=" mobile_ul_2 " >
+			<li>{{'HOME_CURRENCT_T_6'|translate}}<br><b><div style="display: inline;" ng-if="activeTicker.quote_change >= 0">+</div>{{activeTicker.quote_change | number: 2}}%</b></li>
+			<li>{{'HOME_CURRENCT_T_3'|translate}}<br><b>{{activeTicker.high24h | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</b></li>
+			<li>{{'HOME_CURRENCT_T_4'|translate}}<br><b>{{activeTicker.low24h | amount | number: activeTicker.trading_pair.ask_asset_decimals}}</b></li>
+		</ul>
+		<ul class=" mobile_ul_1">
+			<li>{{'HOME.LAST_PRICE'|translate}}<br>{{activeTicker.last/1e8 | formatNumber}}<br><span style="color:#d94e68" ng-if="activeTicker.trading_pair.ask_asset_symbol=='BTC'||activeTicker.trading_pair.ask_asset_symbol=='GCC'">&yen;{{exchangeRate(activeTicker.last, activeTicker.trading_pair.ask_asset_symbol, activeTicker.trading_pair.bid_asset_symbol, 'RMB')}}</span></li>
+			<li>{{'HOME_CURRENCT_T_5'|translate}}<br><b>{{activeTicker.vol24h | amount | number: 2}} {{activeTicker.asset}}</b></li>
+		</ul>
+	</div>
+	
+    <div class="trade-content ">
+        <div class="detail-content top_pc">
+            <div class="detail-list">
+                <div class="list-l">
+                    <div class="l-title">
+                        <div ng-class="{'title_select':delegateDataMode=='1'}" ng-click="changeDepthMode(1)" class="wrap-icon"></div>
+                        <div ng-class="{'title_select':delegateDataMode=='2'}" ng-click="changeDepthMode(2)" class="wrap-icon"></div>
+                        <div ng-class="{'title_select':delegateDataMode=='3'}" ng-click="changeDepthMode(3)" class="wrap-icon"></div>
+                    </div>
+                    <ul class="ul-title">
+                        <li>{{'TRADE.PRICE'|translate}}({{activeTicker.trading_pair.ask_asset_symbol}})</li>
+                        <li>{{'TRADE.VOLUME'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</li>
+                        <li>{{'TRADE_LEIJI'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</li>
+                    </ul>
+                    <div class="l-wrap">
+                        <ul ng-class="{'lselect':ticklist.selectType=='ask'&&ticklist.selectIndex==$index}" ng-click="ticksSelect('ask',item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals,$index)" ng-if="delegateDataMode==1 || delegateDataMode==3" ng-repeat="item in delegateData.ask.slice().reverse() track by $index">
+                            <li class="down-color">{{item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                            <li>{{item[1] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                            <li>{{item[2] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                        </ul>
+                        <ul ng-class="{'lselect':ticklist.selectType=='bid'&&ticklist.selectIndex==$index}" ng-click="ticksSelect('bid',item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals,$index)" ng-if="delegateDataMode==1 || delegateDataMode==2"  ng-repeat="item in delegateData.bid">
+                        	<li class="up-color">{{item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                        	<li>{{item[1] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                        	<li>{{item[2] | amount| number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="list-r">
+                    <div class="r-title">
+                        <div class="r-title-wrap">
+                            {{'TRADE_HISTORY'|translate}}
+                        </div>
+                    </div>
+                    <ul class="ul-title">
+                        <li>{{'TRADE.PRICE'|translate}}({{activeTicker.trading_pair.ask_asset_symbol}})</li>
+                        <li>{{'TRADE.VOLUME'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</li>
+                        <li>{{'TRADE.TIME'|translate}}</li>
+                    </ul>
+                    <div class="r-wrap">
+                        <ul ng-repeat="item in realtimeData.slice().reverse() track by $index">
+                            <li ng-class="item.side=='BUY'?'up-color':'down-color'">{{item.price | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                            <li>{{item.amount | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+                            <li>{{item.date | date: 'HH:mm:ss'}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-chart" ng-controller="ChartController">
+                <div id="graph-container" style="width: 100%;height: 100%;"></div>
+            </div>
+        </div>
+		
+		<div class="detail-content top_mobile">
+			<div class="detail-list">
+				<div class="list-l">
+					<div class="l-title">
+						<div ng-class="{'title_select':delegateDataMode=='1'}" ng-click="changeDepthMode(1)" class="wrap-icon"></div>
+						<div ng-class="{'title_select':delegateDataMode=='2'}" ng-click="changeDepthMode(2)" class="wrap-icon"></div>
+						<div ng-class="{'title_select':delegateDataMode=='3'}" ng-click="changeDepthMode(3)" class="wrap-icon"></div>
+					</div>
+					<ul class="ul-title">
+						<li>{{'TRADE.PRICE'|translate}}({{activeTicker.trading_pair.ask_asset_symbol}})</li>
+						<li>{{'TRADE.VOLUME'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</li>
+						<li>{{'TRADE_LEIJI'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</li>
+					</ul>
+					<div class="l-wrap">
+						<ul ng-class="{'lselect':ticklist.selectType=='ask'&&ticklist.selectIndex==$index}" ng-click="ticksSelect('ask',item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals,$index)" ng-if="delegateDataMode==1 || delegateDataMode==3" ng-repeat="item in delegateData.ask.slice().reverse() track by $index">
+							<li class="down-color">{{item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+							<li>{{item[1] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+							<li>{{item[2] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+						</ul>
+						<ul ng-class="{'lselect':ticklist.selectType=='bid'&&ticklist.selectIndex==$index}" ng-click="ticksSelect('bid',item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals,$index)" ng-if="delegateDataMode==1 || delegateDataMode==2"  ng-repeat="item in delegateData.bid">
+							<li class="up-color">{{item[0]  | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+							<li>{{item[1] | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+							<li>{{item[2] | amount| number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="list-r">
+					<div class="r-title">
+						<div class="r-title-wrap">
+							{{'TRADE_HISTORY'|translate}}
+						</div>
+					</div>
+					<ul class="ul-title">
+						<li>{{'TRADE.PRICE'|translate}}({{activeTicker.trading_pair.ask_asset_symbol}})</li>
+						<li>{{'TRADE.VOLUME'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</li>
+						<li>{{'TRADE.TIME'|translate}}</li>
+					</ul>
+					<div class="r-wrap">
+						<ul ng-repeat="item in realtimeData.slice().reverse() track by $index">
+							<li ng-class="item.side=='BUY'?'up-color':'down-color'">{{item.price | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+							<li>{{item.amount | amount | number: activeTicker.trading_pair.bid_asset_decimals}}</li>
+							<li>{{item.date | date: 'HH:mm:ss'}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="detail-chart top_mobile" ng-controller="ChartController">
+			<div id="graph-container-app" style="width: 100%;height: 100%;"></div>
+		</div>
+		
+        <div class="detail-content height300" ng-class="{'height350':!needTpass||actionTab=='market'}" >
+            <div class="detail-list">
+				<div class="list-title">
+					<div ng-class="{'list-title-select':actionTab=='limit'}" ng-click="tradeShow('limit')">{{'TRADE.LIMIT_PRICE'|translate}}</div>
+					<div ng-class="{'list-title-select':actionTab=='market'}" ng-click="tradeShow('market')">{{'TRADE.MARKET_PRICE'|translate}}</div>
+				</div>
+				
+				<!--限价交易-->
+				<div class="list-wrap" ng-if="actionTab=='limit'">
+					<ul class="sell_buy_wrap">
+						<li class="buy_semit">
+							<div class="account-info">
+								<table>
+									<tr>
+										<td>{{activeTicker.trading_pair.ask_asset_symbol}}{{'TRADE.TOTAL_ASSET'|translate}}：</td>
+										<td style="color: #fff" class="top_pc">{{getBalanceByAsset(activeTicker.trading_pair.ask_asset_symbol) | amount}}</td>
+									</tr>
+									<tr class="top_mobile" style="margin-top: 10px;"><td style="color: #fff">{{getBalanceByAsset(activeTicker.trading_pair.ask_asset_symbol) | amount}}</td></tr>
+								</table>
+								<div class="price">
+									<input type="number" ng-model="limitBuyData.limit" ng-change="buyWatchGroup.limit('limitBuyData')" class="inputbgtype" placeholder="{{'TRADE.PRICE'|translate}}"><label for="">{{activeTicker.trading_pair.ask_asset_symbol}}</label>
+								</div>
+								<div class="number">	
+									<input type="number" ng-model="limitBuyData.quantity" ng-change="buyWatchGroup.quantity('limitBuyData')" class="inputbgtype" placeholder="{{'TRADE.VOLUME'|translate}}"><label for="">{{activeTicker.trading_pair.bid_asset_symbol}}</label>
+								</div>
+								<!--<p ng-if="!settingsData.tpass">您还未设置资金密码,去设置</p>-->
+
+								<ul class="select_type">
+									<li ng-class="{type_select:typeSelectType=='limitBuyData25'}" ng-click="changePercentage('limitBuyData',25)">25%</li>
+									<li ng-class="{type_select:typeSelectType=='limitBuyData50'}" ng-click="changePercentage('limitBuyData',50)">50%</li>
+									<li ng-class="{type_select:typeSelectType=='limitBuyData75'}" ng-click="changePercentage('limitBuyData',75)">75%</li>
+									<li ng-class="{type_select:typeSelectType=='limitBuyData10'}" ng-click="changePercentage('limitBuyData',100)">100%</li>
+								</ul>
+								<table class="total-tab">
+									<tr>
+										<td>{{'TRADE_LEIJI'|translate}}{{activeTicker.trading_pair.ask_asset_symbol}}：</td>
+										<td style="color: #fff">{{limitBuyData.total | formatNumber}}</td>
+									</tr>
+								</table>
+								<div ng-if="settingsData.tpass&&needTpass" class="password">
+									<input type="password" ng-model="limitBuyData.tpass" class="inputbgtype" placeholder="{{'TRADE_INPUT_TIP'|translate}}">
+								</div>
+								<p style="padding: 0px 0 15px;color: red;" ng-if="!settingsData.tpass">{{'TRADE_NO_TRADEPASS_TIP_1'|translate}}  <a href="#!/setting/tpass" style="color:red;text-decoration: underline;">{{'SIDEBAR.SETTINGS'|translate}}</a></p>
+								<button ng-disabled="!limitBuyData.limit||!limitBuyData.quantity"  ng-click="createOrder('limitBuyData', 'buyWatchGroup')" class="buy_button btn">{{'TRADE.BUY'|translate}}{{activeTicker.trading_pair.bid_asset_symbol}}</button>
+							</div>
+						</li>
+						<li class="sell_semit">
+							<div class="account-info">
+								<table>
+									<tr>
+										<td>{{activeTicker.trading_pair.bid_asset_symbol}}{{'TRADE.TOTAL_ASSET'|translate}}：</td>
+										<td style="color: #fff" class="top_pc">{{getBalanceByAsset(activeTicker.trading_pair.bid_asset_symbol) | amount}}</td>
+									</tr>
+									<tr class="top_mobile" style="margin-top: 10px;">
+										<td style="color: #fff">{{getBalanceByAsset(activeTicker.trading_pair.bid_asset_symbol) | amount}}</td>
+									</tr>
+								</table>
+								<div class="price">
+									<input type="number" ng-model="limitSellData.limit" ng-change="sellWatchGroup.limit('limitSellData')" class="inputbgtype" placeholder="{{'TRADE.PRICE'|translate}}"><label for="">{{activeTicker.trading_pair.ask_asset_symbol}}</label>
+								</div>
+								<div class="number">
+									<input type="number" ng-model="limitSellData.quantity" ng-change="sellWatchGroup.quantity('limitSellData')" class="inputbgtype" placeholder="{{'TRADE.VOLUME'|translate}}"><label for="">{{activeTicker.trading_pair.bid_asset_symbol}}</label>
+								</div>
+
+								<ul class="select_type">
+									<li ng-class="{type_select:typeSelectType=='limitSellData25'}" ng-click="changePercentage('limitSellData',25)">25%</li>
+									<li ng-class="{type_select:typeSelectType=='limitSellData50'}" ng-click="changePercentage('limitSellData',50)">50%</li>
+									<li ng-class="{type_select:typeSelectType=='limitSellData75'}" ng-click="changePercentage('limitSellData',75)">75%</li>
+									<li ng-class="{type_select:typeSelectType=='limitSellData100'}" ng-click="changePercentage('limitSellData',100)">100%</li>
+								</ul>
+								<table class="total-tab">
+									<tr>
+										<td>{{'TRADE_LEIJI'|translate}}{{activeTicker.trading_pair.ask_asset_symbol}}：</td>
+										<td style="color: #fff">{{limitSellData.total | formatNumber}}</td>
+									</tr>
+								</table>
+								<div ng-if="needTpass&&settingsData.tpass" class="password">
+									<input type="password" ng-model="limitSellData.tpass" class="inputbgtype" placeholder="{{'TRADE_INPUT_TIP'|translate}}">
+								</div>
+								<button ng-disabled="!limitSellData.limit||!limitSellData.quantity"  ng-click="createOrder('limitSellData', 'sellWatchGroup')" class="sell_button btn">{{'TRADE.SELL'|translate}}{{activeTicker.trading_pair.bid_asset_symbol}}</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<!--市价交易-->
+				<div class="list-wrap" ng-if="actionTab=='market'">
+					<ul class="sell_buy_wrap">
+						<li class="buy_semit">
+							<div class="account-info">
+								<table>
+									<tr>
+										<td>{{activeTicker.trading_pair.ask_asset_symbol}}{{'TRADE.TOTAL_ASSET'|translate}}：</td>
+										<td style="color: #fff" class="top_pc">{{getBalanceByAsset(activeTicker.trading_pair.ask_asset_symbol) | amount}}</td>
+									</tr>
+									<tr class="top_mobile" style="margin-top: 10px;">
+										<td style="color: #fff">{{getBalanceByAsset(activeTicker.trading_pair.ask_asset_symbol) | amount}}</td>
+									</tr>
+								</table>
+								<div class="number">
+									<input type="number" ng-model="marketBuyData.quantity" ng-change="buyWatchGroup.quantity('marketBuyData')" class="inputbgtype" placeholder="{{'TRADE.VOLUME'|translate}}"><label for="">{{activeTicker.trading_pair.bid_asset_symbol}}</label>
+								</div>
+
+								<ul class="select_type">
+									<li ng-class="{type_select:typeSelectType=='marketBuyData25'}" ng-click="changePercentage('marketBuyData',25)">25%</li>
+									<li ng-class="{type_select:typeSelectType=='marketBuyData50'}" ng-click="changePercentage('marketBuyData',50)">50%</li>
+									<li ng-class="{type_select:typeSelectType=='marketBuyData75'}" ng-click="changePercentage('marketBuyData',75)">75%</li>
+									<li ng-class="{type_select:typeSelectType=='marketBuyData100'}" ng-click="changePercentage('marketBuyData',100)">100%</li>
+								</ul>
+								<table class="total-tab">
+									<tr>
+										<td>{{'TRADE_LEIJI'|translate}}{{activeTicker.trading_pair.ask_asset_symbol}}：</td>
+										<td style="color: #fff">{{marketBuyData.total | formatNumber}}</td>
+									</tr>
+								</table>
+								<div ng-if="needTpass&&settingsData.tpass" class="password">
+									<input type="password" ng-model="marketBuyData.tpass" class="inputbgtype" placeholder="{{'TRADE_INPUT_TIP'|translate}}">
+								</div>
+								<p style="padding: 0px 0 15px;color: red;" ng-if="!settingsData.tpass">{{'TRADE_NO_TRADEPASS_TIP_1'|translate}}  <a href="#!/setting/tpass" style="color:red;text-decoration: underline;">{{'SIDEBAR.SETTINGS'|translate}}</a></p>
+								<button ng-disabled="!marketBuyData.limit||!marketBuyData.quantity" ng-click="createMarketOrder('marketBuyData', 'buyWatchGroup')" class="buy_button btn">{{'TRADE.BUY'|translate}}{{activeTicker.trading_pair.bid_asset_symbol}}</button>
+							</div>
+						</li>
+						<li class="sell_semit">
+							<div class="account-info">
+								<table>
+									<tr>
+										<td>{{activeTicker.trading_pair.bid_asset_symbol}}{{'TRADE.TOTAL_ASSET'|translate}}：</td>
+										<td style="color: #fff" class="top_pc">{{getBalanceByAsset(activeTicker.trading_pair.bid_asset_symbol) | amount}}</td>
+									</tr>
+									<tr class="top_mobile" style="margin-top: 10px;">
+										<td style="color: #fff">{{getBalanceByAsset(activeTicker.trading_pair.bid_asset_symbol) | amount}}</td>
+									</tr>
+								</table>
+								<div class="number">
+									<input type="number" ng-model="marketSellData.quantity" ng-change="sellWatchGroup.quantity('marketSellData')" class="inputbgtype" placeholder="{{'TRADE.VOLUME'|translate}}"><label for="">{{activeTicker.trading_pair.bid_asset_symbol}}</label>
+								</div>
+
+								<ul class="select_type">
+									<li ng-class="{type_select:typeSelectType=='marketSellData25'}" ng-click="changePercentage('marketSellData',25)">25%</li>
+									<li ng-class="{type_select:typeSelectType=='marketSellData50'}" ng-click="changePercentage('marketSellData',50)">50%</li>
+									<li ng-class="{type_select:typeSelectType=='marketSellData75'}" ng-click="changePercentage('marketSellData',75)">75%</li>
+									<li ng-class="{type_select:typeSelectType=='marketSellData100'}" ng-click="changePercentage('marketSellData',100)">100%</li>
+								</ul>
+								<table class="total-tab">
+									<tr>
+										<td>{{'TRADE_LEIJI'|translate}}{{activeTicker.trading_pair.ask_asset_symbol}}：</td>
+										<td style="color: #fff">{{marketSellData.total | formatNumber}}</td>
+									</tr>
+								</table>
+								<div ng-if="needTpass&&settingsData.tpass" class="password">
+									<input type="password" ng-model="marketSellData.tpass" class="inputbgtype" placeholder="{{'TRADE_INPUT_TIP'|translate}}">
+								</div>
+								<button ng-disabled="!marketSellData.limit||!marketSellData.quantity" ng-click="createMarketOrder('marketSellData', 'sellWatchGroup')" class="sell_button btn">{{'TRADE.SELL'|translate}}{{activeTicker.trading_pair.bid_asset_symbol}}</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+            <div class="history-detail">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{{'HISTORY.METHOD'|translate}}</th>
+                            <th>{{'TRADE.PRICE'|translate}}({{activeTicker.trading_pair.ask_asset_symbol}})</th>
+                            <th>{{'TRADE.VOLUME'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</th>
+                            <!-- <th class="top_pc">{{'TRADE_LEIJI'|translate}}({{activeTicker.trading_pair.bid_asset_symbol}})</th> -->
+                            <th class="top_pc">{{'ALREAD_TRADE'|translate}}</th>
+                            <th class="top_pc">{{'NO_TRADE_DEAL'|translate}}</th>
+                            <th>{{'TRADE.DELEGATE.OPTION'|translate}}</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="detail-scroll">
+                    <div ng-if="orderCurrentData.length == 0" class="trade_empty" ng-if="orderCurrentData.length==0">
+                        {{'TRADE.NO_QUOTES'|translate}}
+                    </div>
+                    <table>
+                        <tr ng-repeat="v in orderCurrentData track by $index" >
+                            <td>
+                                <span ng-if="v.side=='BUY'">{{'TRADE.BUY_ORDERS'|translate}}</span>
+                                <span ng-if="v.side=='SELL'">{{'TRADE.SELL_ORDERS'|translate}}</span>
+                            </td>
+                            <td>
+                                {{v.limit | amount}}
+                            </td>
+                            <td>
+                                {{v.quantity | amount}}
+                            </td>
+                            <!-- <td class="top_pc">
+                                {{v.limit | amount}}
+                            </td> -->
+                            <td class="top_pc">
+                                {{v.quantity-v.rest | amount}}
+                            </td>
+                            <td class="top_pc">
+                                {{v.rest | amount}}
+                            </td>
+                            <td>
+                                <a href="javascript:void(0)" ng-click="cancelOrder(v)">{{'TRADE.DELEGATE.CANCEL_BTN'|translate}}</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

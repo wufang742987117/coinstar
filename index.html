@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <title ng-model="title">Coinstar</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/ms-icon.png">
+  <!--<link rel="stylesheet" href="./node_modules/animate.css/animate.min.css" />-->
+  <!--<link rel="stylesheet" href="./node_modules/pace-js/themes/black/pace-theme-loading-bar.css">-->
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./node_modules/angular-toastr/dist/angular-toastr.min.css"/>
+  <!--<link rel="stylesheet" href="./node_modules/highcharts/css/highcharts.css">-->
+  <link rel="stylesheet" href="./node_modules/ng-dialog/css/ngDialog.min.css">
+  <link rel="stylesheet" href="./node_modules/ng-dialog/css/ngDialog-theme-default.min.css">
+  <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.min.css"/>
+  <link href="assets/css/public.css" rel="stylesheet"/>
+
+  <link href="assets/css/login.css" rel="stylesheet"/>
+  <link href="assets/css/assets.css" rel="stylesheet"/>
+	<link href="assets/css/index.css" rel="stylesheet"/>
+	<link href="assets/css/address.css" rel="stylesheet"/>
+	<link href="assets/css/recharge.css" rel="stylesheet"/>
+  <link href="assets/css/news.css" rel="stylesheet"/>
+  <link href="assets/css/trade.css" rel="stylesheet"/>
+	<link href="assets/css/c2c.css" rel="stylesheet"/>
+	<link href="assets/css/banner.css" rel="stylesheet"/>
+  <link href="assets/css/contactUs.css" rel="stylesheet"/>
+  <link href="assets/css/feeRate.css" rel="stylesheet"/>
+	<link href="assets/css/tw_assets.css" rel="stylesheet"/>
+
+
+	<link rel="stylesheet" href="assets/css/animate.css">
+
+  <!--<link href="assets/css/graph.css" rel="stylesheet"/>-->
+  <!--<link href="assets/css/graph_dark.css" rel="stylesheet"/>-->
+  <!--<link href="assets/css/pace-theme-loading-bar.css" rel="stylesheet"/>-->
+  <link rel="stylesheet" href="./node_modules/angularjs-datepicker/src/css/angular-datepicker.css"/>
+  <style type="text/css">
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+      display: none !important;
+    }
+
+    ng\:form {
+      display: block;
+    }
+
+    .ng-animate-start {
+      clip: rect(0, auto, auto, 0);
+      -ms-zoom: 1.0001;
+    }
+
+    .ng-animate-active {
+      clip: rect(-1px, auto, auto, 0);
+      -ms-zoom: 1;
+    }
+  </style>
+
+</head>
+
+<body style="background: #262a40">
+<ui-view></ui-view>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?5c533af518d732b040259ff96bfa83de";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.ronghub.com/RongIMLib-2.3.0.min.js"></script>
+<script src="./node_modules/qrcode/build/qrcode.min.js"></script>
+<script src="./node_modules/sidr/dist/jquery.sidr.min.js"></script>
+<script src="./node_modules/angular/angular.min.js"></script>
+<script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="./node_modules/angular-cookies/angular-cookies.min.js"></script>
+<script src="./node_modules/angular-upload/angular-upload.min.js"></script>
+<script src="./node_modules/angular-translate/dist/angular-translate.min.js"></script>
+<script
+  src="./node_modules/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+<script src="./node_modules/angular-animate/angular-animate.min.js"></script>
+<script src="./node_modules/angular-utils-pagination/dirPagination.js"></script>
+<script src="./node_modules/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+<script src="./node_modules/moment/min/moment.min.js"></script>
+<script src="./node_modules/moment-timezone/builds/moment-timezone-with-data-2012-2022.min.js"></script>
+<!--<script src="./node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+<script src="./node_modules/highcharts/highstock.js"></script>
+<script src="./node_modules/highcharts/themes/dark-unica.js"></script>
+<script src="./node_modules/highcharts/modules/exporting.js"></script>
+<script src="./node_modules/highcharts/modules/map.js"></script>
+<!--<script src="./node_modules/highcharts/modules/drag-panes.js"></script>-->
+
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!--<script src="./node_modules/good-storage/dist/storage.js"></script>-->
+
+<script src="./js/ui-bootstrap-custom-build/ui-bootstrap-custom-tpls-2.5.0.min.js"></script>
+<script src="./node_modules/ng-dialog/js/ngDialog.min.js"></script>
+<script src="./node_modules/angularjs-slider/dist/rzslider.min.js"></script>
+
+<!--<script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>-->
+<script src="js/headroom.js"></script>
+<script src="js/jquery.headroom.js"></script>
+
+
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/province_city_data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/detect.js"></script>
+<!--<script src="js/quill.js"></script>-->
+<script src="js/technical-indicators.src.js"></script>
+<script src="js/fileinput.min.js"></script>
+<script src="js/zh.js"></script>
+<!--<script data-pace-options='{ "ajax": true }' src="./node_modules/pace-js/pace.min.js"></script>-->
+
+<script src="app-services/authentication.service.js"></script>
+<script src="app-services/flash.service.js"></script>
+<script src="app-services/register.service.js"></script>
+<script src="app-services/private.service.js"></script>
+<script src="app-services/news.service.js"></script>
+<script src="app-services/public.service.js"></script>
+<script src="app-services/usertoken.service.js"></script>
+<script src="app-services/sinapay.service.js"></script>
+<script src="app-services/c2c.service.js"></script>
+<script src="app-services/below.service.js"></script>
+
+<script src="app-helpers/print-price.js"></script>
+
+<script src="home/home.controller.js"></script>
+<script src="common/login.controller.js"></script>
+<script src="common/register.controller.js"></script>
+<script src="trade/trade.controller.js"></script>
+<script src="trade/trade_tc.controller.js"></script>
+<script src="trade/chart.controller.js"></script>
+<script src="account/account.controller.js"></script>
+<script src="account/recharge.controller.js"></script>
+<script src="account/withdraw.controller.js"></script>
+<script src="account/bankandaddress.controller.js"></script>
+<script src="account/dataanalysis.controller.js"></script>
+<script src="c2c/c2ctrade.controller.js"></script>
+<script src="c2c/c2cpersonrecord.controller.js"></script>
+<script src="c2c/c2crealIdentity.controller.js"></script>
+<script src="account/lock.controller.js"></script>
+<script src="setting/setting.controller.js"></script>
+<script src="news/news.controller.js"></script>
+<script src="public/menu.controller.js"></script>
+<script src="api/api.controller.js"></script>
+<script src="help/tutorial_help.controller.js"></script>
+<script src="public/feeRate.controller.js"></script>
+
+<script src="./js/jquery.reslider.js"></script>
+
+<script src="./node_modules/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+<script src="./node_modules/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+
+<script src="./js/charting_library/charting_library.min.js"></script>
+<script src="./js/charting_library/datafeed/udf/datafeed.js"></script>
+<!--<script src="./js/chart_show.js"></script>-->
+</body>
+
+</html>
+

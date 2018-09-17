@@ -1,0 +1,180 @@
+
+.Tp_1 .TW_P_main{
+	/* height: 700px; */
+	margin: -300px 0 0 -400px;
+}
+.Tp_2 .TW_P_main{
+	/* height: 450px; */
+	margin: -225px 0 0 -400px;
+}
+.Tp_3 .TW_P_main{
+	/* height: 360px; */
+	margin: -180px 0 0 -400px;
+}
+.Tp_4 .TW_P_main{
+	/* height: 360px; */
+	margin: -180px 0 0 -400px;
+}
+
+.TW_Popup{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0,0,0,0.7);
+}
+.TW_P_main{
+	position: absolute;
+	width: 800px;
+	overflow: hidden;
+	background: rgb(55,58,76);
+	border-radius: 6px !important;
+	top: 50%;
+	left: 50%;
+	/* transform: translate(-50%,-50%); */
+}
+.TW_P_main>h1{
+	width: 100%;
+	height: 40px;
+	line-height:40px;
+	padding: 10px 0;
+	text-indent: 20px;
+	float: left;
+	font-size: 18px;
+	margin: 0;
+	color: #ddd;
+}
+.TW_P_main>.close{
+	position: absolute;
+	top:0;
+	right: 0;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	color: #eee;
+}
+.TW_P_main>.Tw_bod{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	padding: 20px;
+	box-sizing: border-box;
+	/* margin: 30px 0; */
+}
+.TW_P_main>.Tw_bod li{
+	width: 100%;
+	height: 40px;
+	overflow: hidden;
+	float: left;
+	list-style: none;
+	margin: 5px 0;
+}
+.Tw_bod li label{
+	width: 40%;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	padding-right: 10px;
+	box-sizing: border-box;
+	text-align: right;
+	display: inline-block;
+	color: #ddd;
+	float: left;
+}
+.Tw_bod li input{
+	width: 40%;
+	height: 36px;
+	margin: 2px 0;
+	padding:0 10px;
+	border: 1px solid rgb(81,84,107);
+	background: rgb(55,58,76);
+	box-sizing: border-box;
+	color: #fff;
+	border-radius: 4px !important;
+	float: left;
+}
+.Tw_bod li input[disabled="disabled"]{
+	border: none;
+}
+.TW_P_main>.Tw_bod .Tw_bottom_bor{
+	/* border-bottom: 1px solid rgb(81,84,107);
+	padding-bottom: 30px;
+	margin-bottom: 25px; */
+}
+.TW_P_main .Tw_btn{
+	width: 100%;
+	height: 40px;
+	float: left;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.TW_P_main .Tw_btn>a{
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	display: inline-block;
+	background: #6182e9;
+	color: #fff;
+	text-decoration: none;
+}
+
+.label_tw_style {
+	float: none!important;margin: 0!important;color: #4e5b85!important;
+}
+.tw_input {
+	background: #21253b;border:0;color:#fff
+}
+.form-control {
+	width: auto;
+	display: inline-block;
+}
+
+.assets_list img {
+	cursor: pointer;
+}
+
+
+@media (max-width:768px ){
+	.TW_Popup .TW_P_main{
+		width: auto;
+		left:10px;
+		right: 10px;
+		margin-left: 0;
+	}
+}
+@media (max-width:500px ){
+	.TW_Popup .TW_P_main{
+		width: auto;
+		/* left:10px;
+		right: 10px;
+		bottom: 10px;
+		margin: 0;
+		top: auto; */
+		height: auto;
+		padding-bottom: 10px;
+	}
+	.TW_P_main>.Tw_bod{
+		padding: 10px;
+		margin: 10px 0;
+	}
+	.Tw_bod li label{
+		font-size: 12px;
+		width: 35%;
+	}
+	.Tw_bod li input{
+		width: 60%;
+	}
+	.TW_P_main .Tw_btn{
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+	.TW_P_main .Tw_btn>a{
+		width: 100%;
+	}
+}

@@ -1,0 +1,47 @@
+<div class="common-main">
+  <div class="common-main-title">
+    <div class="container">
+      <span class="zh-title">{{'SETTING.MENU.C1'|translate}}</span>
+      <span class="en-title"><span class="line">|</span>C1 CERTIFICATION</span>
+    </div>
+  </div>
+  <div class="container setting-action">
+    <form name="form" novaildate class="form-horizontal">
+      
+      <div class="form-group">
+        <label for="buy" class="col-sm-3 control-label">{{'SETTING.C1.NAME'|translate}}:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control input-sm" ng-model="formData.name" maxlength="50" name="name" required>
+          <span class="error" ng-if="form.name.$dirty && form.name.$invalid"><span class="text-error"></span>{{'SETTING.C1.NAME_ERR'|translate}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="amount" class="col-sm-3 control-label">{{'SETTING.C1.TYPE'|translate}}:</label>
+        <div class="col-sm-9">
+          <select class="form-control input-sm" id="" ng-change="IdTypeChange()" name="id_type" ng-model="formData.id_type" required>
+            <option value="ID">{{ "KYC.DOCUMENT_CHINESE_ID_CARD" | translate }}</option>
+            <option value="PASSPORT">{{ "KYC.DOCUMENT_PASSPORT" | translate }}</option>
+            <option value="OTHER">{{ "KYC.DOCUMENT_OTHER" | translate }}</option>
+          </select>
+          <span class="error" ng-if="form.id_type.$dirty && form.id_type.$invalid"><span class="text-error"></span>{{'SETTING.C1.TYPE_ERR'|translate}}请选择证件类型</span>
+          <div class="tips" ng-if="formData.id_type && formData.id_type!='ID'">
+            {{'SETTING.C1.TYPE_TIPS'|translate}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tpass" class="col-sm-3 control-label">{{'SETTING.C1.ID'|translate}}:</label>
+        <div class="col-sm-9">
+          <input type="text" maxlength="50" class="form-control input-sm" name="id_no" ng-change="IdNoChange()" ng-model="formData.id_no">
+          <span class="error" ng-if="form.id_no.$dirty && form.id_no.$invalid"><span class="text-error"></span>{{'SETTING.C1.ID_ERR'|translate}}</span>
+          <span class="error" ng-if="verifyedIdNo===false"><span class="text-error"></span>{{'SETTING.C1.ID_ERR2'|translate}}</span>
+        </div>
+      </div>
+      <div class="form-group" style="padding-top: 15px;">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-submit btn-block" ng-click="completeOne()" ng-disabled="form.$invalid || !verifyedIdNo || loading">{{'SETTING.C1.BTN'|translate}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

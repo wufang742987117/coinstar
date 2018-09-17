@@ -1,0 +1,183 @@
+<div class="common-main" auto-height>
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'TRIAL_TITLE'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>Quicl hand</span>
+        </div>
+    </div>
+    <div class="container setting-ullist">
+        <div class="navleft">
+            <div class="navcontanier" ng-mouseenter="actions.setCurrents(1)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 1||data.currents==1"></i>
+                <div class="nav-list" ng-class="{'Quo_tit_H': data.current == 1}" ng-click="actions.setCurrent(1)">
+                    1.{{'TRIAL_TAB_1'|translate}}
+                </div>
+            </div>
+
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(2)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 2||data.currents==2"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 2}" ng-click="actions.setCurrent(2)">
+                    2.{{'TRIAL_TAB_2'|translate}}
+                </div>
+            </div>
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(3)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 3||data.currents==3"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 3}" ng-click="actions.setCurrent(3)">
+                    3.{{'TRIAL_TAB_3'|translate}}
+                </div>
+            </div>
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(4)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 4||data.currents==4"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 4}" ng-click="actions.setCurrent(4)">
+                    4.{{'TRIAL_TAB_4'|translate}}
+                </div>
+            </div>
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(5)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 5||data.currents==5"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 5}" ng-click="actions.setCurrent(5)">
+                    5.{{'TRIAL_TAB_5'|translate}}
+                </div>
+            </div>
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(6)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 6||data.currents==6"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 6}" ng-click="actions.setCurrent(6)">
+                    6.{{'TRIAL_TAB_6'|translate}}
+                </div>
+            </div>
+
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(7)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 7||data.currents==7"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 7}" ng-click="actions.setCurrent(7)">
+                    7.{{'TRIAL_TAB_7'|translate}}
+                </div>
+            </div>
+
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(8)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 8||data.currents==8"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 8}" ng-click="actions.setCurrent(8)">
+                    8.{{'TRIAL_TAB_8'|translate}}
+                </div>
+            </div>
+            <div class="navcontanier"  ng-mouseenter="actions.setCurrents(8)" ng-mouseleave="actions.setCurrents(data.current)">
+                <i ng-if="data.current == 9||data.currents==9"></i>
+                <div class="nav-list"  class="nav-list" ng-class="{'Quo_tit_H': data.current == 9}" ng-click="actions.setCurrent(9)">
+                    9.{{'TRIAL_TAB_9'|translate}}
+                </div>
+            </div>
+            <!--<ul class="ulnavl">-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 1}" ng-click="actions.setCurrent(1)">-->
+                    <!--1.注册账号 </li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 2}" ng-click="actions.setCurrent(2)">2.实名验证</li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 3}" ng-click="actions.setCurrent(3)">3.安全设置</li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 4}" ng-click="actions.setCurrent(4)">4.充值充币</li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 5}" ng-click="actions.setCurrent(5)">5.提现提币</li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 6}" ng-click="actions.setCurrent(6)">6.交易委托</li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 7}" ng-click="actions.setCurrent(7)">7.推荐奖励</li>-->
+                <!--<li ng-class="{'Quo_tit_H': data.current == 8}" ng-click="actions.setCurrent(8)">8.APP使用帮助</li>-->
+            <!--</ul>-->
+        </div>
+
+        <div class="ulnavr" ng-if="data.current == 1">
+            <div class="box-container register-step" ng-if="language =='zh'">
+
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+
+        <div class="ulnavr" ng-if="data.current == 2">
+            <div ng-if="language =='zh'">
+                <div class="box-container realname-step-1 ">
+
+                </div>
+                <div class="box-container realname-step-2">
+
+                </div>
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 3">
+            <div class="box-container safe-step nodata-zh" ng-if="language =='zh'">
+
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 4">
+            <div class="box-container nodata-zh" ng-if="language =='zh'">
+
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 5">
+            <div ng-if="language =='zh'" class="nodata-zh">
+                <!--<div class="box-container withdraw-step-1">-->
+
+                <!--</div>-->
+                <!--<div class="box-container withdraw-step-2">-->
+
+                <!--</div>-->
+                <!--<div class="box-container withdraw-step-3">-->
+
+                <!--</div>-->
+                <!--<div class="box-container withdraw-step-4">-->
+
+                <!--</div>-->
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 6">
+            <div class="box-container trade-step" ng-if="language =='zh'">
+
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 7">
+            <div ng-if="language =='zh'">
+                <div class="box-container c2ctrade-step-1">
+
+                </div>
+                <div class="box-container c2ctrade-step-2">
+
+                </div>
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 8">
+            <div class="box-container nodata-zh" ng-if="language =='zh'">
+
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+        <div class="ulnavr" ng-if="data.current == 9">
+            <div ng-if="language =='zh'">
+                <div class="box-container apphelp-step-1">
+
+                </div>
+                <div class="box-container apphelp-step-2">
+
+                </div>
+                <div class="box-container apphelp-step-3">
+
+                </div>
+            </div>
+            <div class="box-container nodata-en" ng-if="language =='en'">
+
+            </div>
+        </div>
+    </div>
+</div>

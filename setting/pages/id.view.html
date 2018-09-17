@@ -1,0 +1,90 @@
+<div class="settingContent">
+    <div class="form-group">
+        <form name="form" role="form">
+            <h1 ng-hide="settings.kyc_status==0 || settings.kyc_status==1 || settings.kyc_status==undefined">{{"KYC.COMPLETE" | translate}}</h1>
+            <h1 ng-show="settings.kyc_status<=1 && settings.kyc_level==2">{{"SETTING.ID_PENDING"|translate}}</h1>
+            <h1 ng-show="vm.level==0 || vm.level==1">{{ "KYC.HEADLINE" | translate }}</h1>
+            <p ng-show="vm.level==0">{{"ACCOUNT.WITH_TEXT" |translate}}</p>
+            <p ng-show="vm.level==1">{{ "KYC.BASIC_INFORMATION_TEXT" | translate }}</p>
+            <div class="idLvl_one" ng-show="vm.level==0">
+                <div>
+                    <p>{{ "KYC.REAL_NAME" | translate }}</p>
+                    <input type="text" class="input" ng-model="vm.name">
+                </div>
+                <p>{{ "KYC.ID_DOCUMENT_TYPE" | translate }}</p>
+                <div class="input select">
+                    <select ng-model="vm.document_type">
+                        <option value="ID">{{ "KYC.DOCUMENT_CHINESE_ID_CARD" | translate }}</option>
+                        <option value="PASSPORT">{{ "KYC.DOCUMENT_PASSPORT" | translate }}</option>
+                        <option value="OTHER">{{ "KYC.DOCUMENT_OTHER" | translate }}</option>
+                    </select>
+                </div>
+                <div class="IDnumber">
+                    <p>{{ "KYC.DOCUMENT_NUMBER" | translate }}</p>
+                    <input class="input" type="text" ng-model="vm.document_number">
+                </div>
+
+                <button ng-disabled="!vm.name || !vm.document_type || !vm.document_number" ng-click="vm.completeOne()">
+                <span ng-show="vm.loading.level_1"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                <span ng-hide="vm.loading.level_1">{{"KYC.COMPLETE_LEVEL_BUTTON_1" | translate}}</span>
+            </button>
+            </div>
+
+            <div class="idLvl_two" ng-show="vm.level==1">
+                <div class="photoID">
+                    <img src="img/exsample-id.jpg">
+                    <div>
+                        <h4>{{'SETTING.ID_LEVEL1' | translate}}</h4>
+                        <form>
+                            <label class="file" ng-hide="uploaded.face">
+                     <input type="file" accept="image/*" name="face" onchange="angular.element(this).scope().uploadFile(this.files,'face')" ng-click="uploading.face=true">
+                        <span ng-show="uploading.face"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                        <span ng-hide="uploading.face">{{"SETTING.CHOOSE_IMAGE" | translate}}</span>
+		        		</label>
+                            <div class="file remove" ng-show="uploaded.face" ng-click="uploaded.face=false">{{'SETTING.REMOVE' | translate}}</div>
+                        </form>
+                    </div>
+                </div>
+                <div class="photoID">
+                    <img src="img/exsample-idcard-1.jpg">
+                    <div>
+                        <h4>{{'SETTING.ID_LEVEL2' | translate}}</h4>
+                        <form>
+                            <label class="file" ng-hide="uploaded.front">
+		        			<input type="file" accept="image/*" name="front" onchange="angular.element(this).scope().uploadFile(this.files,'front')" ng-click="uploading.front=true">
+                            <span ng-show="uploading.front"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                            <span ng-hide="uploading.front">{{"SETTING.CHOOSE_IMAGE" | translate}}</span>
+		        		</label>
+                            <div class="file remove" ng-show="uploaded.front" ng-click="uploaded.front=false">{{'SETTING.REMOVE' | translate}}</div>
+                        </form>
+                    </div>
+                </div>
+                <div class="photoID">
+                    <img src="img/exsample-idcard-2.jpg">
+                    <div>
+                        <h4>{{'SETTING.ID_LEVEL3' | translate}}</h4>
+                        <label class="file" ng-hide="uploaded.back">
+		        			<input type="file" accept="image/*" name="back" onchange="angular.element(this).scope().uploadFile(this.files,'back')" ng-click="uploading.back=true">
+                        <span ng-show="uploading.back"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                        <span ng-hide="uploading.back">{{"SETTING.CHOOSE_IMAGE" | translate}}</span>
+		        		</label>
+                        <div class="file remove" ng-show="uploaded.back" ng-click="uploaded.back=false">{{'SETTING.REMOVE' | translate}}</div>
+
+                    </div>
+                </div>
+                <p style="margin: 4px 0;">{{'ID.PLEASE_NOTE'|translate}}</p>
+                <p style="margin: 0;">1.{{'ID.STAINS'|translate}}</p>
+                <p style="margin: 0;">2.{{'ID.BLOCK'|translate}}</p>
+                <p style="margin: 0;">3.{{'ID.LIGHT'|translate}}</p>
+                <p style="margin: 0;">4.{{'ID.EFFECT'|translate}}</p>
+                <button ng-disabled="!uploaded.back||!uploaded.front||!uploaded.face" ng-click="vm.completeTwo()">
+<span ng-show="vm.loading.level_1"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+<span ng-hide="vm.loading.level_1">{{"SETTING.UPDATE_TO_LEVEL2" | translate}}</span>
+            </button>
+
+            </div>
+
+    </div>
+    </form>
+</div>
+</div>

@@ -1,0 +1,509 @@
+
+
+
+	/*左导航按钮弹出窗口小三角背景色*/
+	.tools-group.no-delimiter .button.apply-common-tooltip.ommon-tooltip-vertical.subgroup.active.open .side{
+		background-color: #515151 !important;
+	}
+	
+	/*按钮中间图标填充色*/
+	svg{
+		fill: #DBDBDB !important;
+	}
+	
+	/*上导航字体颜色*/
+	.header-chart-panel .left .group div div div{
+		color: white !important;
+	}
+	
+
+/*工具栏项背景色  -- 此项在构造后并没有直接提供修改此项的属性，这里自己控制这几个元素的样式就能达到同样的效果了*/
+
+	.header-chart-panel,
+	#chart-area,
+	.tv-side-toolbar{
+		background-color: #333333 !important;
+	}
+	
+	
+	
+	
+	
+
+
+.button.undo.disabled.apply-common-tooltip,/*左右箭头*/
+.button.redo.disabled.apply-common-tooltip,
+.button.fullscreen.iconed.apply-common-tooltip,/*全屏*/
+.button.toggle-caption.compare.apply-common-tooltip,/*比较增加商品*/
+.button.toggle-caption.indicators.apply-common-tooltip,/*技术指标*/
+.button.iconed.properties.apply-common-tooltip,/*图表属性*/
+.submenu.apply-common-tooltip,/*K线样式-时间周期-打开设置时间周期  下三角*/
+.button.getimage.apply-common-tooltip,/*快照*/
+.symbol-edit/*产品文本框*/{
+	background-color: #333333 !important;
+	border-color: #515151 !important;
+	color: white !important;
+}
+
+	/*边框色杂碎 --上导航下三角 左边部分*/
+	.favored-list-container span{
+		border-color: #515151 !important;
+	}
+	/*边框色杂碎  --撤销和回退*/
+	.button.undo.apply-common-tooltip,
+	.button.redo.apply-common-tooltip{
+		border-color: #515151 !important;
+	}
+
+
+/*K线样式 左边收藏部分*/
+.apply-common-tooltip.just_active.selected,/*按钮选中状态*/
+.apply-common-tooltip{
+	background-color: #333333 !important;
+}
+
+/* 左边半边按钮 */
+.tv-side-toolbar .button.selected svg ,.tv-side-toolbar .button.selected{
+	background-color: #333333 !important;
+}
+
+/* 新增加按钮 */
+
+.header-chart-panel .button{
+	background-color: #333333 !important;
+	color: white !important;
+}
+
+
+/*商品logo
+	右侧保存
+	左下
+	方法缩小
+*/
+.onchart-tv-logo.wrapper.expanded,
+.group.space-single.header-group-screenshot,
+.date-range-list,
+.control-bar{
+  display: none !important;
+}
+
+
+/*设置周期弹出对话框*/
+/*
+div._tv_dialog._tv-dialog-nonmodal.change-interval-dialog.ui-draggable div._tv-dialog-title._tv-dialog-title-no-close{
+	background-color: #333333 !important;
+}
+*/
+
+/* 商品选择面板 */
+.symbol-edit-popup, div.table-wrapper {
+  	background: #333333 !important;
+  	color: white !important;
+}
+div.table-wrapper tr:hover{
+	background-color: #a5a5a5 !important;
+}
+
+/*收藏的未选中的K线*/
+.favored-list-container.chart-style-widget .quick .apply-common-tooltip.selected{
+	background: #333333 !important;
+}
+
+/*打开设置周期*/
+._tv-dialog-title._tv-dialog-title-no-close{
+	background: #333333 !important;
+}
+
+
+================		边框线		================*/
+
+	/*时间周期下三角选中状态背景色*/
+	.intervals-container.favored-list-container.no-first .submenu.apply-common-tooltip.active{
+		background-color: #333333 !important;
+	}
+	/*时间周期可点选项*/
+	.charts-popup-list.intervals-list.favored-list .item{
+		color: #c4c4c4 !important;
+	}
+	/*时间周期不可点选项*/
+	.charts-popup-list.intervals-list.favored-list .item.disabled{
+		color: #595959 !important;
+	}
+	/*时间周期下拉框选中背景色*/
+	/*时间周期手边悬浮选项背景色*/
+	.charts-popup-list.intervals-list.favored-list .item.active,
+	.charts-popup-list.intervals-list.favored-list span:hover{
+		background-color: #4D4D4D !important;
+	}
+
+/*
+================		K线样式按钮		================*/
+
+	/*选中选项*/
+	/*悬浮选项*/
+	.charts-popup-list.narrow.favored-list.chart-style-popup .item.active,
+	.charts-popup-list.narrow.favored-list.chart-style-popup a:hover{
+		background-color: #4D4D4D !important;
+	}
+	
+	/*K线样式下三角选中状态背景色*/
+	.favored-list-container.chart-style-widget.not-favored-active.active.open .submenu.apply-common-tooltip{
+		background-color: #333333 !important;
+	}
+
+
+
+
+/*左边选择框 左箭头*/
+.button.apply-common-tooltip.common-tooltip-vertical.subgroup.selected .main.text-as-icon{
+	background-color: #333333 !important;
+}
+
+/*左导航栏，隐藏按钮*/
+/*上导航栏，隐藏按钮*/
+.tv-side-toolbar .tv-close-panel.left,
+.header-chart-panel .tv-close-panel.top{
+	background-color: #333333 !important;
+}
+
+/*最下面一栏中间部分颜色*/
+.chart-controls-bar{
+	background-color: #333333 !important;
+}
+
+/*
+================		边框线		================*/
+
+	/*左导航右边框线*/
+	.tv-side-toolbar{
+		border-right : 1px solid #515151 !important;	/*#a5a5a5*/
+	}
+	/*中间部分四周边框线*/
+	.chart-page .chart-container{
+		border : 1px solid #515151 !important;
+	}
+	
+	/*左导航按钮边框色*/
+	/*
+	.button.apply-common-tooltip.common-tooltip-vertical{
+		border : 1px solid #333333 !important;
+	}
+	*/
+	
+	/*左道航隐藏按钮 上下边框颜色*/
+	.tv-side-toolbar .tv-close-panel.left{
+		border-top: 1px solid #515151 !important;
+		border-bottom: 1px solid #515151 !important;
+	}
+	/*上导航隐藏按钮左右边框颜色*/
+	.header-chart-panel .tv-close-panel.top{
+		border-left: 1px solid #515151 !important;
+		border-right: 1px solid #515151 !important;
+	}
+	/*左导航三个横杠颜色*/
+	.tv-side-toolbar .tools-group:not(:first-child):not(.no-delimiter):before{
+		background: #515151 !important;
+	}
+
+/*
+=============		按钮弹出窗口背景色		=============*/
+	/*左导航更多按钮三点弹出窗口*/
+	.charts-popup-list{
+		background-color: #333333 !important;
+	}
+	/*左导航更多按钮三点弹出窗口 选中及悬浮*/
+ 	.item.setting-hidden.checked,
+	.item.setting-hidden:hover{
+		background-color: #a5a5a5 !important;
+	}
+	
+	
+
+	/*比较增加商品按钮弹出窗口*/
+	.tv-tabbed-dialog{
+		background-color: #333333 !important;
+	}
+	/*文本输入框*/
+	.tv-control-input.js-compare-tab-input{
+		background-color: #787878 !important;
+	}
+	
+	
+	/*技术指标按钮弹出窗口*/
+	.tv-dialog.js-dialog.tv-insert-indicator-dialog.i-minimized.tv-dialog--popup.i-focused.ui-draggable{
+		background-color: #333333 !important;
+	}
+	/*文本输入框*/
+	.tv-search-row__input.js-input-control{
+		background-color: #787878 !important;
+	}
+	
+	
+	/*图表属性弹出窗口*/
+	._tv-dialog-content{
+		background-color: #333333 !important;
+	}
+	
+	
+	/*K线样式下三角弹出窗体*/
+	.charts-popup-list.narrow.favored-list.chart-style-popup{
+		background-color: #333333 !important;
+	}
+	
+	/*时间周期下三角弹出窗体*/
+	.charts-popup-list.intervals-list.favored-list{
+		background-color: #333333 !important;
+	}
+	
+	/*左导航按钮弹出窗口背景色*/
+	.charts-popup-list.drawings-popup-list.favored-list.iconed .list-inner .list-table a{
+		background-color: #333333 !important;
+	}
+	/*左导航按钮默认选选择*/
+	/*左导航按钮 项悬浮*/
+	.charts-popup-list.drawings-popup-list.favored-list.iconed .list-inner .list-table .item.first.active,
+	.charts-popup-list.drawings-popup-list.favored-list.iconed .list-inner .list-table a:hover{
+		background-color: #515151 !important;
+	}
+
+	/*图表右键弹出窗口背景色*/
+	/*图表右键弹出窗口 选项分割线 背景色*/
+	.chart-page.on-widget .context-menu-wrapper.topmenu .context-menu,
+	.chart-page.on-widget .context-menu-wrapper.topmenu .context-menu .action-separator.context-menu{
+		background-color: #333333 !important;
+	}
+	/*图表右键弹出窗口 项悬浮背景色*/
+	.chart-page.on-widget .context-menu-wrapper.topmenu .context-menu .font_Arial.context-menu:hover{
+		background-color: #515151 !important;
+	}
+	
+	/*图表右键弹出窗口 次选择框 背景色*/
+	.context-menu-wrapper .context-menu.submenu{
+		background-color: #333333 !important;
+	}
+	/*图表右键弹出窗口 次选择框项悬浮背景色*/
+	.context-menu-wrapper .context-menu.submenu .font_Arial.context-menu:hover{
+		background-color: #515151 !important;
+	}
+	
+	/*图表右键弹出窗口 字体颜色*/
+	.context-menu-wrapper.topmenu .context-menu{
+		color:#dddddd !important;
+	}
+	/*上面的子窗口*/
+	.context-menu-wrapper .context-menu.submenu{
+		color:#dddddd !important;
+	}
+	
+	
+	/* 右键分割线*/
+	.context-menu .action-separator td{
+	
+		border-top:6px solid #333333 !important;
+		border-bottom:6px solid #333333 !important;
+		background-color:#333333 !important;
+	}
+	
+	
+	
+	/*最右下角刻度设时区置弹出框背景色*/
+	.charts-popup-list.context-menu.popup-menu-scroll-y.popup-with-scroll{
+		background-color: #333333 !important;
+	}
+	/*最右下角刻度设置弹出框 项悬浮背景色*/
+	.charts-popup-list.context-menu.popup-menu-scroll-y.popup-with-scroll a:hover{
+		background-color: #515151 !important;
+	}
+	
+	/*左导航图标选择弹出框默认选中色与鼠标悬浮色*/
+	.list-inner .list-table .item.first.active,
+	.list-inner .list-table a:hover{
+		background-color: #a5a5a5 !important;
+		
+	}
+	
+	
+
+/*
+=============		图表属性中小部件背景色		=============*/
+.tv-select-container.dialog,
+.sbOptions{
+	background-color: #333333 !important;
+}
+/*下拉框悬浮，和默认选中项背景色*/
+.sbOptions li a:hover,
+.sbOptions li .filter.active{
+	background-color: #515151 !important;
+}
+/*下拉框悬浮,取消字体变色*/
+.sbOptions a:visited, .tv-select-container .sbOptions a:link, .tv-unstyled-select-container .sbOptions a:link{
+	color:#595959 !important;
+}
+/***************************/
+.linewidth-slider.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all{
+	background-color: #333333 !important;
+}
+/*网格线*/
+.custom-select .switcher,
+.custom-select .items{
+	background-color: #333333 !important;
+}
+/*网格线默认选中与悬浮*/
+.custom-select .items .item.selected,
+.custom-select .items .item:hover{
+	background-color: #515151 !important;
+}
+/*上下右边句背景色*/
+.property-page tbody tr td .ticker.tv-text-input.inset.dialog
+	background-color: #333333 !important;
+}
+
+
+
+
+/*
+	下方5个按钮 
+*/
+
+/*
+.control-bar-wrapper .control-bar .move-left-button-control-bar{
+	
+}
+*/
+
+
+
+/*
+	不重要	#DBDBDB
+*/
+
+
+/*技术指标 搜索框上下线颜色*/
+.tv-search-row{
+	border-bottom : 1px solid red !important;
+}
+
+/*技术指标 弹出窗口标题字体颜色*/
+/*技术指标 弹出窗口输入框 字体颜色*/
+/*技术指标 弹出窗口选择项 字体颜色*/
+.js-title-text.tv-dialog__title.tv-insert-indicator-dialog__title-text,
+.tv-search-row__input.js-input-control,
+.js-study-item.tv-insert-study-item.i-without-stars{
+	color:#DBDBDB !important;
+}
+
+
+/*下拉框滚动条*/
+
+body {  
+ 	scrollbar-face-color: #DBDBDB;  /*滚动条背景色*/ 
+	scrollbar-arrow-color: #DBDBDB;   
+	scrollbar-track-color: #333333;	/*主要颜色*/
+	scrollbar-darkshadow-color: #DBDBDB;   
+} 
+
+
+/*时间周期未找到商品时背景色*/
+.apply-common-tooltip.selected.disabled,
+.intervals-container.favored-list-container.no-first .quick .apply-common-tooltip.disabled{
+	background-color: #333333 !important;
+}
+
+
+
+
+
+/*
+.symbol-search-dialog input, input.symbol-edit{
+	border: 1px solid #333333 !important;
+  	background: #333333 !important;
+}
+
+.favored-list-container span, 
+.bottom-widgetbar-content.backtesting .button, 
+.header-chart-panel .button, .hotlist-controls .button, 
+.symbol-edit-widget .button,
+.chart-controls-bar{
+  border: 1px solid #333333 !important;
+  background: #333333 !important;
+}
+*/
+
+/*商品logo*/
+/*
+.onchart-tv-logo.wrapper.expanded{
+  display: none !important;
+}
+
+.chart-controls-bar{
+	
+}
+
+
+.item{
+	background: #333333 !important;
+}
+
+.charts-popup-list .item.active, .feature-no-touch .charts-popup-list .item:hover{
+	background: #222222 !important;
+}
+
+.button.iconed.properties.apply-common-tooltip.active,
+.button.toggle-caption.indicators.apply-common-tooltip.active,
+.button.toggle-caption.compare.apply-common-tooltip.active,
+.button.undo.disabled.apply-common-tooltip,
+.button.redo.disabled.apply-common-tooltip,
+.apply-common-tooltip.just_active.selected,
+.button.redo.apply-common-tooltip.disabled
+.submenu.apply-common-tooltip,
+.header-chart-panel .button.disabled, 
+.favored-list-container span:active,
+.main.text-as-icon,
+.submenu.apply-common-tooltip.active{
+  background: #333333 !important;
+  border: 1px solid #333333 !important;
+}
+.feature-no-touch ._tv-dialog .button:not(.disabled):not(.selected):hover:before, .feature-no-touch ._tv-dialog .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch ._tv-dialog .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch ._tv-dialog .submenu:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .button:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch .bottom-widgetbar-content.backtesting .submenu:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .button:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch .header-chart-panel .submenu:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .button:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .custom-select .switcher:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .favored-list-container span:not(.disabled):not(.selected):hover:before, .feature-no-touch .properties-toolbar .submenu:not(.disabled):not(.selected):hover:before {
+  border: 1px solid #202435 !important;
+}
+
+*/
+
+/*左边选择框*/
+
+/*
+.tv-side-toolbar .button.selected svg ,.tv-side-toolbar .button.selected{
+	background: #333333 !important;
+	border:1px solid #333333 !important;
+}
+
+
+._tv-dialog._tv-dialog-nonmodal.ui-draggable,
+.tv-dialog.js-dialog.tv-insert-indicator-dialog.i-minimized.tv-dialog--popup.i-focused.ui-draggable,
+.tv-tabbed-dialog{
+	background: #333333 !important;
+}
+
+*/
+
+/* 商品选择面板 */
+/*
+
+.symbol-edit-popup , div.table-wrapper {
+  background: #333333 !important;
+  border: 1px #333333 #202435 !important;
+}
+*/
+/*
+._tv-dialog .button, ._tv-dialog .custom-select .switcher, ._tv-dialog .favored-list-container span, ._tv-dialog .submenu, .bottom-widgetbar-content.backtesting .button, .bottom-widgetbar-content.backtesting .custom-select .switcher, .bottom-widgetbar-content.backtesting .favored-list-container span, .bottom-widgetbar-content.backtesting .submenu, .header-chart-panel .button, .header-chart-panel .custom-select .switcher, .header-chart-panel .favored-list-container span, .header-chart-panel .submenu, .properties-toolbar .button, .properties-toolbar .custom-select .switcher, .properties-toolbar .favored-list-container span, .properties-toolbar .submenu{
+	background: #333333 !important;
+}
+*/
+
+/*
+.feature-no-touch .header-chart-panel .button.disabled:active, .feature-touch .header-chart-panel .button.disabled:active, .header-chart-panel .button.disabled, .header-chart-panel .button.disabled.active{
+	background: none !important;
+}
+*/
+
+

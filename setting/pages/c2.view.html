@@ -1,0 +1,108 @@
+<div class="common-main">
+  <div class="common-main-title">
+    <div class="container">
+      <span class="zh-title">{{'SETTING.MENU.C2'|translate}}C2实名认证</span>
+      <span class="en-title"><span class="line">|</span>C2 CERTIFICATION</span>
+    </div>
+  </div>
+  <div class="container setting-main setting-c2">
+    <div class="setting-module">
+      <div class="module-title">{{'SETTING.C2.C1'|translate}}个人信息 <small>{{'SETTING.C2.C1_TIPS'|translate}}请您先核实用户个人信息，再进行C2实名认证步骤</small></div>
+      <div class="module-con">
+        <div class="module-item">
+          <div class="module-img"><img src="./assets/images/settings/realname-c@2x.png" alt=""></div>
+          <div class="module-info">
+            <div class="module-list">
+              <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-4 name">{{'SETTING.C2.NAME'|translate}}姓名：</div>
+                <div class="col-md-10 col-sm-8 col-xs-8">{{kycInfo.name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-4 name">{{'SETTING.C2.TYPE'|translate}}证件类型：</div>
+                <div class="col-md-10 col-sm-8 col-xs-8">
+                  <span ng-if="kycInfo.id_type=='ID'">{{ "KYC.DOCUMENT_CHINESE_ID_CARD" | translate }}</span>
+                  <span ng-if="kycInfo.id_type=='PASSPORT'">{{ "KYC.DOCUMENT_PASSPORT" | translate }}</span>
+                  <span ng-if="kycInfo.id_type=='OTHER'">{{ "KYC.DOCUMENT_OTHER" | translate }}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-4 name">{{'SETTING.C2.NO'|translate}}证件号码：</div>
+                <div class="col-md-10 col-sm-8 col-xs-8">{{kycInfo.id_no}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="module-status">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c2-box">
+      <div class="pic-item">
+        <div class="pic-pic" ng-click="selectPic('face')">
+          <div class="upload"><canvas id="canvas_face"></canvas></div>
+          <div class="pic-text">
+            <span ng-if="uploaded.face==undefined && !uploading.face">{{'SETTING.C2.FACE'|translate}}证件正面图片上传</span>
+            <span ng-if="uploading.face">{{'SETTING.C2.UPLOADING'|translate}}正在上传...</span>
+            <span ng-if="uploaded.face===true">{{'SETTING.C2.UP_SUCCESS'|translate}}上传成功</span>
+            <span ng-if="!uploading.face && uploaded.face===false">{{'SETTING.C2.UP_ERR'|translate}}上传失败</span>
+          </div>
+           <!-- onchange="angular.element(this).scope().uploadFile(this.files,'face')" -->
+          <input id="upload_face" style="display: none" type="file" accept="image/*" name="face">
+        </div>
+        <div class="pic-case">
+          <img src="./assets/images/settings/c2-1@2x.png"><br>
+          <small>{{'SETTING.C2.SAMPLE_1'|translate}}示例一</small>
+        </div>
+      </div>
+      <div class="pic-item">
+        <div class="pic-pic" ng-click="selectPic('front')">
+          <div class="upload"><canvas id="canvas_front"></canvas></div>
+          <div class="pic-text">
+            
+            <span ng-if="uploaded.front==undefined && !uploading.front">{{'SETTING.C2.FRONT'|translate}}证件背面图片上传</span>
+            <span ng-if="uploading.front">{{'SETTING.C2.UPLOADING'|translate}}正在上传...</span>
+            <span ng-if="uploaded.front===true">{{'SETTING.C2.UP_SUCCESS'|translate}}上传成功</span>
+            <span ng-if="!uploading.front && uploaded.front===false">{{'SETTING.C2.UP_ERR'|translate}}上传失败</span>
+          </div>
+          <input id="upload_front" style="display: none" type="file" accept="image/*" name="face">
+        </div>
+        <div class="pic-case">
+          <div class="upload"></div>
+          <img src="./assets/images/settings/c2-2@2x.png"><br>
+          <small>{{'SETTING.C2.SAMPLE_2'|translate}}示例二</small>
+        </div>
+      </div>
+      <div class="pic-item">
+        <div class="pic-pic" ng-click="selectPic('back')">
+          <div class="upload"><canvas id="canvas_back"></canvas></div>
+          <div class="pic-text">
+            <span ng-if="uploaded.back==undefined && !uploading.back">本人手持证件图片上传</span>
+            <span ng-if="uploading.back">{{'SETTING.C2.UPLOADING'|translate}}正在上传...</span>
+            <span ng-if="uploaded.back===true">{{'SETTING.C2.UP_SUCCESS'|translate}}上传成功</span>
+            <span ng-if="!uploading.back && uploaded.back===false">{{'SETTING.C2.UP_ERR'|translate}}上传失败</span>
+            </div>
+          <input id="upload_back" style="display: none" type="file" accept="image/*" name="face">
+        </div>
+        <div class="pic-case">
+          <img src="./assets/images/settings/c2-3@2x.png"><br>
+           <small>{{'SETTING.C2.SAMPLE_3'|translate}}示例三</small>
+        </div>
+      </div>
+
+      <div class="description">
+        <div class="title">{{'SETTING.C2.PICTURE_REQUEST'|translate}}图片要求:</div>
+        <ol>
+          <li>1.请确保您的每张照片<b>小于5MB</b>，您所提交的资料将不会提供给未被授权的第三方;</li>
+          <li>2.图片格式必须是jpg、png、gif其中的一种;</li>
+          <li>3.图片必须为本人身份证正面的数码拍摄或扫描照片，请保证身份证上所有信息在图片上是完整并且<b>清晰可见</b>的，<b>请勿上传个人头像等其他图片</b>。</li>
+        </ol>
+      </div>
+
+      <div class="form-group" style="text-align: center;">
+        <!-- <button class="btn btn-submit" ng-click="vm.completeTwo()" style="width: 400px;">确定</button> -->
+        <button class="btn btn-submit" ng-disabled="!uploaded.back||!uploaded.front||!uploaded.face" ng-click="vm.completeTwo()" style="width: 400px;">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

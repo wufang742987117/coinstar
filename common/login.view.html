@@ -1,0 +1,29 @@
+<div class="login_bod" auto-height>
+    <form action="" name="myForm" >
+        <div class="login_main">
+            <h1>{{'LOGIN.TITLE'|translate}} coinstar</h1>
+            <label>{{'Xgh_user_name'|translate}}</label>
+            <input type="text" placeholder="{{'Xgh_user_name'|translate}}" ng-change="getusername()"
+                   ng-pattern='/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$|^[1][3,4,5,7,8,9][0-9]{9}$/'
+                   ng-model="params.username" name="username" required ng-focus>
+            <p class="error"  ng-show="myForm.username.$dirty && myForm.username.$invalid && !myForm.username.$focused">
+                <span class="text-error"></span><span class="down">{{'Xgh_account_error'|translate}}</span></p>
+						
+						<label ng-if="showimage">{{'Xgh_verification_code'|translate}}</label>
+						<input type="text" id="img-code" name="code" ng-maxlength="5"
+						ng-minlength="1" placeholder="{{'Xgh_verification_code'|translate}}" ng-pattern='/^[0-9]\d*$/' ng-class="{'has-error':errormsg}"  ng-change="getVerifyImage()"
+						ng-model="params.secret" maxlength="5" ng-if="showimage" required/><img class="send-code-image" ng-if="showimage" style=" position: absolute;right: 36px;top: 210px;" ng-click="getImages()" ng-src="{{imageUrl}}" src="/assets/images/loading.gif"/>
+						<span ng-if="errormsg" style="color:red">{{'Xgh_verification_code_error'|translate}}</span>
+						
+            <label>{{'Xgh_password'|translate}}</label>
+            <input type="password" name="passward" placeholder="{{'Xgh_password'|translate}}" ng-keypress="enter($event)"  ng-pattern="/((?=.*[a-z])(?=.*\d)|(?=[a-z])(?=.*[#@!~%^&*])|(?=.*\d)(?=.*[#@!~%^&*]))[a-z\d#@!~%^&*]{8,14}/i"
+                   ng-change="getpassword()" ng-model="params.password" ng-minlength="8" ng-maxlength="14" maxlength="14" required ng-focus/>
+            <p class="error" ng-show="myForm.passward.$dirty && passworderror"><span class="text-error"></span>{{'Xgh_password_arter' |translate}}</p>
+            <p class="error" ng-show="myForm.patextssward.$dirty && myForm.passward.$invalid && !myForm.passward.$focused"><span
+                    class="text-error"></span>{{'Xgh_password_arter_1' |translate}}</p>
+            <p><!--报错信息，清空p标签内容，不可隐藏--></p>
+            <input type="text" value="{{'LOGIN.TITLE'|translate}}" class=" login_btn btn" ng-disabled="myForm.$invalid||errormsg"  ng-click="login()" ng-keypress="enter($event)"  ng-class="{'readOnly':myForm.$invalid}">
+            <a href="/#!/reset" class="remmber_btn">{{'Xgh_wjmm'|translate}}？</a> <a href="/#!/register" class="register_btn">{{'Xgh_Create.a.New.Account'|translate}}</a>
+        </div>
+    </form>
+</div>

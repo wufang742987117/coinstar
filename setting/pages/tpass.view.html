@@ -1,0 +1,22 @@
+<div class="login_bod" auto-height>
+    <form name="form" novaildate class="form-horizontal isform">
+        <div class="login_main register_main">
+            <h1 ng-if="!setting.tpass">{{'Xgh_Set.up.funds.code'|translate}}</h1>
+						<h1 ng-if="setting.tpass">{{'Xgh_xg.fund.password'|translate}}</h1>
+						<label ng-if="setting.tpass">{{'Xgh_New.capital.code'|translate}}</label>
+						<label ng-if="!setting.tpass">{{'Xgh_Capital.cipher'|translate}}</label>
+						<input type="password" placeholder="{{'Xgh_password'|translate}}" id="passward" ng-minlength="8" name="tpass" ng-model="formData.tpass"/>
+						<span class="error" ng-if="form.tpass.$dirty && form.tpass.$invalid">{{"SETTING.TPASS.ERR1"|translate}}</span>
+						<label>{{'Xgh_Confirm.code'|translate}}</label>
+						<input type="password" placeholder="{{'Xgh_Confirm_password'|translate}}" id="repassword" ng-minlength="8" name="tpass_re" ng-model="formData.tpass_re"/>
+						<span class="error" ng-if="form.tpass_re.$dirty && !tpassRepeat&&!form.tpass.$invalid">{{"SETTING.TPASS.ERR2"|translate}}</span>
+						<label>{{'Xgh_email_code'|translate}}</label>
+						<input type="text" placeholder="{{'Xgh_email_code'|translate}}" ng-minlength="6" maxlength="6" ng-model="formData.secret"/>
+						<button class="wjPassword btn" ng-disabled="!formData.tpass || form.tpass.$invalid || !tpassRepeat || counter>0 || code_sending" ng-click="askBind()">
+							<span ng-if="counter>0">{{count}} {{counter}}'S</span>
+              <span ng-if="!counter">{{"Xgh_Get.verification.code"|translate}}</span>
+						</button>
+						<input type="text" style="margin-top: 20px;" value="{{'Xgh_Confirm'|translate}}" ng-click="answerBind()" class="login_btn btn" ng-disabled="!formData.tpass_re || !formData.tpass || !formData.secret || form.$invalid || submit_sending">
+        </div>
+    </form>
+</div>

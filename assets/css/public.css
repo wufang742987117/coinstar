@@ -1,0 +1,766 @@
+/*公共样式*/
+body,html{ margin: 0; padding: 0; -webkit-text-size-adjust:none; background: #262a40}
+*{font-family: "Microsoft YaHei", "Lato", 'Helvetica Neue', Arial, Helvetica, sans-serif; font-size: 14px;}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,iframe{margin:0; padding:0; outline:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+body,button,input,select,textarea {margin:0; padding:0; outline:none; resize: none;}
+ol,ul{list-style:none;}
+input::-ms-clear{display:none;}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset; }
+input[type=date]::-webkit-inner-spin-button {display: none !important;}
+input[type=date]::-webkit-clear-button {display: none !important;}
+ul,li{ margin: 0; padding: 0; list-style: none; outline:none;}
+img{ border: none; outline:none;}
+a{ text-decoration: none; outline:none; margin: 0;}
+a:active,a:hover{-webkit-tap-highlight-color:transparent;}
+em{outline:none;font-style: normal;}
+i{font-style: normal;}
+span,a,label{display: inline-block; box-sizing: border-box;}
+
+body::-webkit-scrollbar {
+	width: 5px;
+	background-color: #4d5364;
+	border-radius: 5px!important;
+	overflow: hidden;
+}
+body::-webkit-scrollbar-thumb{/*滚动条里面可以拖动的那部分（位置5）*/
+	background:#818587;
+	border-radius:4px;
+}
+
+.user-list ul::-webkit-scrollbar{
+    width:0px;
+    opacity:0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.top_main{
+    padding: 10px 0;
+    float: left;
+    background: #000;
+    position: fixed;
+    z-index: 999;
+	width: 100%;
+}
+
+.header-wrap {
+    position: fixed;
+    top: 0;
+    z-index: 999999;
+    width: 100%;
+    height: auto;
+}
+
+
+.conistar_logo{
+    width: auto;
+    height: 60px;
+    float: left;
+    padding-left: 227px;
+    background: url(../images/icon/coinstar_logo.png) left center no-repeat;
+    background-size: 227px 50px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.conistar_logo label{
+    width: 40px;
+    height:20px;
+    line-height: 18px;
+    color: #6182e9;
+    font-size: 12px;
+    border: 1px solid #6182e9;
+    border-radius: 2px !important;
+    display: inline-block;
+    text-align: center;
+    margin:21px 0 0 10px;
+}
+
+.nav_list{
+    width: auto;
+    height:40px;
+    float: left;
+    margin: 10px 0 0 60px;
+}
+.nav_list li{
+    width: auto;
+    height: 40px;
+    float: left;
+    margin-left: 10px;
+}
+.nav_list li a{
+    line-height: 40px;
+    padding: 0 20px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px !important;
+}
+.nav_list li a:hover{
+    background: #6182e9;
+    cursor: pointer;
+}
+.nav_click a{
+    background: #6182e9;
+}
+
+.transaction_data{
+    width: auto;
+    height:50px;
+    float: left;
+    margin: 5px 0 0 30px;
+}
+.transaction_data li{
+    width: auto;
+    height: 50px;
+    float: left;
+    margin-left: 15px;
+    padding-right: 15px;
+}
+.transaction_data li:first-child{
+    border-right: 1px solid #fff;
+    padding:0 20px 0 10px;
+    /*background: url(../images/icon/xl_jt.png) 65px 5px no-repeat;*/
+    position: relative;
+    cursor: pointer;
+}
+.transaction_data li:first-child ul{
+    position: absolute;
+    background: #181b2a;
+    left: 0;
+    top: 60px;
+    /*display: none;*/
+    z-index: 999;
+}
+.transaction_data li:first-child ul li{
+    margin: 0;
+    height: 70px;
+    background: none;
+    border: none;
+    padding:10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #3b415d;
+}
+.transaction_data li label{
+    width:auto;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+}
+.transaction_data li b{
+    width:auto;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+.transaction_data li b span{
+    width: auto;
+    float: none;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 5px;
+    color: #d94e68;
+}
+
+.right_zt{
+    width: auto;
+    height:40px;
+    margin: 10px 20px 0 0;
+    float: right;
+}
+.language{
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    float: left;
+/*    background: #222223; */
+    cursor: pointer;
+    /* margin-right: 20px; */
+    z-index: 99999;
+    /* display: none; */
+    /* padding-right: 10px; */
+    padding: 10px 10px 0 10px;
+}
+.language li:first-child{
+    /* margin-bottom: 10px; */
+    background: url(../images/icon/xl_jt.png) center right no-repeat;
+}
+
+.select_lang {
+    font-size: 12px;
+    position: relative;
+    z-index: 8;
+    cursor: pointer;
+    color: #c7cce6;
+}
+.select_lang dt {
+    height: 22px;
+    border: 1px solid #4e5b85;
+    border-radius: 20px;
+    line-height: 20px;
+    padding: 0 15px;
+    display: inline-block;
+}
+.select_lang dt:after {
+    margin-top: -5px;
+    margin-left: 8px;
+    content: "";
+    color: #c7cce6;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    vertical-align: middle;
+    transform: rotate(-45deg);
+    border-bottom: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+}
+
+.lan_select {
+	color:#7a98f7!important;
+	background: #121a33!important;
+}
+.select_lang dd {
+    display: none;
+    /* position: absolute;
+    top: 56px; */
+    width: 100%;
+    background: #262a42;
+    box-shadow: 0 8px 16px rgba(0,0,0,.4);
+    border-radius: 3px;
+		margin-top: 10px;
+}
+.select_lang dd a {
+    display: block;
+    color: #c7cce6;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-family: PingFang SC,MS PGothic,Helvetica,Noto Sans KR,serif;
+		text-decoration: none;
+}
+
+.lang_team {
+		width: 95px;
+}
+
+.lang_team li {
+	background-image: none!important;
+}
+.language li{
+    width: 95px;
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    color: #fff;
+    /* display: none; */
+    /* padding: 0 10px; */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.login_btn_top{
+    width: auto;
+    height: 40px;
+    float: left;
+}
+.login_btn_top a{
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 10px;
+    float: left;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px !important;
+}
+
+
+.username{
+    width: auto;
+    height: 20px;
+    float: left;
+    /*border-left: 1px solid #fff;*/
+    background: url(../images/icon/username_icon.png) 20px center no-repeat;
+    background-size: 18px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    /* display: none; */
+}
+.username label{
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 50px;
+    color: #fff;
+    font-size: 16px;
+    padding-right: 30px;
+    background: url(../images/icon/menu_icon.png) right center no-repeat;
+    background-size: 18px 15px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.menu_bod{
+    position: fixed;
+    width: 220px;
+    background: #20253b;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    border-left: 2px solid #4e5d88;
+    border-top: 30px solid #4e5d88;
+    box-sizing: border-box;
+    z-index: 999999;
+}
+.menu_bod a{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #92a8ee;
+    padding-left: 55px;
+    font-size: 16px;
+    overflow: hidden;
+    display: inline-block;
+    opacity: 0.6;
+}
+.menu_bod a:hover{
+    color: #fff;
+    opacity: 1;
+}
+.mod-select {
+	color: #fff!important;
+	opacity: 1!important;
+}
+.menu_bod a:nth-child(1){
+    background: url(../images/icon/menu_icon_1.png) 20px center no-repeat;
+}
+.menu_bod a:nth-child(2){
+    background: url(../images/icon/menu_icon_2.png) 20px center no-repeat;
+}
+.menu_bod a:nth-child(3){
+    background: url(../images/icon/menu_icon_3.png) 20px center no-repeat;
+}
+.menu_bod a:nth-child(4){
+    background: url(../images/icon/menu_icon_4.png) 20px center no-repeat;
+}
+.menu_bod a:nth-child(5){
+    background: url(../images/icon/menu_icon_5.png) 20px center no-repeat;
+}
+.menu_bod a:last-child{
+    position: absolute;
+    width:220px;
+    height: 60px;
+    line-height: 60px;
+    bottom: 0;
+    right: 0;
+    background: #4e5d88 url(../images/icon/menu_icon_6.png) 20px center no-repeat;
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    opacity: 1;
+    text-align: right;
+    padding-right: 20px;
+    color: #fff;
+}
+.menu_bod a:last-child:hover{
+    background-color: #6182e9;
+}
+
+@media (max-width: 768px){
+    .conistar_logo{
+        height:30px;
+        background-size:138px 30px;
+        margin-left: 10px;
+        padding-left:138px;
+    }
+    .conistar_logo label{
+        margin: 5px 0 0 5px;
+    }
+		/* .page-btn {
+			text-align: ;
+		} */
+    .nav_list{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: absolute;
+        margin:40px 0 0 0;
+        background: #181b2a;
+        z-index: 9999;
+    }
+    .nav_list li{
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+    .nav_list li a{
+        width: 100%;
+        padding: 0;
+        font-size:14px;
+    }
+    .username{
+        display: block;
+        float: right;
+        margin: 5px 10px 0 0;
+        background: none;
+    }
+    .right_zt{
+        width: 100%;
+        position: absolute;
+        margin: 0;
+        height:280px;
+        overflow: hidden;
+        z-index: 999;
+    }
+	
+		.login_btn {
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			background: #181b2a;
+		}
+	
+    .login_btn_top{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: absolute;
+        margin:238px 0 0 0;
+        background: #181b2a;
+    }
+    .login_btn_top a{
+        width: 50%;
+        font-size: 14px;
+        padding: 0;
+				background: #4e5d88 ;
+        text-align: center;
+        border-radius:0 !important;
+    }
+		.btn_out {
+			width: 100%!important;
+			background: #4e5d88 url(../images/icon/menu_icon_6.png) 20px center no-repeat!important;
+			border-left: 0!important;
+		}
+    .login_btn_top a:last-child{
+        border-left:1px solid #fff;
+        box-sizing: border-box;
+    }
+	.login_btn_top {
+		box-sizing: border-box;
+		background: #4e5d88 url(../images/icon/menu_icon_6.png) 20px center no-repeat!important;
+		width: 100%!important;
+		border-left:0!important;
+	}
+
+}
+
+
+
+
+/*footer.html*/
+.footer_main{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    padding: 20px 0;
+    background: #000;
+}
+.footer_logo{
+    position: absolute;
+    width: 174px;
+    height: 38px;
+    top: 50px;
+    left: 20px;
+    display: inline-block;
+    background: url(../images/icon/coinstar_logo.png) top left no-repeat;
+    background-size: 174px 38px;
+    z-index: 1;
+}
+.footer_list{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    padding: 0 20px 0 300px;
+    box-sizing: border-box;
+}
+.footer_list>li{
+    width:25%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+}
+.footer_list ul{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    padding: 0;
+}
+.footer_list ul li{
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #fff;
+    font-size: 16px;
+}
+.footer_list ul li a{
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    color: #6489aa;
+    font-size: 12px;
+}
+.footer_list ul li a:hover{
+    text-decoration: underline;
+}
+.footer_list li:last-child ul{
+    background:url(../images/icon/Community_icon.jpg) 4px 36px no-repeat;
+}
+.footer_list li:last-child ul li:first-child{
+    width: 100%;
+}
+.footer_list li:last-child ul li:first-child:hover{
+    border: none;
+}
+.footer_list li:last-child ul li{
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+}
+.footer_list li:last-child ul li:hover{
+    border: 1px solid #7290a0;
+}
+
+.footer_telegram{
+    position: absolute;
+    width: 220px;
+    height: 60px;
+    line-height:60px;
+    bottom: 40px;
+    right: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 40px;
+    display: inline-block;
+    text-indent: 20px;
+    background:#00b07b url(../images/icon/telegram_icon.jpg) 20px center no-repeat;
+    z-index: 1;
+	position: fixed;
+    bottom: 20px;
+}
+
+.trade_top_color {
+    background: #191c29!important;
+}
+.common-container {
+   /* margin-top: 100px; */
+    /* margin-bottom: 60px; */
+    background: #262a40;
+	/* overflow: hidden; */
+}
+.down-color {
+    color: #d94e68!important;
+}
+.up-color {
+    color: #25df9a!important;
+}
+.tophead {
+    margin: 100px 0 80px 0;
+}
+.common-wrap {
+    padding-top: 100px;
+		padding-bottom: 60px;
+}
+
+.ul-asset-list {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.ul-asset-list li {
+    height: 40px!important;
+    padding: 0 10px!important;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+.ul-asset-list::-webkit-scrollbar,.type-ul-select::-webkit-scrollbar{
+    width: 5px;
+    background-color: #606366;
+    border-radius: 5px!important;
+    overflow: hidden;
+}
+
+.ul-asset-list::-webkit-scrollbar-thumb,.type-ul-select::-webkit-scrollbar-thumb{/*滚动条里面可以拖动的那部分（位置5）*/
+	background:#818587;
+	border-radius:4px;
+}
+
+.down_icon {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}
+
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor: not-allowed!important;
+    opacity: .65;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+	animation: ngdialog-flyin .5s;
+    background: #373a4c;
+    border-radius: 5px;
+    color: #444;
+    font-family: Helvetica,sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 1em;
+    position: relative;
+    width: 728px;
+ /*   height: 600px;*/
+}
+#ngdialog1-aria-labelledby {
+	color:#fff;
+}
+	
+.page-btn {
+	text-align: center;
+}
+
+.pagination>li>a, .pagination>li>span {
+	float: none!important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+input[type="number"]{
+	-moz-appearance: textfield;
+}
+
+.top180 {
+	top:180px!important;
+}
+#footer_nav{
+    display: none;
+}
+
+.footer_fonts{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+}
+.footer_fonts a{
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 20px;
+    color: #ddd;
+}
+
+.footer_copy{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+	color: #a7a3a3;
+}
+
+@media (max-width: 768px) {
+	
+	.language {
+		display: none;
+	}
+	.footer_logo,.footer_list,.footer_telegram,.cooperation_bod,.footer_fonts,.footer_copy{
+			display: none;
+	}
+	
+	.common-container {
+		margin-bottom: 60px;
+	}
+	
+	.home-content-ico {
+		overflow: hidden;
+	}
+	
+    .footer_main{
+        padding:0;
+        height:60px;
+        position:fixed;
+        bottom: 0;
+        z-index: 999999;
+        background: #4e5d88;
+    }
+    #footer_nav{
+        width: 100%;
+        height: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border:none;
+        display: block;
+    }
+    #footer_nav a{
+        width: 20%;
+        height:60px;
+        line-height:30px;
+        padding-top: 30px;
+        text-align: center;
+        box-sizing: border-box;
+        float: left;
+        display: inline-block;
+        color: #fff;
+        font-size: 12px;
+				text-decoration: none;
+    }
+    #footer_nav a:last-child{
+        display: none;
+    }
+    #footer_nav a:nth-child(1){
+        background: url(../images/icon/menu_icon_1.png) center 8px no-repeat
+    }
+    #footer_nav a:nth-child(2){
+        background: url(../images/icon/menu_icon_2.png) center 8px no-repeat
+    }
+    #footer_nav a:nth-child(3){
+        background: url(../images/icon/menu_icon_3.png) center 8px no-repeat
+    }
+    #footer_nav a:nth-child(4){
+        background: url(../images/icon/menu_icon_4.png) center 8px no-repeat
+    }
+    #footer_nav a:nth-child(5){
+        background: url(../images/icon/menu_icon_5.png) center 8px no-repeat
+    }
+    .common-wrap{
+        margin-top:60px;
+		padding-top: 0;
+    }
+}
+
+#toast-container {
+	position: fixed;
+	right: 0;
+	top: 20px;
+	z-index: 999999999999;
+}
+

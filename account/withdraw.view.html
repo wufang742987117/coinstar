@@ -1,0 +1,413 @@
+<div class="common-main">
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'ACCOUNT.WITHDRAWAL'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>WITHDTRAW</span>
+        </div>
+    </div>
+    <div class="container account-main recharge-main">
+        <div class="detail-main">
+            <div class="fund">
+                <!--<h4>{{'ACCOUNT.A_WITHDRAWAL'|translate}}</h4>-->
+                <ul class="recharge-nav-title active">
+                    <li ng-class="{'active':iscurrent=='NUMBER'}" ng-click="getwithdrawType('NUMBER')">
+                        <span ng-if="isactive!=='数字货币'">{{'ACCOUNT.BALANCE_WITHDRAW'|translate}}</span>
+                        <!--<a href="javascript:;" ng-class="{'dot-top':myshow,'dot-down':!myshow}" ng-click="myshow=!myshow"></a>-->
+                        <!--<div class="balance-box" ng-show="myshow && balances.length>0">-->
+                        <!--<div ng-class="{'active':isactive == it.symbol}"  ng-repeat="it in balances" ng-click="getFundName( it)">{{'ASSET.'+it.symbol | translate}}</div>-->
+                        <!--</div>-->
+
+                    </li>
+                </ul>
+                <div class="charge scroll">
+                    <ul>
+                        <li ng-class="{'active':isactive == it.symbol}" ng-repeat="it in balances"
+                            ng-click="getFundName(it)">{{'ASSET.'+ it.symbol | translate}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--数字货币提币-->
+            <div class="deposit-type withdraw-type" ng-show="iscurrent=='NUMBER'">
+                <div class="sina-step3">
+                    <div class="charge-money pull-left">
+                        <form class="form-horizontal form" name="myform" novalidate>
+                            <div class="form-group">
+                                <label for="currency" class="col-sm-4 control-label">{{'ACCOUNT.SEL_ADDRESS'|translate}}：</label>
+
+                                <div class="col-sm-8">
+                                    <select type="text" class="form-control col-sm-8" id="currency"
+                                            placeholder="{{'ACCOUNT.SELECT_ADDRESS_REQ'|translate}}" name="bank"
+                                            ng-model="params.address_id" style="font-size: 14px" required>
+                                        <option value="" selected="selected">--
+                                            {{'ACCOUNT.SELECT_ADDRESS_REQ'|translate}} --
+                                        </option>
+                                        <option value="{{item.id}}" ng-repeat="item in balanc_account">{{'ASSET.'+item.remark | translate}} — {{item.address}}
+                                        </option>
+                                    </select>
+                                    <a class="add-account" ng-click="addbalanceAccount()"> + </a>
+                                    <a class="add-account-app" ng-click="addbalanceAccount()"> + {{'ACCOUNT.ADD_ADDRESS'|translate}}</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">{{'ACCOUNT.WITHDRAW_MORE'|translate}}：</label>
+
+                                <div class="col-sm-8 data-num text-left"><b>{{((limit.current_withdrawal_limit/100000000) || 0)}}</b> &nbsp;{{'ASSET.'+ isactive | translate}}
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                 ng-class="{'has-error': params.number && params.number > (limit.current_withdrawal_limit/100000000)}">
+                                <label for="currency-number" class="col-sm-4 control-label">{{'ACCOUNT.A_WITHDRAWAL_NUMBER'|translate}}：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="currency-number" name="number"
+                                           placeholder="{{'ACCOUNT.WITHDRAWAL_NUMBER_REQ'|translate}}"
+                                           ng-model="params.number"
+                                           onkeyup="this.value=this.value.replace(/[^\-?\d.]/g,'')" required/>
+
+                                    <!--<p class="pull-right bank-notice probably">{{'ACCOUNT.WITHDRAW_ABOUT'|translate}}&nbsp; <span class="font-color">$ <b>{{((activeBalance.last * params.number )|| 0).toFixed(2)}}</b></span></p>-->
+                                    <span class="help-block pull-left"
+                                          ng-show="params.number && params.number>(limit.current_withdrawal_limit/100000000)"><span
+                                            class="text-error"></span>{{'ACCOUNT.WITHDRAW_BALANCE_LIMIT'|translate}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tradepassword" class="col-sm-4 control-label">{{'TRADE.CAPITAL_PASSWORD'|translate}}：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" id="tradepassword" name="tradepwd"
+                                           placeholder="{{'ACCOUNT.CAPITAL_PASSWORD_REQ'|translate}}" ng-disabled="!settings.tpass" ng-model="params.fundPwd" maxlength="16" required/>
+                                    <a class="pull-right down bank-notice" href="/#!/setting/tpass"  ng-if="settings.tpass">{{'ACCOUNT.FORGET_PASSWORD'|translate}}</a>
+                                    <a class="pull-right down bank-notice" href="/#!/setting/tpass"  ng-if="!settings.tpass">{{'SETTING.MENU.API_TIPS2'|translate}}</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group" ng-if="verify.WITHDRAW.safety_way==0">
+                                <label class="col-sm-4 control-label">{{'GOOGLECODE'|translate}}：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control"
+                                           placeholder="{{'GOOGLE_INPUT_TIP'|translate}}" ng-model="params.verify" >
+                                </div>
+                                <p></p>
+                            </div>
+
+                            <div ng-if="verify.WITHDRAW.safety_way==1">
+                                <div class="form-group"> <!--ng-if="verify.WITHDRAW.safety_way==1"-->
+                                    <label class="col-sm-4 control-label">{{'ACCOUNT.BIND_EMAIL'|translate}}：</label>
+
+                                    <div class="col-sm-8 data-num text-left"><b>{{settings.email | getUsernameFormat}}</b>
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':errorVcode1}"> <!--ng-if="verify.WITHDRAW.safety_way==1"-->
+                                    <label for="verifycode" class="col-sm-4 control-label">{{'REGISTER.CHECK_CODE'|translate}}：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-message">
+                                            <input type="text" class="form-control get-send-code" id="verifycode"
+                                                   name="code" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}"
+                                                   ng-pattern='/^[0-9]\d*$/' maxlength="6" ng-change="getVerifyWithdraw()"
+                                                   ng-model="params.verificationCode" maxlength="6" required/>
+                                        </div>
+                                        <div class="input-img" ng-click="getVerifyCode()" style="line-height: 0;">
+                                            <button type="button" class="btn btn-code" ng-disabled="isshow" style="font-size: 13px;">
+                                                <span ng-if="language=='zh'">{{text}}</span>
+                                                <span ng-if="language!=='zh'">{{en_text}}</span>
+                                            </button>
+                                        </div>
+                                        <span class="help-block text-left" ng-show="errorVcode1"><span
+                                                class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div ng-if="verify.WITHDRAW.safety_way==2">
+                                <div class="form-group" >
+                                    <label class="col-sm-4 control-label">{{'ACCOUNT.BIND_PHONE'|translate}}：</label>
+
+                                    <div class="col-sm-8 data-num text-left"><b>{{settings.phone.substr(0,3)+'.....'+settings.phone.substr(7,11)}}</b>
+                                    </div>
+                                    <p></p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">{{'PHONE_EMLCODE'|translate}}：</label>
+                                    <div class="col-sm-4 data-num text-left">
+                                        <input type="text" class="form-control" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}" ng-model="params.phoneCode" ng-change="getVerifyphoneCoderes()">
+                                    </div>
+                                    <div class="col-sm-4 data-num">
+                                        <button class="btn btn-default btn-sm btn-with" ng-disabled="counter>0" ng-click="askBind()">
+                                            <span ng-if="counter>0">{{'SETTING.TPASS.REMAINING'|translate}}{{counter}}'S</span>
+                                            <span ng-if="!counter">{{'ACCOUNT.GETCODE'|translate}}</span>
+                                        </button>
+                                    </div>
+                                    <span class="help-block text-left" style="float: right;padding-right: 15px;" ng-show="errorVcode"><span
+                                            class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                                </div>
+                            </div>
+                            <div ng-if="verify.WITHDRAW.safety_way==null">
+                                    <div ng-if="settings.phone">
+                                        <div class="form-group" >
+                                                <label class="col-sm-4 control-label">{{'ACCOUNT.BIND_PHONE'|translate}}：</label>
+                                                <div class="col-sm-8 data-num text-left"><b>{{settings.phone.substr(0,3)+'.....'+settings.phone.substr(7,11)}}</b>
+                                                </div>
+                                                <p></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">{{'PHONE_EMLCODE'|translate}}：</label>
+                                            <div class="col-sm-4 data-num text-left">
+                                                <input type="text" class="form-control" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}" ng-model="params.phoneCode" ng-change="getVerifyphoneCoderes()">
+                                            </div>
+                                            <div class="col-sm-4 data-num">
+                                                <button class="btn btn-default btn-sm btn-with" ng-disabled="counter>0" ng-click="askBind()">
+                                                    <span ng-if="counter>0">{{'SETTING.TPASS.REMAINING'|translate}}{{counter}}'S</span>
+                                                    <span ng-if="!counter">{{'ACCOUNT.GETCODE'|translate}}</span>
+                                                </button>
+                                            </div>
+                                            <span class="help-block text-left" style="float: right;padding-right: 15px;" ng-show="errorVcode"><span
+                                                    class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!settings.phone&&settings.email">
+                                        <div class="form-group" ng-if="verify.WITHDRAW.safety_way==1&&settings.email!=null||verify.WITHDRAW.safety_way==null&&settings.email!=null"> <!--ng-if="verify.WITHDRAW.safety_way==1"-->
+                                            <label class="col-sm-4 control-label">{{'ACCOUNT.BIND_EMAIL'|translate}}：</label>
+
+                                            <div class="col-sm-8 data-num text-left"><b>{{settings.email | getUsernameFormat}}</b>
+                                            </div>
+                                            <p></p>
+                                        </div>
+
+                                        <div class="form-group" ng-class="{'has-error':errorVcode1}"ng-if="verify.WITHDRAW.safety_way==1&&settings.email!=null||verify.WITHDRAW.safety_way==null&&settings.email!=null" > <!--ng-if="verify.WITHDRAW.safety_way==1"-->
+                                            <label for="verifycode" class="col-sm-4 control-label">{{'REGISTER.CHECK_CODE'|translate}}：</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-message">
+                                                    <input type="text" class="form-control get-send-code" id="verifycode"
+                                                           name="code" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}"
+                                                           ng-pattern='/^[0-9]\d*$/' maxlength="6" ng-change="getVerifyWithdraw()"
+                                                           ng-model="params.verificationCode" maxlength="6" required/>
+                                                </div>
+                                                <div class="input-img" ng-click="getVerifyCode()" style="line-height: 0;">
+                                                    <button type="button" class="btn btn-code" ng-disabled="isshow" style="font-size: 13px;">
+                                                        <span ng-if="language=='zh'">{{text}}</span>
+                                                        <span ng-if="language!=='zh'">{{en_text}}</span>
+                                                    </button>
+                                                </div>
+                                                <span class="help-block text-left" ng-show="errorVcode1"><span
+                                                        class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+
+                            <!--<div ng-if="settings.phone==null&&settings.email&&verify.WITHDRAW.safety_way==null">-->
+                                <!--<div class="form-group" ng-if="verify.WITHDRAW.safety_way==1&&settings.email!=null||verify.WITHDRAW.safety_way==null&&settings.email!=null"> &lt;!&ndash;ng-if="verify.WITHDRAW.safety_way==1"&ndash;&gt;-->
+                                    <!--<label class="col-sm-4 control-label">{{'ACCOUNT.BIND_EMAIL'|translate}}：</label>-->
+
+                                    <!--<div class="col-sm-8 data-num text-left"><b>{{settings.email | getUsernameFormat}}</b>-->
+                                    <!--</div>-->
+                                    <!--<p></p>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group" ng-class="{'has-error':errorVcode1}"ng-if="verify.WITHDRAW.safety_way==1&&settings.email!=null||verify.WITHDRAW.safety_way==null&&settings.email!=null" > &lt;!&ndash;ng-if="verify.WITHDRAW.safety_way==1"&ndash;&gt;-->
+                                    <!--<label for="verifycode" class="col-sm-4 control-label">{{'REGISTER.CHECK_CODE'|translate}}：</label>-->
+                                    <!--<div class="col-sm-8">-->
+                                        <!--<div class="input-message">-->
+                                            <!--<input type="text" class="form-control get-send-code" id="verifycode"-->
+                                                   <!--name="code" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}"-->
+                                                   <!--ng-pattern='/^[0-9]\d*$/' maxlength="6" ng-change="getVerifyWithdraw()"-->
+                                                   <!--ng-model="params.verificationCode" maxlength="6" required/>-->
+                                        <!--</div>-->
+                                        <!--<div class="input-img" ng-click="getVerifyCode()" style="line-height: 0;">-->
+                                            <!--<button type="button" class="btn btn-code" ng-disabled="isshow" style="font-size: 13px;">-->
+                                                <!--<span ng-if="language=='zh'">{{text}}</span>-->
+                                                <!--<span ng-if="language!=='zh'">{{en_text}}</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                        <!--<span class="help-block text-left" ng-show="errorVcode1"><span-->
+                                                <!--class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!--<div class="form-group" ng-if="verify.WITHDRAW.safety_way==1&&settings.email!=null||verify.WITHDRAW.safety_way==null&&settings.email!=null"> &lt;!&ndash;ng-if="verify.WITHDRAW.safety_way==1"&ndash;&gt;-->
+                                <!--<label class="col-sm-4 control-label">{{'ACCOUNT.BIND_EMAIL'|translate}}：</label>-->
+
+                                <!--<div class="col-sm-8 data-num text-left"><b>{{settings.email | getUsernameFormat}}</b>-->
+                                <!--</div>-->
+                                <!--<p></p>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group" ng-class="{'has-error':errorVcode1}"ng-if="verify.WITHDRAW.safety_way==1&&settings.email!=null||verify.WITHDRAW.safety_way==null&&settings.email!=null" > &lt;!&ndash;ng-if="verify.WITHDRAW.safety_way==1"&ndash;&gt;-->
+                                <!--<label for="verifycode" class="col-sm-4 control-label">{{'REGISTER.CHECK_CODE'|translate}}：</label>-->
+                                <!--<div class="col-sm-8">-->
+                                    <!--<div class="input-message">-->
+                                        <!--<input type="text" class="form-control get-send-code" id="verifycode"-->
+                                               <!--name="code" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}"-->
+                                               <!--ng-pattern='/^[0-9]\d*$/' maxlength="6" ng-change="getVerifyWithdraw()"-->
+                                               <!--ng-model="params.verificationCode" maxlength="6" required/>-->
+                                    <!--</div>-->
+                                    <!--<div class="input-img" ng-click="getVerifyCode()" style="line-height: 0;">-->
+                                        <!--<button type="button" class="btn btn-code" ng-disabled="isshow" style="font-size: 13px;">-->
+                                            <!--<span ng-if="language=='zh'">{{text}}</span>-->
+                                            <!--<span ng-if="language!=='zh'">{{en_text}}</span>-->
+                                        <!--</button>-->
+                                    <!--</div>-->
+                                    <!--<span class="help-block text-left" ng-show="errorVcode1"><span-->
+                                            <!--class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn login withdraw"  ng-click="withdrawBalance()" ng-disabled="myform.$invalid  || (isactive == '数字货币') || errorVcode || loading" ng-click="withdrawBalance()">
+                                        <i ng-if="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>
+                                        <span ng-if="!loading">{{'ACCOUNT.WITHDRAW_B_SUBMIT'|translate}}</span>
+                                    </button>
+                                    <h5 class="text-center down" ng-if="err_message">{{err_message}}</h5>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="notice bank-notice pull-left">
+                        <h5>{{'ACCOUNT.REMINDER'|translate}}</h5>
+
+                        <p>1、{{'ACCOUNT.W_REMINDER_ONE'|translate}} {{(limit.accumulate_limit ||0)/100000000}} {{'ASSET.'+isactive | translate}}。</p>
+
+                        <p>2、{{'ACCOUNT.W_REMINDER_TWO'|translate}} {{(limit.minimal_limit/100000000) || 0}} {{'ASSET.'+isactive | translate}}。</p>
+
+                        <p>3、{{'ACCOUNT.W_REMINDER_THREE'|translate}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!--提币记录-->
+            <div class="fund" ng-if="iscurrent=='NUMBER' && isactive!=='数字货币'">
+                <h4>{{'ACCOUNT.WITHDRAW_REPORT'|translate}}</h4>
+                <table class="table" style="word-wrap:break-word; word-break:break-all">
+                    <tr >
+                        <th style="width: 100px">{{'TRADE.ORDER_TIME'|translate}}</th>
+                        <th style="width: 100px;">{{'TRADE.DELEGATE.ASSET'|translate}}</th>
+                        <th>{{'ACCOUNT.PLACEHOLDER_ADDRESS'|translate}}</th>
+                        <th style="width: 100px;">{{'ACCOUNT.A_WITHDRAWAL_NUMBER'|translate}}</th>
+                        <th style="width: 128px">{{'TRADE.STATUS'|translate}}</th>
+                        <th>{{'TRADE.DELEGATE.OPTION'|translate}}</th>
+                    </tr>
+                    <tr ng-if="params.withdraw_list.length==0">
+                        <td colspan = "6">{{'ACCOUNT.NOT_DATA'|translate}}</td>
+                    </tr>
+                    <tr ng-repeat="its in params.withdraw_list">
+                        <td>{{its.created_at |  date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{'ASSET.'+ its.asset | translate}}({{its.asset}})</td>
+                        <td>{{its.address}}</td>
+                        <td>{{(its.amount/100000000).toFixed(2)}}</td>
+                        <td>
+                            <span ng-if="its.status=='COMPLETE'">{{'ACCOUNT.A_WITHDRAWAL_SUCCESS'|translate}}</span>
+                            <span ng-if="its.status=='CANCELLED'">{{'ACCOUNT.REFUSE'|translate}}</span>{{its.state}}
+                            <span ng-if="its.status=='PENDING' || its.state=='REQUESTED'">{{'STATUS.PENDING'|translate}}</span>
+                            <span class="applying" ng-if="its.status=='REQUESTED'">{{'ACCOUNT.DEPOSIT_REQUEST'|translate}}</span>
+                        </td>
+                        <td>
+                            <a class="hash-sel" ng-href="//block.cc/q/{{its.asset}}" target="_blank" ng-if="its.status=='COMPLETE'">{{'ACCOUNT.HASH_SELECT'|translate}}</a>
+                            <span class="applying" ng-if="its.status=='COMPLETE'">{{'ACCOUNT.HASH_SELECT'|translate}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-btn" ng-show="params.totalItems">
+                <ul uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="page.currentPage"
+                    class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;"
+                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--提币地址添加-->
+<script type="text/ng-template" id="currency-template">
+    <h5>{{'ACCOUNT.ADD'|translate}}{{'ASSET.'+ isactive | translate}}{{'ACCOUNT.SEL_ADDRESS'|translate}}</h5>
+    <div class="modal-body text-center">
+        <form class="form-horizontal" name="myForm2" novalidate>
+            <div class="form-group"
+                 ng-class="{'has-error': myForm2.balance_address.$dirty && !myForm2.balance_address.$valid}">
+                <label for="currency-address" class="col-sm-4 control-label"><b><span class="down">*</span></b>{{'ACCOUNT.SEL_ADDRESS'|translate}}：</label>
+
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="currency-address"
+                           placeholder="{{'ACCOUNT.SELECT_ADDRESS_INPUT'|translate}}" name="balance_address"
+                           ng-model="params.address" ng-pattern="/^[a-zA-Z0-9]*$/" maxlength="50" required/>
+                    <span class="help-block pull-left"
+                          ng-show="myForm2.balance_address.$dirty && !myForm2.balance_address.$valid"><span
+                            class="text-error"></span>{{'ACCOUNT.SELECT_ADDRESS_ERROR'|translate}}</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': myForm2.memo.$dirty && !myForm2.memo.$valid}" ng-if="activeBalance.coin_type==1">
+                <label for="currency-memo" class="col-sm-4 control-label"><b><span class="down">*</span></b>{{'ACCOUNT.A_WITHDRAWAL'|translate}}Memo：</label>
+
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="currency-memo" name="memo"
+                           placeholder="{{'ACCOUNT.MEMO_REQ'|translate}}" ng-model="params.address_part_two"
+                           ng-pattern="/^[a-zA-Z0-9]*$/" maxlength="30" required/>
+                    <span class="help-block pull-left" ng-show="myForm2.memo.$dirty && !myForm2.memo.$valid"><span
+                            class="text-error"></span>{{'ACCOUNT.MEMO_ERROR'|translate}}</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error':errorVcode}">
+                <label for="verify_Code" class="col-sm-4 control-label"><b><span class="down">*</span></b>{{'REGISTER.CHECK_CODE'|translate}}：</label>
+
+                <div class="col-sm-8">
+                    <div class="input-message pull-left">
+                        <input type="text" class="form-control get-send-code" id="verify_Code" name="vcode"
+                               placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}" ng-pattern='/^[0-9]\d*$/'
+                               maxlength="6" ng-change="getVerifyphoneCode()" ng-model="params.secret" maxlength="6"
+                               style="width: 72%" required/>
+                    </div>
+                    <div class="input-img pull-right" ng-click="getAssetVerify ()"
+                         style="line-height: 32px;margin-top: -34px">
+                        <button type="button" class="btn btn-code" ng-disabled="isshow" style="width:80px;font-size: 12px;height: 32px;color:#fff;background:#40B2F0;padding:0">
+                            <span ng-if="language=='zh'">{{text}}</span>
+                            <span ng-if="language!=='zh'">{{en_text}}</span>
+                        </button>
+                    </div>
+                    <span class="help-block text-left" style="clear: both;" ng-show="errorVcode"><span
+                            class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remark" class="col-sm-4 control-label"><b><span class="down">*</span></b>{{'ACCOUNT.ADDRESS_NAME'|translate}}：</label>
+
+                <div class="col-sm-8">
+                    <textarea type="text" class="form-control remarks" id="remark" placeholder="{{'ACCOUNT.ADDRESS_NAME_REQ'|translate}}" ng-model="params.remark" required></textarea>
+                </div>
+            </div>
+            <!--<div class="dialog-contents modal-footer">-->
+            <!--<p class="down text-center" ng-if="errmessage">{{'ACCOUNT.ADDRESS_ERROR'|translate}}</p>-->
+            <!--<button type="button" class="btn btn-danger add" ng-click="confirm()"-->
+            <!--ng-disabled="myForm2.$invalid || errorVcode">{{'ACCOUNT.ADD_SUBMIT'|translate}}-->
+            <!--</button>-->
+            <!--</div>-->
+            <div class="form-group last-group">
+                <p class="down text-center" ng-if="errmessage">{{'ACCOUNT.ADDRESS_ERROR'|translate}}</p>
+                <div class="col-sm-offset-4 col-sm-8">
+                    <button type="submit" class="btn btn-danger add" ng-click="confirm()" ng-disabled="myForm2.$invalid || errorVcode">{{'ACCOUNT.ADD_SUBMIT'|translate}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

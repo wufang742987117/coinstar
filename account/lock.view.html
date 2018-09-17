@@ -1,0 +1,189 @@
+<div class="common-main">
+    <div class="common-main-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <span class="zh-title">{{'ACCOUNT.LOCK_MANAGER'|translate}}</span>
+                    <span class="en-title"><span class="line">|</span> LOCK MANAGEMENT</span>
+                </div>
+                <div class="col-md-6 nav-clain-pins">
+                    <div class="clain-pins-step">
+                        <div class="itemsdefault pull-left active">
+                            <div class="item-number text-left">
+                                <div>1</div>
+                            </div>
+                            <p>{{'TITLE.SETP.REGISTER'|translate}} <span class="content"></span></p>
+                        </div>
+                        <div class="itemsdefault pull-left active">
+                            <div class="item-number text-left">
+                                <div>2</div>
+                            </div>
+                            <p>{{'TITLE.SETP.C1'|translate}} <span class="content"></span></p>
+                        </div>
+                        <div class="itemsdefault pull-left active">
+                            <div class="item-number text-left">
+                                <div>3</div>
+                            </div>
+                            <p>{{'ACCOUNT.DIGITAL_CURRENCY'|translate}} <span class="content"></span></p>
+                        </div>
+                        <div class="itemsdefault last pull-left">
+                            <div class="item-number text-left">
+                                <div>4</div>
+                            </div>
+                            <p>{{'ACCOUNT.LOCK'|translate}}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container account-main recharge-main">
+        <div class="account-title">
+            <div class="pull-left">
+                <h5>{{balance_name}}{{'ACCOUNT.TOTAL_NUMBER'|translate}}</h5>
+                <h3 ng-if="item_balance">{{((item_balance.balance/100000000)+(item_balance.frozen/100000000)) | number:2}}</h3>
+                <h3 ng-if="!item_balance">0</h3>
+            </div>
+            <div class="pull-right" ng-if="!item_balance">
+                <h5>{{'ASSET.TRADABLE'|translate}}<span class="number">0</span></h5>
+                <h5>{{'ASSET.FROZEN'|translate}}<span class="number">0</span></h5>
+            </div>
+            <div class="pull-right" ng-if="item_balance">
+                <h5>{{'ASSET.TRADABLE'|translate}}<span class="number">{{(item_balance.balance/100000000).toFixed(2)}}</span></h5>
+                <h5>{{'ASSET.FROZEN'|translate}}<span class="number">{{(item_balance.frozen/100000000).toFixed(2)}}</span></h5>
+            </div>
+        </div>
+        <div class="detail-main">
+            <div class="fund">
+                <h4>{{'ACCOUNT.LOCK'|translate}}</h4>
+            </div>
+            <!--锁仓表单-->
+            <div class="deposit-type withdraw-type">
+                <div class="sina-step3">
+                    <div class="charge-money pull-left">
+                        <form class="form-horizontal" name="myForm" novalidate>
+                            <div class="form-group">
+                                <label for="locktime" class="col-sm-4 control-label">{{'ACCOUNT.LOCK_TIME'|translate}}：</label>
+                                <div class="col-sm-8">
+                                    <select type="text" class="form-control col-sm-8" id="locktime" name="locktime" ng-model="params.lock_days" style="font-size: 14px" required>
+                                        <option value="" selected="selected">-- {{'LOCK.SELECT_A_RATE'|translate}}--</option>
+                                        <option value="{{it.lock_days}}" ng-repeat="it in lockdate">{{'ACCOUNT.LOCK'|translate}}{{it.lock_days}}{{'LOCKED.DROPDOWN_END'|translate}}{{it.annual_profit_rate}}%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':myForm.money.$dirty && !myForm.money.$valid || (params.amount && params.amount>item_total)}">
+                                <label for="money" class="col-sm-4 control-label">{{'ACCOUNT.LOCKED_NUMBER'|translate}}:</label>
+
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="money" name="money" placeholder="{{'ACCOUNT.LOCK_NUMBER_REQ'|translate}}"  ng-model="params.amount"  onkeyup="this.value=this.value.replace(/[^\-?\d.]/g,'')" required/>
+
+                                    <a class="pull-right down bank-notice" href="javascript:;" ng-click="getAllLock()">{{'ACCOUNT.LOCK_ALL'|translate}}</a>
+                                    <span class="help-block pull-left" ng-show="myForm.money.$dirty && !myForm.money.$valid || (params.amount && params.amount > item_total)"><span class="text-error"></span>{{'ACCOUNT.LOCK_NUM_ERROR'|translate}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="params.lock_days">
+                                <label class="col-sm-4 control-label">{{'ACCOUNT.LOCK_INTEREST'|translate}}</label>
+
+                                <div class="col-sm-8 data-num text-left">
+                                    <b ng-if="params.lock_days== 7">{{((params.amount||0) * params.lock_days*0.05/360).toFixed(3)}}{{balance_name}}</b>
+                                    <b ng-if="params.lock_days== 30">{{((params.amount||0) * params.lock_days*0.08/360).toFixed(3)}}{{balance_name}}</b>
+                                    <b ng-if="params.lock_days== 90">{{((params.amount||0) * params.lock_days*0.128/360).toFixed(3)}}{{balance_name}}</b>
+                                    <b ng-if="params.lock_days== 180">{{((params.amount||0) * params.lock_days*0.16/360).toFixed(3)}}{{balance_name}}</b>
+                                    <b ng-if="params.lock_days== 360">{{((params.amount||0) * params.lock_days*0.2/360).toFixed(3)}}{{balance_name}}</b>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group" ng-if="settings.phone">
+                                <label class="col-sm-4 control-label">绑定号码：</label>
+                                <div class="col-sm-8 data-num text-left"><b>{{settings.phone | getUsernameFormat}}</b></div>
+                                <p></p>
+                            </div>
+                            <div class="form-group" ng-if="settings.email">
+                                <label class="col-sm-4 control-label">绑定邮箱：</label>
+                                    <div class="col-sm-8 data-num text-left"><b>{{settings.email | getUsernameFormat}}</b></div>
+                                <p></p>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="tradepassword" class="col-sm-4 control-label">{{'TRADE.CAPITAL_PASSWORD'|translate}}：</label>
+
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" id="tradepassword" name="tradepwd" placeholder="{{'ACCOUNT.CAPITAL_PASSWORD_REQ'|translate}}" ng-model="params.fundPwd" minlength="8" maxlength="16" required/>
+                                    <a class="pull-right down bank-notice"  href="/#!/setting/tpass">{{'ACCOUNT.FORGET_PASSWORD'|translate}}</a>
+                                </div>
+                            </div>
+                            <div class="form-group"  ng-class="{'has-error':errorVcode}">
+                                <label for="verify-code" class="col-sm-4 control-label">{{'REGISTER.CHECK_CODE'|translate}}:</label>
+                                <div class="col-sm-8">
+                                    <div class="input-message">
+                                        <input type="text" class="form-control get-send-code" id="verify-code" name="vcode" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}" ng-pattern='/^[0-9]\d*$/' maxlength="6" ng-change="getVerifyphoneCode()"
+                                               ng-model="params.verificationCode" maxlength="6" required/>
+                                    </div>
+                                    <div class="input-img" ng-click="getVerifyCode()" style="line-height: 0;">
+                                        <button type="button" class="btn btn-code" ng-disabled="isshow" style="font-size: 13px;">{{text}}</button>
+                                    </div>
+                                    <span class="help-block text-left" ng-show="errorVcode"><span class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn login withdraw"  ng-disabled="myForm.$invalid || errorVcode" ng-click="addlock()">{{'LOCK.ETP_BUTTON'|translate}}</button>
+                                    <h5 class="text-center down" ng-if="err_message">{{err_message}}</h5>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="notice bank-notice pull-left">
+                        <h5>{{'ACCOUNT.REMINDER'|translate}}</h5>
+                        <p>{{'ACCOUNT.LOCK_MESSAGE'|translate}}</p>
+                        <p>{{'ACCOUNT.LOCK_MESSAGE_ONE'|translate}}</p>
+                        <p>{{'ACCOUNT.LOCK_MESSAGE_TWO'|translate}}</p>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <!--锁仓记录-->
+            <div class="fund">
+                <h4>{{balance_name}}锁仓记录</h4>
+                <table class="table">
+                    <tr>
+                        <th width="15%">发起时间</th>
+                        <th width="10%">币种</th>
+                        <th width="20%">锁仓数量</th>
+                        <th width="10%">解锁时间</th>
+                        <th width="10%">锁仓收益</th>
+                        <th width="10%">状态</th>
+                    </tr>
+                    <tr ng-show="params.locks.length==0">
+                        <td colspan = "6">暂无数据</td>
+                    </tr>
+                    <tr ng-repeat="its in params.locks">
+                        <td>{{its.created_at |  date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{its.asset}}</td>
+                        <td>{{its.amount/100000000}}</td>
+                        <td>{{its.locked_until |  date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{its.profit/100000000}}</td>
+                        <td>
+                            <span ng-if="its.status=='UNLOCKED'">已解锁</span>
+                            <span class="applying" ng-if="its.status=='LOCKED'">锁仓中…</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-btn" ng-show="params.totalItems">
+                <ul uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="page.currentPage" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="templateId">
+    <h4>删除提币地址</h4>
+    <div class="modal-body text-center">
+        <p><span class="text-error"></span>确认删除该地址？删除后将无法恢复</p>
+    </div>
+    <div class="dialog-contents modal-footer">
+        <button type="button" class="btn cancle" ng-click="closeThisDialog()">取消</button>
+        <button type="button" class="btn btn-danger" ng-click="confirm()">确认</button>
+    </div>
+</script>

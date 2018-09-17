@@ -1,0 +1,59 @@
+<ui-view></ui-view>
+<div class="footer_main">
+    <!-- <a href="index.html" class="footer_logo"></a>
+    <ul class="footer_list">
+        <li>
+            <ul>
+                <li>服务</li>
+                <li><a href="javascript://">交易中心</a></li>
+                <li><a href="javascript://">支持</a></li>
+                <li><a href="javascript://">提交请求</a></li>
+                <li><a href="javascript://">创业板等级上币</a></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>条款说明</li>
+                <li><a href="javascript://">隐私政策</a></li>
+                <li><a href="javascript://">用户协议</a></li>
+                <li><a href="javascript://">手续费</a></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>关于我们</li>
+                <li><a href="javascript://">客户支持</a></li>
+                <li><a href="javascript://">联系我们</a></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>社区</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+    </ul> -->
+	<div class="footer_fonts">
+    	<a href="/#!/feeRate">{{'FATE_INTRO'|translate}}</a>
+        <a target="_blank" href="/api/public">{{'API_PDF'|translate}}</a>
+        <a href="/#!/home">CoinStar</a>
+        <a target="_blank" href="/assets/images/Coinstar_private_protocol.pdf">{{'USER_APPRO'|translate}}</a>
+        <a href="/#!/contactUs">{{'LINK_US'|translate}}</a>
+    </div>
+    <p class="footer_copy">Copyright &copy; 2018 CoinStar All Rights Reseved</p>
+    <!--侧边栏菜单-->
+    <div id="footer_nav">
+        <a href="/#!/trade" ng-click="pageChange()">{{'INDEX_TOP_MENU_2'|translate}}</a>
+        <a href="/#!/account/details"ng-click="pageChange()">{{'TRADE.TOTAL_ASSET'|translate}}</a>
+        <a href="/#!/account/dataanalysis" ng-click="pageChange()">{{'FIN_DETAIL'|translate}}</a>
+        <a href="/#!/order" ng-click="pageChange()">{{'ORDER_MANAGE'|translate}}</a>
+        <a href="/#!/setting/menu" ng-click="pageChange()">{{'SIDEBAR.SETTINGS'|translate}}</a>
+        <a href="/#!/logout" ng-click="pageChange()">{{'SIDEBAR.LOGOUT'|translate}}</a>
+    </div>
+</div>
+

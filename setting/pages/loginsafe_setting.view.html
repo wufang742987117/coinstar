@@ -1,0 +1,50 @@
+<div class="common-main" auto-height>
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'LOGIN_SAFE_TITLE'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>Login Security Setting</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="verify-content radio-content">
+            <div class="radio">
+                <label>
+                    <input style="margin-left: -68px;" type="radio" name="optionsRadios"  ng-checked="verify.LOGIN.safety_way==null"  ng-change="radioClick()" ng-value="9" ng-model="security">
+                    <span>{{'PASS_OPTION_ONLY'|translate}}</span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios"   ng-checked="verify.LOGIN.safety_way=='1'"  ng-change="radioClick()" ng-value="1" ng-model="security">
+                    <span>{{'PASS_OPTION_EMAIL'|translate}}</span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios"   ng-checked="verify.LOGIN.safety_way=='0'" ng-change="radioClick()" ng-value="0" ng-model="security">
+                    <span>{{'PASS_OPTION_CODE'|translate}}</span>
+                </label>
+            </div>
+
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios"   ng-checked="verify.LOGIN.safety_way=='2'" ng-change="radioClick()" ng-value="2" ng-model="security">
+                    <span>{{'PASS_OPTION_PHONE'|translate}}</span>
+                </label>
+            </div>
+            <!--<div class="radio" style="padding-left: 83px;" ng-if="language=='en'">-->
+                <!--<label>-->
+                    <!--<input type="radio" name="optionsRadios"  value="option2" ng-change="radioClick()" ng-value="1" ng-model="security">-->
+                    <!--{{'GOOGLE_CODE_VERIFY'|translate}}-->
+                <!--</label>-->
+            <!--</div>-->
+
+            <div class="form-group clearfix group-mid">
+                <div class="col-sm-6 verify-btn nofloat">
+                    <button type="submit" class="col-sm-6 btn btn-submit" ng-disabled="!buttondefault" ng-click="secSubmit()">{{'SAFE_LOGIN_SUBMIT'|translate}}</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="common-container common-wrap trade-contaner" auto-height>
+    <div class="assets_title">
+    <h1>{{'Xgh_assets'|translate}}：</h1>
+    <div class="title_show">
+        <label>{{'Xgh_assets_zh'|translate}}：</label>
+        <b>{{btcAmount}} BTC</b>
+        <b>&asymp;</b>
+        <p>&yen; {{cnyAmount}} CNY</p>
+    </div>
+</div>
+    <!--资产列表-->
+    <div class="assets_list">
+       <div class="assets_bod_overflow">
+		   <ul>
+			   <li>
+				   <div>{{'Xgh_accumulate'|translate}}</div>
+				   <div>{{'Xgh_balance'|translate}}</div>
+				   <div>{{'Xgh_freezing'|translate}}</div>
+				   <div>{{'Xgh_operation'|translate}}</div>
+			   </li>
+			   <li ng-repeat="item in balances">
+				   <div>({{item.symbol}})  {{item.total}}</div>
+				   <div>{{item.balance}}</div>
+				   <div>{{item.frozen}}</div>
+				   <div>
+					   <a class="withdraw" href="javascript:;" ng-click="openWithdraw(item.symbol)" ng-if="item.withdraw==0">{{'Xgh_tb_money'|translate}}</a>
+					   <a class="withdraw" href="javascript:;" ng-if="item.withdraw !==0" style="color: #d0d1d4;">{{'Xgh_tb_money'|translate}}</a>
+					   <a class="withdraw account-deposit" ng-click="openDeposit(item.symbol)" ng-if="item.deposit==0">{{'Xgh_cb_money'|translate}}</a>
+					   <a class="withdraw" ng-if="item.deposit !==0" style="color: #d0d1d4;">{{'Xgh_cb_money'|translate}}</a>
+					   <a href="/#!/account/bankandaddress/{{item.symbol}}">{{'Xgh_Address_management'|translate}}</a>
+				   </div>
+			   </li>
+			   <!--<li>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>
+                       <a href="javascript://">地址管理</a>
+                       <a href="javascript://">充值</a>
+                       <a href="javascript://">提现</a>
+                   </div>
+               </li>
+               <li>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>
+                       <a href="javascript://">地址管理</a>
+                       <a href="javascript://">充值</a>
+                       <a href="javascript://">提现</a>
+                   </div>
+               </li>
+               <li>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>
+                       <a href="javascript://">地址管理</a>
+                       <a href="javascript://">充值</a>
+                       <a href="javascript://">提现</a>
+                   </div>
+               </li>
+               <li>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>
+                       <a href="javascript://">地址管理</a>
+                       <a href="javascript://">充值</a>
+                       <a href="javascript://">提现</a>
+                   </div>
+               </li>
+               <li>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>
+                       <a href="javascript://">地址管理</a>
+                       <a href="javascript://">充值</a>
+                       <a href="javascript://">提现</a>
+                   </div>
+               </li>
+               <li>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>0.000000000</div>
+                   <div>
+                       <a href="javascript://">地址管理</a>
+                       <a href="javascript://">充值</a>
+                       <a href="javascript://">提现</a>
+                   </div>
+               </li>-->
+		   </ul>
+	   </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="withdraw-template">
+	 <h5>{{'Xgh_tb_money'|translate}}</h5>
+	<div class="recharge_bod">
+		<p class="rege_addre">{{'Xgh_Most.portable'|translate}}：{{((limit.current_withdrawal_limit/100000000) || 0)}} </p>
+		<div class="rege_inp">
+			<select type="text" class="form-control col-sm-8" id="currency"
+				placeholder="{{'ACCOUNT.SELECT_ADDRESS_REQ'|translate}}" name="bank"
+				ng-model="params.address_id" style="font-size: 14px" required>
+				<option value="" selected="selected">--
+					{{'ACCOUNT.SELECT_ADDRESS_REQ'|translate}} --
+				</option>
+				<option value="{{item.id}}" ng-repeat="item in balanc_account">{{'ASSET.'+item.remark | translate}} — {{item.address}}
+				</option>
+			</select>
+			<input type="text" placeholder="{{'Xgh_Quantity'|translate}}" id="currency-number" name="number"
+                                           ng-model="params.number"
+                                           onkeyup="this.value=this.value.replace(/[^\-?\d.]/g,'')" required/ />
+			<span  class="help-block pull-left num_tip"
+                                          ng-show="params.number && params.number>(limit.current_withdrawal_limit/100000000)"><span
+                                            class="text-error"></span>{{'ACCOUNT.WITHDRAW_BALANCE_LIMIT'|translate}}</span>
+			<input type="password" placeholder="{{'Xgh_Capital.cipher'|translate}}" id="tradepassword" name="tradepwd"ng-disabled="!settings.tpass" ng-model="params.fundPwd" maxlength="16" required/ />
+			<a class="type-button button_500" style="cursor: pointer;" ng-click="goTpass()"  ng-if="settings.tpass">{{'ACCOUNT.FORGET_PASSWORD'|translate}}</a>
+            <a class="type-button button_500" style="cursor: pointer;" ng-click="goTpass()"  ng-if="!settings.tpass">{{'SETTING.MENU.API_TIPS2'|translate}}</a>
+			<input type="text" placeholder="{{'Xgh_email_code'|translate}}" class="email_yzm" id="verifycode" name="code"
+                                                   ng-pattern='/^[0-9]\d*$/' maxlength="6" ng-change="getVerifyWithdraw()"
+                                                   ng-model="params.verificationCode" maxlength="6" required/ />
+			<a class="btn" style="line-height: 18px;" ng-click="getVerifyCode()" ng-disabled="isshow">
+				<span ng-if="!language">{{text}}</span><span ng-if="language=='zh_TW'">{{text}}</span>
+														<span ng-if="language=='en'">{{en_text}}</span>
+			</a>
+			<span class="help-block text-left email_tip" ng-show="errorVcode1"><span
+                                                class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+		</div>
+		<!--<p class="rege_addre">手续费：{{(limit.accumulate_limit ||0)/100000000}}ETC</p>-->
+		<p class="rege_sm">
+			{{'Xgh_Daily.maximum.quotas'|translate}}:{{(limit.accumulate_limit ||0)/100000000}} {{isactive}}<br />
+			{{'Xgh_Single.minimum'|translate}}:{{(limit.minimal_limit/100000000) || 0}} {{isactive}}
+		</p>
+		<a href="javascript://" class="txBtn"  ng-click="withdrawBalance()" ng-disabled="myform.$invalid  || (isactive == '数字货币') || errorVcode || loading" ng-click="withdrawBalance()">{{'Xgh_Embody'|translate}}</a>
+		<h5 class="text-center down" ng-if="err_message">{{err_message}}</h5>
+	</div>
+</script>
+
+<!--//充值-->
+<script type="text/ng-template" id="deposit-template">
+	<div class="recharge_bod">
+		<p class="rege_addre">{{'Xgh_Recharge.address'|translate}}({{imType}})
+		<p class="addre_fs" style="text-align: center;">{{digitalResResult.depositaddress}}</p>
+		<div class="data-code" style="text-align: center;" ng-show="!dataCreate.digitaladdreass">
+			<h4>or</h4>
+			<canvas id="qrcode" class="bigQR" style="margin-top: 45px;"></canvas>
+		</div>
+		<div class="data-code" ng-show="dataCreate.digitaladdreass">
+			<h4>memo</h4>
+			<p class="down"><b>{{digitalResResult.memo}}</b></p>
+		</div>
+		<div class="assets_ewm">
+			{{'Xgh_cz_f1'|translate}}<br />
+			{{'Xgh_cz_f2'|translate}}{{imType}}。<br />
+			{{'Xgh_cz_f3'|translate}}。
+		</div>
+	</div>
+</script>

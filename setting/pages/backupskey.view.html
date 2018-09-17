@@ -1,0 +1,77 @@
+<div class="common-main" auto-height>
+    <div class="common-main-title">
+        <div class="container" ng-if="data.step==1">
+
+            <span class="zh-title">{{'KEY_TITLE'|translate}}</span>
+
+            <span class="en-title hidden-xs"><span class="line">|</span>Backup Key</span>
+        </div>
+        <div class="container" ng-if="data.step==2">
+
+            <span class="zh-title">{{'KEY_TITLE_2'|translate}}</span>
+
+            <span class="en-title hidden-xs"><span class="line">|</span>Key Verification</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <form name="myForm">
+            <div class="verify-content" ng-if="data.step==1">
+                <p class="backup-title">{{'BACKUP_P_1'|translate}}</p>
+                <div class="form-group clearfix">
+                    <div class="col-sm-8 nofloat" >
+                        <input type="text" disabled  class="form-control backup-input"
+                               placeholder="" value="{{google_key}}"  style="text-align: center"/>
+                    </div>
+                    <p></p>
+                </div>
+                <p>{{'BACKUP_P_2'|translate}}</p>
+                <div class="form-group clearfix group-mid">
+                    <div class="col-sm-8 verify-btn btn-backup nofloat">
+                        <button class="col-sm-6 btn-submit backup-btn" ng-click="remark(2)">{{'COMMON.NEXT'|translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="verify-content" ng-if="data.step==2">
+                <div class="form-group clearfix" ng-class="{'has-error':myForm.passward.$dirty && myForm.passward.$invalid && !myForm.passward.$focused || passworderror}">
+                    <label class="col-sm-4 control-label">{{'LOGIN.PASSWORD'|translate}}</label>
+
+                    <div class="col-sm-8">
+                        <input type="password" name="passward" class="form-control control-code backup-input" placeholder="{{'LOGIN.PASSWORD_REQ' |translate}}"
+                               ng-pattern="/((?=.*[a-z])(?=.*\d)|(?=[a-z])(?=.*[#@!~%^&*])|(?=.*\d)(?=.*[#@!~%^&*]))[a-z\d#@!~%^&*]{8,14}/i"
+                               ng-change="getpassword()" ng-model="params.user_password" ng-minlength="8" ng-maxlength="14" maxlength="14" required ng-focus/>
+
+                        <p class="error" ng-show="myForm.passward.$dirty && passworderror" style="text-align: left;color:#e3556f"><span class="text-error" ></span>{{'LOGIN.USER_NO_SPACE' |translate}}</p>
+                        <p class="error" ng-show="myForm.passward.$dirty && myForm.passward.$invalid && !myForm.passward.$focused" style="text-align: left;color: #e3556f"><span
+                                class="text-error" ></span>{{'LOGIN.USER_PWD_LENGTH' |translate}}</p>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-4 control-label">{{'GOOGLECODE'|translate}}</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control control-code backup-input"
+                               placeholder="{{'GOOGLE_INPUT_TIP'|translate}}" ng-model="params.google_code" />
+                    </div>
+                    <p></p>
+                </div>
+                <div class="form-group clearfix" style="margin-top: 40px;">
+                    <div class="col-sm-8 verify-btn ">
+                        <button class="col-sm-6 btn btn-submit backup-btn" ng-disabled="myForm.$invalid || isshow || loading" ng-click="googleSubmit()">
+                            <i ng-if="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>
+                            <span  ng-if="!loading">{{'BACKUP_SUBMIT'|translate}}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-sm-8 verify-btn backup-btn backup-btn">
+                        <button class="col-sm-6 btn-cancel"  ng-click="remark(1)">
+                            {{'BACKUP_RETURN'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

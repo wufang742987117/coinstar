@@ -1,0 +1,520 @@
+<!--确认收款 -->
+<div class="Popup confirm_k">
+    <!--确认&取消-->
+    <div class="confirm_bod">
+        <h1>{{'CARD_CONFIRMATION_RECEIVABLES_TITLE'|translate}}</h1>  <!--确认收款-->
+        <!--<h1>{{'CARD_COLLECT_CONINS_TITLE'|translate}}</h1>-->    <!--确认收币-->
+        <div>
+            <input type="button" value="{{'CARD_CONFIRM_BTN'|translate}}">
+            <input type="button" value="{{'CARD_CANCEL_BTN'|translate}}">
+        </div>
+    </div>
+    <!--关闭弹窗-->
+    <a href="javascript://"></a>
+</div>
+<!--请前往实名认证-->
+<!--<div class="Popup Appeal" ng-cloak ng-show="real == 1">-->
+<!--<div class="appeal_bod">-->
+<!--<h1>{{'CARD_APPEAL_TITLE'|translate}}</h1>-->
+<!--</div>-->
+<!--&lt;!&ndash;关闭弹窗&ndash;&gt;-->
+<!--<a href="javascript://"></a>-->
+<!--</div>-->
+
+
+<!--温馨提示弹出框-->
+<div class="Popup Reminder" ng-cloak ng-show="userFirstInPop==0">
+    <div class="Reminder_bod">
+        <h1>{{'CARD_REMINDER'|translate}}</h1>
+        <div>
+            <p>{{'CARD_REMINDER_F1'|translate}}</p>
+            <p>
+                {{'CARD_REMINDER_F2'|translate}}<br>
+                {{'CARD_REMINDER_F3'|translate}}<br>
+                {{'CARD_REMINDER_F4'|translate}}<br>
+                {{'CARD_REMINDER_F5'|translate}}<br>
+                {{'CARD_REMINDER_F6'|translate}}
+            </p>
+        </div>
+    </div>
+    <!--关闭弹窗-->
+    <a href="javascript://" ng-click=popStatus('关闭温馨提示')></a>
+</div>
+<!--新增银行卡弹出框-->
+<!--<div class="Popup New_bank_card" ng-cloak ng-show="CardPop">-->
+<!--&lt;!&ndash;填写信息&ndash;&gt;-->
+<!--<div class="card_bod">-->
+<!--<h1>{{'CARD_NEWLY_ADD'|translate}}</h1>-->
+<!--<form name="cardForm" novalidate ng-submit="submitCard(cardUser)">-->
+<!--<ul>-->
+<!--&lt;!&ndash;姓名&ndash;&gt;-->
+<!--<li>-->
+<!--<span>{{'CARD_NAME'|translate}}</span>-->
+<!--<input type="text" placeholder="{{'CARD_NAME_SR'|translate}}" required="required"-->
+<!--ng-model="cardUser.name" ng-minlength="2" name="name">-->
+<!--</li>-->
+<!--<li class="err" style="height: 30px;">-->
+<!--<span class="warning" ng-show="cardForm.name.$dirty && cardForm.name.$invalid">{{'LENGTH_REQUIRED'|translate}}</span>-->
+<!--</li>-->
+<!--&lt;!&ndash;身份证&ndash;&gt;-->
+
+<!--<li>-->
+<!--<span>{{'CARD_SFZ'|translate}}</span>-->
+<!--<input type="text" placeholder="{{'CARD_SFZ_NUM'|translate}}" required="required"-->
+<!--ng-keyup="clearNum(cardUser,'id')" ng-model="cardUser.id" name="id">-->
+<!--</li>-->
+<!--<li class="err" style="height: 30px;">-->
+<!--<span class="warning" ng-show="cardForm.id.$dirty && cardForm.id.$invalid">{{'LENGTH_REQUIRED_ID'|translate}}</span>-->
+<!--</li>-->
+
+<!--&lt;!&ndash;选择银行名字&ndash;&gt;-->
+
+<!--<li>-->
+<!--<span>{{'CARD_BANK_NAME'|translate}}</span>-->
+<!--<select style="width: 100%" ng-model="cardUser.selBankId"-->
+<!--ng-options="a.id as a.name for a in bankNames" name="selBankId">-->
+<!--</select>-->
+<!--</li>-->
+<!--<li class="err" style="height: 30px;">-->
+<!--&lt;!&ndash;<span class="warning" ng-show="cardForm.selBankId.$pristine">{{'ERROR_BANK'|translate}}</span>&ndash;&gt;-->
+<!--</li>-->
+<!--&lt;!&ndash;选择省市&ndash;&gt;-->
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<span>{{'CARD_BANK_ZH'|translate}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<select>&ndash;&gt;-->
+<!--&lt;!&ndash;<option>-{{'CARD_PROVINCE'|translate}}-</option>&ndash;&gt;-->
+<!--&lt;!&ndash;<option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;</select>&ndash;&gt;-->
+<!--&lt;!&ndash;<select style="float: right;">&ndash;&gt;-->
+<!--&lt;!&ndash;<option>-{{'CARD_CITY'|translate}}-</option>&ndash;&gt;-->
+<!--&lt;!&ndash;<option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;</select>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;开户支行&ndash;&gt;-->
+<!--<li>-->
+<!--<span>{{'CARD_BANK_KHZH'|translate}}</span>-->
+<!--<input type="text" placeholder="{{'CARD_BANK_KHZH_SR'|translate}}" required="required"-->
+<!--ng-model="cardUser.branch" name="branch" ng-minlength="5">-->
+<!--</li>-->
+<!--<li class="err" style="height: 30px;">-->
+<!--<span class="warning" ng-show="cardForm.branch.$dirty && cardForm.branch.$invalid">{{'ERROR_BRANCH'|translate}}</span>-->
+<!--</li>-->
+
+
+<!--&lt;!&ndash;银行卡号&ndash;&gt;-->
+<!--<li>-->
+<!--<span>{{'CARD_BANK_YHKH'|translate}}</span>-->
+<!--<input type="text" placeholder="{{'CARD_BANK_YHKH_SR'|translate}}" required="required"-->
+<!--ng-model="cardUser.card" ng-keyup="clearNum(cardUser,'card')" name="card">-->
+<!--</li>-->
+<!--<li class="err" style="height: 30px;" ng-show="cardForm.card.$dirty && cardForm.card.$invalid">-->
+<!--<span class="warning" ng-show="cardForm.card.$dirty && cardForm.card.$invalid">{{'ERROR_CARD'|translate}}</span>-->
+<!--</li>-->
+
+<!--<li style="margin-top: 10px;">-->
+<!--<input type="submit" value="{{'CARD_CONFIRM'|translate}}" ng-disabled="cardForm.$invalid">-->
+<!--</li>-->
+<!--</ul>-->
+<!--</form>-->
+<!--</div>-->
+<!--&lt;!&ndash;关闭弹窗&ndash;&gt;-->
+<!--<a href="javascript://" ng-click=popStatus('关闭新增银行卡')></a>-->
+<!--</div>-->
+<!--每日限额提示弹出框-->
+<div class="Popup Quota" ng-cloak ng-show="dayLimitPop">
+    <div class="Quota_bod">
+        <h1>{{'CARD_QUOTA_TITLE'|translate}}</h1>
+        <div>
+            <p>
+                <!--提示1-->
+                {{'CARD_QUOTA_f1'|translate}}
+                <!--提示2-->
+                <!--{{'CARD_QUOTA_f2'|translate}}-->
+            </p>
+        </div>
+    </div>
+    <!--关闭弹窗-->
+    <a href="javascript://" ng-click=popStatus('关闭每日限额')></a>
+</div>
+<!--收款账户弹出框-->
+<div class="Popup New_bank_card Receivables" ng-cloak ng-show="buyPop">
+    <!--填写信息-->
+    <div class="card_bod">
+        <h1>{{'CARD_RECEIVABLES_TITLE'|translate}}</h1>
+        <ul>
+            <li><span>{{'CARD_NAME_HM'|translate}}</span><input type="text" ng-value="account.real_name" disabled></li>
+            <li><span>{{'CARD_BANK_NAME'|translate}}</span><input type="text" ng-value="account.bank_name" disabled>
+            </li>
+            <li><span>{{'CARD_BANK_YHKH'|translate}}</span><input type="text" ng-value="account.bank_account_no"
+                                                                  disabled></li>
+            <li><span>{{'CARD_MONEY_DK'|translate}}</span>
+                <input  ng-show="order_type == 2" type="text" ng-value=" (asset_price*0.99) |nFilter :asset_amount  " disabled>
+                <input  ng-show="order_type == 1" type="text" ng-value="asset_price |nFilter :asset_amount" disabled></li>
+            <li><span>{{'CARD_REMARK'|translate}}</span><input type="text" ng-value="remit_code" disabled></li>
+            <li style="overflow: initial">
+                <!--会员买单-->
+                <span ng-cloak ng-show="uid==5 && order_type ==1">{{'CARD_NOTES'|translate}}</span>
+
+                <span ng-cloak ng-show="uid==0">{{'CARD_NOTES_SELL'|translate}}</span>
+                <span ng-cloak ng-show="uid==1">{{'CARD_NOTES'|translate}}</span>
+                <input type="button"
+                       value="{{'CARD_CONFIRM'|translate}}"
+                       ng-click=popStatus('关闭收款账户',orderId,'','','','',status)>
+            </li>
+        </ul>
+    </div>
+    <!--关闭弹窗-->
+    <a href="javascript://" ng-click=popStatus('关闭收款账户按钮')></a>
+</div>
+<!--会员C2C交易首页-->
+<div class="common-main trade_desk" ng-if="uid == 5">
+    <div class="common_bod">
+        <div class="common_bod_center">
+            <!--买入卖出  会员-->
+            <div class="trade_main">
+                <!--ng-submit="subForm(1,buyFormData.buy_vol)"-->
+                <div class="common_bod_input">
+                    <form name="buyForm" novalidate>
+                        <ul>
+                            <li>{{'CARD_PROJECT'|translate}}：</li>
+                            <li><label>{{'CARD_BUY_PRICE'|translate}}( &yen; )：</label><input type="number" class="num"
+                                                                                              disabled="disabled"
+                                                                                              required="required"
+                                                                                              ng-value="goldPrice |n2Filter"
+                                                                                              name="buy_price">
+                                <!--<div style="color:red" ng-show="buyForm.buy_price.$dirty && buyForm.buy_price.$invalid">-->
+                                <!--<span class="warning" ng-show="buyForm.buy_price.$error.required">{{'PRICE_REQUIRED'|translate}}</span>-->
+                                <!--<span class="warning" ng-show="buyForm.buy_price.$error.number">{{'ERROR_ONLY_NUMBER'|translate}}</span>-->
+                                <!--</div>-->
+                            </li>
+                            <li><label>{{'CARD_BUY_VOLUME'|translate}}：</label><input type="text" class="num"
+                                                                                      required='required'
+                                                                                      ng-model="buyFormData.buy_vol"
+                                                                                      name="buy_vol"
+                                                                                      ng-change="deleteMsg(1)"
+                                                                                      ng-keyup="clearNum(buyFormData,'buy_vol')" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                                <!--<div style="color:red" ng-show="buyForm.buy_vol.$dirty && buyForm.buy_vol.$invalid">-->
+                                <!--&lt;!&ndash;<span class="warning" ng-show="buyForm.buy_vol.$error.required">{{'PRICE_REQUIRED'|translate}}</span>&ndash;&gt;-->
+                                <!--<span class="warning" ng-show="buyForm.buy_vol.$error.number">{{'ERROR_ONLY_NUMBER'|translate}}</span>-->
+                                <!--</div>-->
+
+                            </li>
+                            <li>
+                                {{'CARD_NEED'|translate}}<span ng-show="buyFormData.buy_vol">&yen;{{(goldPrice*buyFormData.buy_vol) |n2Filter}}</span>
+                            </li>
+                            <li>
+                                <div style="color:red" ng-show="buyFormData.buy_vol>200000/goldPrice " >
+                                    <span class="warning">{{'BUY_VOL_LIMIT'|translate}}</span></div>
+                                <div style="color:red" ng-show="msg">
+                                    <span class="warning" ng-show="busniessBalanceSmall">{{'BUSINESS_BALANCE_TOO_SMALL'|translate}}</span>
+                                    <span class="warning" ng-show="C2C_TIP_NOTONLINE">{{'C2C_TIP_NOTONLINE'|translate}}</span>
+                                    <span class="warning" ng-show="C2C_ORDER_UN_LIMIT">{{'C2C_ORDER_UN_LIMIT'|translate}}</span>
+                                    <span class="warning" ng-show="buyOutLimit">{{'C2CORDER.LIMIT'|translate}}</span>
+                                    <span class="warning" ng-show="canNotBuy">{{'CAN_NOT_BUY'|translate}}</span>
+                                </div>
+                                <a href="/#!/c2c/c2crealIdentity" class="warning" ng-show="real == 1" style="text-decoration:underline;float: left;width: 100%;color: #12cfe0;">{{'GO_REAL_OPEN'|translate}}</a>
+                                <input class="sub" type="submit" value="{{'CARD_BUY'|translate}}"
+                                       ng-click="checkAuthInfo(1,buyFormData.buy_vol)"
+                                       ng-disabled="buyForm.buy_price.$error.number || buyForm.buy_price.$error.required || buyForm.buy_vol.$error.number || buyForm.buy_vol.$error.required || buyFormData.buy_vol>200000/goldPrice|| msg ||real==1"
+                                       ng-style="{background:(buyForm.buy_price.$error.number || buyForm.buy_price.$error.required || buyForm.buy_vol.$error.number || buyForm.buy_vol.$error.required || buyFormData.buy_vol>200000/goldPrice || msg || real==1 )?'#a7838d':'#d44b5e'}">
+                            </li>
+                        </ul>
+                    </form>
+                    <!--ng-submit="subForm(2,sellFormData.sell_vol)"-->
+                    <form name="sellForm" novalidate >
+                        <ul>
+                            <li>{{'CARD_OUT'|translate}}：</li>
+                            <li><label>{{'CARD_SELLING_PRICE'|translate}}( &yen; )：</label><input type="number"
+                                                                                                  disabled="disabled"
+                                                                                                  required="required"
+                                                                                                  ng-value="goldPrice*0.99 | n2Filter"
+                                                                                                  name="sell_price" style="color: #25df9a">
+                                <div style="color:red"
+                                     ng-show="sellForm.sell_price.$dirty && sellForm.sell_price.$invalid">
+                                    <span class="warning" ng-show="sellForm.sell_price.$error.required">{{'PRICE_REQUIRED'|translate}}</span>
+                                    <span class="warning" ng-show="sellForm.sell_price.$error.number">{{'ERROR_ONLY_NUMBER'|translate}}</span>
+                                </div>
+                            </li>
+                            <li><label>{{'CARD_SALES_VOLUME'|translate}}：</label><input type="text" required="required"
+                                                                                        ng-change="deleteMsg(2)"
+                                                                                        class="num"
+                                                                                        ng-keyup="clearNum(sellFormData,'sell_vol')"
+                                                                                        ng-model="sellFormData.sell_vol"
+                                                                                        name="sell_vol">
+                            </li>
+                            <li>
+                                {{'CARD_AVAILABLE'|translate}}<span ng-show="sellFormData.sell_vol">&yen;{{(goldPrice*0.99) | nFilter : sellFormData.sell_vol}}</span>
+                                <!--<span ng-show="sellFormData.sell_vol">&yen;{{(((goldPrice | numUpFilter) *0.01)*0.99) | numFilter}}</span>-->
+                                <!--<span ng-show="sellFormData.sell_vol">&yen;{{((goldPrice | numUpFilter) *0.01)*0.99}}</span>-->
+                                <!--<span ng-show="sellFormData.sell_vol">&yen;{{(goldPrice | numUpFilter) *0.01}}</span>-->
+                                <!--<span ng-show="sellFormData.sell_vol">&yen;{{goldPrice | nFilter}}</span>-->
+                                <!--<span ng-show="sellFormData.sell_vol">&yen;{{goldPrice}}</span>-->
+                            </li>
+                            <li>
+                                <div style="color:red" ng-show="sellMsg">
+                                    <span class="warning" ng-show="sellForm.sell_vol.$error.required">{{'PRICE_REQUIRED'|translate}}</span>
+                                    <span class="warning" ng-show="sellForm.sell_vol.$error.number">{{'ERROR_ONLY_NUMBER'|translate}}</span>
+                                    <span class="warning" ng-show="sellLimit">{{'SELL_LIMIT'|translate}}</span>
+                                    <span class="warning" ng-show="busniessBalanceSmall_2">{{'BUSINESS_BALANCE_TOO_SMALL'|translate}}</span>
+                                    <span class="warning" ng-show="C2C_ORDER_UN_LIMIT_2">{{'C2C_ORDER_UN_LIMIT'|translate}}</span>
+                                    <span class="warning" ng-show="C2C_TIP_NOTONLINE_2">{{'C2C_TIP_NOTONLINE'|translate}}</span>
+                                    <span class="warning" ng-show="SELL_LIMIT">{{'C2C_SELL_LIMIT'|translate}}</span>
+                                </div>
+                                <a href="/#!/c2c/c2crealIdentity" class="warning" ng-show="real == 1" style="text-decoration:underline;float: left;width: 100%;color: #12cfe0;">{{'GO_REAL_OPEN'|translate}}</a>
+
+                                <input class="sub" type='submit' value="{{'CARD_SELL'|translate}}"
+                                       ng-click="checkAuthInfo(2,sellFormData.sell_vol)"
+                                       ng-disabled="sellForm.sell_price.$error.number || sellForm.sell_price.$error.required || sellForm.sell_vol.$error.number || sellForm.sell_vol.$error.required || sellLimit || real ==1 || SELL_LIMIT"
+                                       ng-style="{background:(sellForm.sell_price.$error.number || sellForm.sell_price.$error.required || sellForm.sell_vol.$error.number || sellForm.sell_vol.$error.required  || sellLimit || real ==1 || SELL_LIMIT)?'#73a294':'#25df9a'}"
+                                ></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <!--交易记录-->
+            <div class="trade_list">
+                <div class="trade_list_main">
+                    <ul>
+                        <li>{{'CARD_MERCHANT'|translate}}</li>
+                        <li>{{'CARD_NUMBER'|translate}}</li>
+                        <li>{{'CARD_TYPE'|translate}}</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                    </ul>
+                    <div class="list_bod" >
+                        <div class="scroll-box" id="FontScroll">
+                            <ul class="ulList">
+                                <li class="licontent" ng-repeat="v in scrollDataOdd">
+                                    <ul >
+                                        <li>{{v.commercial_id}}</li>
+                                        <li>{{v.asset_amount}}</li>
+                                        <li ng-if="language =='zh_TW'||!language">{{v.order_type | typeFilter: 'zh'}}</li>
+                                        <li ng-if="language =='en'">{{v.order_type | typeFilter: 'en'}}</li>
+                                        <li ng-if="language =='zh_TW'||!language">{{v.status | statusFilter: 'zh'}}</li>
+                                        <li ng-if="language =='en'">{{v.status | statusFilter: 'en'}}</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="trade_list_main">
+                    <ul>
+                        <li>{{'CARD_MERCHANT'|translate}}</li>
+                        <li>{{'CARD_NUMBER'|translate}}</li>
+                        <li>{{'CARD_TYPE'|translate}}</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                    </ul>
+                    <div class="list_bod">
+                        <div class="scroll-box2" id="FontScroll2">
+                            <ul>
+                                <li class="licontent" ng-repeat="v in scrollDataEven">
+                                    <ul >
+                                        <li>{{v.commercial_id}}</li>
+                                        <li>{{v.asset_amount}}</li>
+                                        <li ng-if="language =='zh_TW'||!language">{{v.order_type | typeFilter: 'zh'}}</li>
+                                        <li ng-if="language =='en'">{{v.order_type | typeFilter: 'en'}}</li>
+                                        <li ng-if="language =='zh_TW'||!language">{{v.status | statusFilter: 'zh'}}</li>
+                                        <li ng-if="language =='en'">{{v.status | statusFilter: 'en'}}</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    {{'CARD_EXPLAIN_1'|translate}}</br>
+                    {{'CARD_EXPLAIN_2'|translate}}</br>
+                    {{'CARD_EXPLAIN_3'|translate}}</br>
+                    {{'CARD_EXPLAIN_4'|translate}}</br>
+                    {{'CARD_EXPLAIN_5'|translate}}</br>
+                </p>
+            </div>
+            <!--最近兑换记录-->
+            <div class="trade_record">
+                <div class="record_tit">
+                    <p>{{'CARD_RECORD'|translate}}</p>
+                    <a href="/#!/c2c/c2cpersonrecord">{{'CARD_MORE'|translate}}></a>
+                </div>
+                <div class="record_list">
+                    <ul class="tit code-list" >
+                        <li>{{'CARD_TIME'|translate}}</li>
+                        <li>{{'CARD_CATEGORY'|translate}}</li>
+                        <li>{{'CARD_MERCHANT'|translate}}</li>
+                        <li>{{'CARD_NUM'|translate}}</li>
+                        <li>{{'CARD_PRICE'|translate}}(&yen;)</li>
+                        <li>{{'CARD_TOTAL'|translate}}(&yen;)</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                        <!--<li>{{'CARD_COMMUNICATE'|translate}}</li>-->
+                    </ul>
+                    <!--只显示10条-->
+                    <ul class="code-list" ng-cloak ng-show="changeRecord.length!=0" ng-repeat="v in changeRecord">
+                        <li>{{v.create_time | dateFilter | date : 'yyyy-MM-dd HH:mm:ss'}}</li>
+                        <li ng-if="language =='zh_TW'">{{v.order_type | typeFilter: 'zh'}}</li>
+                        <li ng-if="language =='en'">{{v.order_type | typeFilter: 'en'}}</li>
+                        <li>{{v.commercial_id}}</li>
+                        <li>{{v.asset_amount}}
+                            <!--<li>{{v.asset_price }}</li>-->
+                        <li ng-show="v.order_type ==2">{{(v.asset_price*0.99).toFixed(2) }}</li>
+                        <li ng-show="v.order_type ==1">{{v.asset_price }}</li>
+                        <li ng-show="v.order_type ==2">{{(v.asset_price*0.99) |nFilter : v.asset_amount }}
+                        </li>
+                        <li ng-show="v.order_type ==1">{{v.asset_price |nFilter : v.asset_amount}}</li>
+                        <li ng-if="language =='zh_TW'" class="longer">{{v.status | statusFilter: 'zh'}}
+                            <span ng-show="(v.status == 1 && v.order_type == 1 ) || (v.status == 0 && v.order_type == 2)" style="margin-left: 4px; color: #11cfe0;cursor: pointer;" ng-click="revoke(v.id)">/ {{'REVOKE'|translate}}</span><img
+                                    src="/assets/images/icon/sm_icon.png" ng-cloak ng-show='v.order_type==1 && v.status !=4'
+                                    ng-click=popStatus('打开收款账户',v.id,v.asset_price,v.asset_amount,v.remit_code,v.order_type)></li>
+                        <li ng-if="language =='en'" class="longer">{{v.status | statusFilter: 'en'}}
+                            <span ng-show="(v.status == 1 && v.order_type == 1 ) || (v.status == 0 && v.order_type == 2)" style="margin-left: 4px; color: #11cfe0;cursor: pointer;" ng-click="revoke(v.id)">/ {{'REVOKE'|translate}}</span><img
+                                    src="/assets/images/icon/sm_icon.png" ng-cloak ng-show='v.order_type==1 && v.status !=4'
+                                    ng-click=popStatus('打开收款账户',v.id,v.asset_price,v.asset_amount,v.remit_code,v.order_type)></li>
+                        <!--<li ng-cloak ng-show="v.status === 1"><a href="javascript://" ng-click="confirmBill(v.commercial_id)">{{'CARD_GOODS_RECEIPT'|translate}}</a></li>-->
+                        <!--<li>-->
+                        <!--<img src="../assets/images/talk.png" alt="" ng-click="talkShowToBussiness(v.commercial_id)">-->
+                        <!--</li>-->
+                    </ul>
+                    <!--暂无数据-->
+                    <div class="no_date" ng-cloak ng-show="changeRecord.length==0">
+                        <label>{{'CARD_NO_DATE'|translate}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--买入商户C2C交易页面-->
+<div class="common-main trade_desk" ng-if="uid !=5">
+    <div class="common_bod">
+        <div class="common_bod_center">
+
+            <!--GCC详情 卖入商户-->
+            <div class="GCC_details" ng-if="uid == 0">
+                <ul>
+                    <li>
+                        <label>USDT {{'TRADE_TOTAL'|translate}}</label>
+                        <span>{{(balanceData.USDT.frozen  | amount)+(balanceData.USDT.balance | amount)}}</span>
+                    </li>
+                    <li>
+                        <label>USDT {{'TRADE_FROZEN'|translate}}</label>
+                        <span>{{balanceData.USDT.frozen | amount}}</span>
+                    </li>
+                    <li>
+                        <label>USDT {{'TRADE_USE'|translate}}</label>
+                        <span>{{balanceData.USDT.balance | amount}}</span>
+                    </li>
+                </ul>
+            </div>
+            <!--买入卖出-->
+            <div class="trade_main">
+                <div class="trade_card">
+                    <div>
+                        <h1 class="alert_hover" ng-click="sellBuyInfo(1)"
+                            ng-class="{true:'alert_hover',false:''}[orderType !=2]">
+                            {{'CARD_BUYING_LEADS'|translate}}</h1>
+                        <h1 ng-click="sellBuyInfo(2)" ng-class="{true:'alert_hover',false:''}[orderType == 2]">
+                            {{'CARD_SELLING_INFORMATION'|translate}}</h1>
+                    </div>
+                    <!--<a href="/#!/setting/menu">{{'CARD_MANAGE'|translate}}</a>-->
+                    <!--<a href="javascript://">{{'CARD_ADD'|translate}}</a>-->
+                </div>
+                <div class="alert_list" ng-cloak ng-show="orderType == 1">
+                    <ul>
+                        <li>{{'CARD_INITIATOR'|translate}}</li>
+                        <li>{{'CARD_NUM'|translate}}</li>
+                        <li>{{'CARD_PRICE'|translate}}(&yen;)</li>
+                        <li>{{'CARD_TOTAL'|translate}}(&yen;)</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                    </ul>
+                    <div class="list_bod">
+                        <ul ng-cloak ng-show="changeRecord.length!=0" ng-repeat="v in changeRecord"
+                        >
+                            <li>{{v.consumer_id}}</li>
+                            <li>{{v.asset_amount}}</li>
+                            <li>{{v.asset_price}}</li>
+                            <li>{{v.asset_price |nFilter : v.asset_amount }}</li>
+                            <li ng-if="language =='zh_TW'||!language">{{v.status | statusFilter: 'zh'}}</li>
+                            <li ng-if="language =='en'">{{v.status | statusFilter: 'en'}}</li>
+                        </ul>
+                        <!--暂无数据-->
+                        <div class="no_date" ng-cloak ng-show="changeRecord.length==0" style="text-align: center;">
+                            <label style="width: auto;height: 20px;line-height: 20px;margin: 125px auto;display: inline-block;background: url(/assets/images/icon/no_date_icon.png) 0 3px no-repeat;text-indent: 20px;color: #949999;">{{'CARD_NO_DATE'|translate}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert_list" ng-cloak ng-show="orderType == 2">
+                    <ul>
+                        <li>{{'CARD_INITIATOR'|translate}}</li>
+                        <li>{{'CARD_NUM'|translate}}</li>
+                        <li>{{'CARD_PRICE'|translate}}(&yen;)</li>
+                        <li>{{'CARD_TOTAL'|translate}}(&yen;)</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                    </ul>
+                    <div class="list_bod">
+                        <ul ng-cloak ng-show="changeRecordSell.length!=0" ng-repeat="v in changeRecordSell"
+                        >
+                            <li>{{v.consumer_id}}</li>
+                            <li>{{v.asset_amount}}</li>
+                            <li>{{(v.asset_price*0.99).toFixed(2)}}</li>
+                            <li>{{(v.asset_price*0.99) |nFilter :v.asset_amount }}</li>
+                            <li ng-if="language =='zh_TW'||!language">{{v.status | statusFilter: 'zh'}}</li>
+                            <li ng-if="language =='en'">{{v.status | statusFilter: 'en'}}</li>
+                        </ul>
+                        <!--暂无数据-->
+                        <div class="no_date" ng-cloak ng-show="changeRecordSell.length==0" style="text-align: center;">
+                            <label style="width: auto;height: 20px;line-height: 20px;margin: 125px auto;display: inline-block;background: url(/assets/images/icon/no_date_icon.png) 0 3px no-repeat;text-indent: 20px;color: #949999;">{{'CARD_NO_DATE'|translate}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--当前记录-->
+            <div class="trade_record">
+                <div class="record_tit">
+                    <p>{{'CARD_CURRENT'|translate}}</p>
+                    <input type="text" placeholder="{{'CARD_REMARK'|translate}}" ng-model="remark" ng-cloak ng-show="uid == 0">
+                    <input type="button" value="" ng-click="getRecords(1,id,'','','',remark)" ng-cloak ng-show="uid == 0">
+                    <a href="/#!/c2c/c2cpersonrecordshop" >{{'CARD_MORE'|translate}}></a>
+                </div>
+                <div class="record_list">
+                    <ul  class="tit">
+                        <li>{{'CARD_TIME'|translate}}</li>
+                        <li>{{'CARD_SELLER_MEMBER'|translate}}</li>
+                        <li>{{'CARD_NUM'|translate}}</li>
+                        <li>{{'CARD_PRICE'|translate}}(&yen;)</li>
+                        <li>{{'CARD_TOTAL'|translate}}(&yen;)</li>
+                        <li>{{'CARD_SERIAL'|translate}}</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                    </ul>
+                    <!--只显示10条-->
+                    <ul ng-repeat="v in changeRecordAll" ng-cloak ng-show="changeRecordAll.length!=0">
+                        <li>{{v.create_time | dateFilter | date : 'yyyy-MM-dd HH:mm:ss'}}</li>
+                        <li>{{v.consumer_id}}</li>
+                        <li>{{v.asset_amount}}</li>
+                        <!--<li>{{v.asset_price}}</li>-->
+                        <li ng-show="v.order_type == 2">{{(v.asset_price*0.99).toFixed(2)}}</li>
+                        <li ng-show="v.order_type == 1">{{v.asset_price}}</li>
+                        <li ng-show="v.order_type == 2">{{(v.asset_price*0.99) |nFilter :v.asset_amount  }}</li>
+                        <li ng-show="v.order_type == 1">{{v.asset_price |nFilter :v.asset_amount}}</li>
+                        <li>{{v.id}}</li>
+                        <li style="cursor: pointer" ng-if="language =='en'">{{v.status | statusFilter: 'en'}}<img
+                                src="/assets/images/icon/sm_icon.png"
+                                ng-click=popStatus('打开收款账户',v.id,v.asset_price,v.asset_amount,v.remit_code,v.order_type,v.status)></li>
+                        <li style="cursor: pointer" ng-if="language =='zh_TW'||!language">{{v.status | statusFilter: 'zh'}}<img
+                                src="/assets/images/icon/sm_icon.png"
+                                ng-click=popStatus('打开收款账户',v.id,v.asset_price,v.asset_amount,v.remit_code,v.order_type,v.status)></li>
+                    </ul>
+                    <!--暂无数据-->
+                    <div class="no_date" ng-cloak ng-show="changeRecordAll.length == 0">
+                        <label>{{'CARD_NO_DATE'|translate}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<img src="../assets/images/message.png" alt="" class="message-img">-->
+        <!--<img src="../assets/images/message_new.png" alt="" class="message-img" ng-click="talkShowToUser()">-->
+    </div>
+</div>
+
+
+

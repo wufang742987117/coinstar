@@ -1,0 +1,158 @@
+
+<div class="common-container common-wrap trade-contaner trade-contaner-app" >
+    <div class="trade-content " style="height: auto;">
+        <div class="detail-content">
+						
+						<!-- 左上角币种描述 -->
+            <div class="detail-list">
+							<h3 class="tc_h3">{{'BX_TIP_1'|translate}}：</h3>
+							<p class="tc_p">{{'BX_TIP_2'|translate}}</p>
+							<h3 class="tc_h3">{{'BX_TIP_3'|translate}} ：9999999999</h3>
+							<h3 class="tc_h3">{{'BX_TIP_4'|translate}} ：0</h3>
+							<h3 class="tc_h3">{{'BX_TIP_5'|translate}} ：0</h3>
+						</div>
+						
+						<!-- 折线图 -->
+            <div class="detail-chart" ng-controller="tcChartController">
+                <div id="tc_container" style="width: 100%;height: 100%;"></div>
+            </div>
+        </div>
+				
+        <div class="detail-content height300" >
+				<!-- 左下角交易开始 -->
+        <div class="detail-list" style="height: auto;">
+						<div class="list-wrap">
+							<ul class="sell_buy_wrap">
+								<li class="buy_semit" style="height: auto;">
+									<div class="account-info account_tc">
+										<table>
+											<tr>
+												<td>{{'KYZJ'|translate}}TWD：</td>
+												<td style="color: #fff">
+													<input type="text">
+												</td>
+											</tr>
+											<tr>
+												<td>{{'SYKMSL'|translate}}：</td>
+												<td style="color: #fff" >
+													<input type="text">
+												</td>
+											</tr>
+											<tr>
+												<td>{{'MRJG'|translate}}TWD：</td>
+												<td style="color: #fff">
+													<input type="text">
+												</td>
+											</tr>
+										</table>
+										<div class="number">	
+											<input type="number"  class="inputbgtype" placeholder="{{'MRSL'|translate}}"><label for="">CSC</label>
+										</div>
+										<ul class="select_type">
+											<li>25%</li>
+											<li>50%</li>
+											<li>75%</li>
+											<li>100%</li>
+										</ul>
+										<!-- <table class="total-tab">
+											<tr>
+												<td>{{'TRADE_LEIJI'|translate}}{{activeTicker.trading_pair.ask_asset_symbol}}：</td>
+												<td style="color: #fff">{{limitBuyData.total | formatNumber}}</td>
+											</tr>
+										</table> -->
+										<div  class="password">
+											<input type="password" class="inputbgtype" placeholder="{{'JYMM'|translate}}">
+										</div>
+										
+										<button  class="buy_button btn">{{'TRADE.BUY'|translate}}</button>
+									</div>
+								</li>
+								<li class="sell_semit" style="height: auto;">
+									<div class="account-info account_tc">
+										<table>
+											<tr>
+												<td>{{'KYSL'|translate}}CSC：</td>
+												<td style="color: #fff" class="top_pc">0</td>
+											</tr>
+											<tr class="top_mobile" style="margin-top: 10px;"><td style="color: #fff">0</td></tr>
+											<tr>
+												<td>{{'SYKMSL_SELL'|translate}}：</td>
+												<td style="color: #fff" class="top_pc">0</td>
+											</tr>
+											<tr>
+												<td>{{'MCJG'|translate}}TWD：</td>
+												<td style="color: #fff" class="top_pc">0</td>
+											</tr>
+										</table>
+						
+										<div class="number">
+											<input type="number"  class="inputbgtype" placeholder="{{'MCSL'|translate}}"><label for="">CSC</label>
+										</div>
+
+										<ul class="select_type">
+											<li>25%</li>
+											<li>50%</li>
+											<li>75%</li>
+											<li>100%</li>
+										</ul>
+										<div  class="password">
+											<input type="password" class="inputbgtype" placeholder="{{'JYMM'|translate}}">
+										</div>
+										<button class="sell_button btn">{{'TRADE.SELL'|translate}}</button>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- 历史成交 -->
+            <div class="history-detail">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{{'CARD_TYPE'|translate}}</th>
+                            <th>{{'TRADE.PRICE'|translate}}(USDT)</th>
+                            <th>{{'TRADE.VOLUME'|translate}}(CSC})</th>
+                            <!-- <th class="top_pc">{{'TRADE_LEIJI'|translate}}(CSC)</th> -->
+                            <th class="top_pc">{{'ALREAD_TRADE'|translate}}</th>
+                            <th class="top_pc">{{'NO_TRADE_DEAL'|translate}}</th>
+                            <th>{{'TRADE.DELEGATE.OPTION'|translate}}</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="detail-scroll">
+									
+										<!-- 暂无数据 -->
+                    <div class="trade_empty">
+                        {{'Xgh_No.record'|translate}}
+                    </div>
+										
+										<!-- 有数据列表 -->
+                    <!-- <table>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                          
+                            <td>
+															
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                               
+                            </td>
+                        </tr>
+                    </table> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

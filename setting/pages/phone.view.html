@@ -1,0 +1,107 @@
+<div class="common-main" auto-height>
+  <div class="common-main-title">
+    <div class="container">
+      <span class="zh-title">{{'BIND_PHONE'|translate}}</span>
+      <span class="en-title"><span class="line">|</span>BINDING PHONE</span>
+    </div>
+  </div>
+  <div class="container setting-action">
+    <form name="form" ng-submit="vm.phone()" role="form" class="form-horizontal">
+      <!--<div class="form-group">-->
+        <!--<label for="buy" class="col-sm-3 control-label">用户账号:</label>-->
+        <!--<div class="col-sm-9">-->
+          <!--<input type="text" class="form-control input-sm" readonly="readonly" ng-model="setting.email">-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="form-group">
+        <label for="amount" class="col-sm-3 control-label">{{'REGISTER.MOBILE_NUMBER'|translate}}:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control input-sm" max-length="11" name="phone"
+            ng-pattern="/^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/"
+            ng-model="formData.phone"ng-change="phonecheck()"  required>
+          <span class="error" ng-if="form.phone.$dirty && form.phone.$invalid"><span class="text-error"></span>{{ 'SETTING.BIND_NUM_INVALID' | translate }}</span>
+          <span class="error" ng-if="phonefalse"><span class="text-error"></span>{{ 'SETTING.BIND_DOU' | translate }}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tpass" class="col-sm-3 control-label">{{'PHONE_EMLCODE'|translate}}:</label>
+        <div class="col-sm-9">
+          <div class="code-group">
+            <input type="text" ng-minlength="6" maxlength="6" name="secret" class="form-control input-sm" ng-model="formData.secret">
+            <button class="btn btn-default btn-sm" ng-disabled="!formData.phone || form.phone.$invalid || counter>0||phonefalse" ng-click="askBind()">
+              <span ng-if="counter>0">{{'SETTING.TPASS.REMAINING'|translate}}{{counter}}'S</span>
+              <span ng-if="!counter">{{'ACCOUNT.GETCODE'|translate}}</span>
+            </button>
+          </div>
+          <span class="error" ng-if="form.secret.$dirty && form.secret.$invalid">{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+        </div>
+      </div>
+      <div class="form-group" style="padding-top: 15px;">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-submit btn-block"
+            ng-click="answerBind()" ng-disabled="form.$invalid || submit_sending||!formData.secret||phonefalse">确定</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 
+<div class="settingContent">
+  <div class="form-group" ng-class="{ 'has-error': form.oldPhone.$dirty && form.oldPhone.$error.required }">
+
+    <form name="form" ng-submit="vm.phone()" role="form">
+        <h1>{{"SETTING.BIND_NUM_TITLE" | translate}}</h1>
+
+        <p ng-hide="error.phone ">{{"SETTING.BIND_NUM_PLEASE" | translate}}</p>
+        <p class="error" ng-hide="!error.phone">{{ 'SETTING.BIND_NUM_INVALID' | translate }}</p>
+        <input type="text"
+               name="newEmail"
+               id="newEmail"
+               ng-model="vm.newPhone"
+               placeholder="{{'SETTING.BIND_NUM_HOLD' | translate}}"
+               ng-change="vm.checkingPhone(vm.newPhone);vm.doubleCheckPhone(vm.newPhone, vm.newPhone2);" required>
+
+
+        <p ng-show="doubleCheck.phone==true">{{"SETTING.BIND_NUM_ENTER" | translate}}</p>
+        <p class="error" ng-show="doubleCheck.phone==false">{{ 'SETTING.BIND_NUM_MATCH' | translate }}</p>
+        <input type="text"
+               name="newPhone"
+               id="newPhone"
+               ng-model="vm.newPhone2"
+               placeholder="{{'SETTING.BIND_NUM_HOLD' | translate}}"
+               ng-change="vm.doubleCheckPhone(vm.newPhone, vm.newPhone2)" required>
+
+        <p>{{"SETTING.BIND_NUM_GET" | translate}}</p>
+
+        <div class="SeEmailGet">
+            <input type="text"
+                   placeholder="{{'SETTING.BIND_NUM_SMS' | translate}}"
+                   ng-model="vm.secret"
+                   ng-change="vm.checkCode()" required>
+            <button type="button"
+                   ng-click="askBind()"
+                   ng-disabled="vm.code_sent || !doubleCheck.verify || code_sending">
+                <span ng-show="code_sending"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                <span ng-hide="code_sending || code_count">{{"SETTING.GET" | translate}}</span>
+                <span ng-show="code_count" >{{counter}}</span>
+            </button>
+        </div>
+
+        <div class="setError">
+            <p>{{error_message|translate}}</p>
+        </div>
+
+        <button type="button"
+                ng-click="answerBind()"
+                ng-disabled="!vm.code_sent || !vm.code_valid">
+                <span ng-show="submit_sending"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                <span ng-hide="submit_sending">{{'SETTING.UPDATE2' | translate}}</span>
+        </button>
+
+        <div ng-class="{
+                    'centerSuccess': flash.type === 'success',
+                    'centerError': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message">
+        </div>
+    </form>
+</div> -->

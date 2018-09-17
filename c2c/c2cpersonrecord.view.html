@@ -1,0 +1,140 @@
+<!--收款账户弹出框-->
+<div class="Popup New_bank_card Receivables" ng-cloak ng-show="buyPop">
+    <!--填写信息-->
+    <div class="card_bod">
+        <h1>{{'CARD_RECEIVABLES_TITLE'|translate}}</h1>
+        <ul>
+            <li><span>{{'CARD_NAME_HM'|translate}}</span><input type="text" ng-value="account.real_name" disabled></li>
+            <li><span>{{'CARD_BANK_NAME'|translate}}</span><input type="text" ng-value="account.bank_name" disabled>
+            </li>
+            <li><span>{{'CARD_BANK_YHKH'|translate}}</span><input type="text" ng-value="account.bank_account_no"
+                                                                  disabled></li>
+            <li><span>{{'CARD_MONEY_DK'|translate}}</span><input type="text" ng-value="(asset_price*asset_amount)|n2Filter"
+                                                                 disabled></li>
+            <li><span>{{'CARD_REMARK'|translate}}</span><input type="text" ng-value="remit_code" disabled></li>
+            <li style="overflow: initial"><span ng-cloak ng-show="uid===5">{{'CARD_NOTES'|translate}}</span>
+                <span ng-cloak ng-show="uid===0">{{'CARD_NOTES_SELL'|translate}}</span>
+                <span ng-cloak ng-show="uid===1">{{'CARD_NOTES'|translate}}</span><input type="button"
+                                                                                         value="{{'CARD_CONFIRM'|translate}}"
+                                                                                         ng-click=popStatus("关闭收款账户",orderId)>
+            </li>
+        </ul>
+    </div>
+    <!--关闭弹窗-->
+    <a href="javascript://" ng-click=popStatus("关闭收款账户")></a>
+</div>
+
+<!--会员历史交易记录页面-->
+<div class="common-main trade_desk" auto-height>
+    <!--标题-->
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'GCC_TRADE'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>EXCHANGE</span>
+        </div>
+    </div>
+    <div class="common_bod">
+        <div class="common_bod_center">
+            <!--查询条件-->
+            <!--<div class="row">-->
+            <!--<div class='col-sm-6'>-->
+            <!--<div class="form-group">-->
+            <!--<label>选择日期：</label>-->
+            <!--<div class='input-group date' id='datetimepicker1'>-->
+            <!--<input type='text' class="form-control" />-->
+            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class='col-sm-6'>-->
+            <!--<div class="form-group">-->
+            <!--<label>选择日期+时间：</label>-->
+            <!--<div class='input-group date' id='datetimepicker2'>-->
+            <!--<input type='text' class="form-control" />-->
+            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="query_input">
+                <ul>
+                    <li>
+                        <label>{{'CARD_CATEGORY'|translate}}：</label>
+                        <select ng-model="type"  ng-init="type='buy'">
+                            <option value="buy">{{'CARD_BUY_f'|translate}}</option>
+                            <option value="sell">{{'CARD_SELL_f'|translate}}</option>
+                        </select>
+                    </li>
+                    <li style="overflow: visible; position: relative;">
+                        <label>{{'CARD_START_TIME'|translate}}：</label>
+                        <datepicker date-format="yyyy-MM-dd" style="width:160px;">
+                            <input ng-model="date1" type="text"/>
+                        </datepicker>
+                    </li>
+                    <li style="overflow: visible; position: relative;" >
+                        <label>{{'CARD_END_TIME'|translate}}：</label>
+                        <datepicker date-format="yyyy-MM-dd" style="width:160px;">
+                            <input ng-model="date2" type="text"/>
+                        </datepicker>
+                    </li>
+                    <li>
+                        <label>{{'CARD_BUSINESS_ID'|translate}}：</label>
+                        <input type="text" ng-model="id">
+                    </li>
+                    <li>
+                        <input type="button" value="{{'CARD_QUERY'|translate}}" ng-click="getRecords(2,type,date1,date2,id)">
+                    </li>
+                </ul>
+            </div>
+            <!--历史记录-->
+            <div class="trade_record">
+                <div class="record_tit">
+                    <p>{{'CARD_HISTORY'|translate}}</p>
+                </div>
+                <div class="record_list">
+                    <ul  class="tit">
+                        <li>{{'CARD_TIME'|translate}}</li>
+                        <li>{{'CARD_CATEGORY'|translate}}</li>
+                        <li>{{'CARD_MERCHANT'|translate}}</li>
+                        <li>{{'CARD_NUM'|translate}}</li>
+                        <li>{{'CARD_PRICE'|translate}}(&yen;)</li>
+                        <li>{{'CARD_TOTAL'|translate}}(&yen;)</li>
+                        <li>{{'CARD_STATE'|translate}}</li>
+                    </ul>
+                    <ul ng-repeat="v in dataList" ng-cloak ng-show="dataList.length!=0">
+                        <li>{{v.create_time | dateFilter | date : 'yyyy-MM-dd HH:mm:ss'}}</li>
+                        <li ng-if="language =='zh_TW'">{{v.order_type | typeFilter: 'zh'}}</li>
+                        <li ng-if="language =='en'">{{v.order_type | typeFilter: 'en'}}</li>
+                        <li>{{v.commercial_id}}</li>
+                        <li>{{v.asset_amount}}</li>
+                        <li ng-show="v.order_type ==2">{{(v.asset_price*0.99).toFixed(2) }}</li>
+                        <li ng-show="v.order_type ==1">{{v.asset_price }}</li>
+                        <li ng-if="v.order_type ==2">{{(v.asset_price*0.99) |nFilter :v.asset_amount  }}</li>
+                        <li ng-if="v.order_type ==1">{{v.asset_price |nFilter :v.asset_amount }}</li>
+                        <li ng-if="language =='zh_TW'" class="longer">{{v.status | statusFilter: 'zh'}}
+                            <span ng-show="(v.status == 1 && v.order_type == 1 ) || (v.status == 0 && v.order_type == 2)" style="margin-left: 4px; color: #11cfe0;cursor: pointer;" ng-click="revoke(v.id,v.order_type)">/ {{'REVOKE'|translate}}</span><img
+                                    src="/assets/images/icon/sm_icon.png" ng-cloak ng-show='v.order_type==1 && v.status !=4'
+                                    ng-click=popStatus("打开收款账户",v.id,v.asset_price,v.asset_amount,v.remit_code)></li>
+                        <li ng-if="language =='en'" class="longer">{{v.status | statusFilter: 'en'}}
+                            <span ng-show="(v.status == 1 && v.order_type == 1 ) || (v.status == 0 && v.order_type == 2)" style="margin-left: 4px; color: #11cfe0;cursor: pointer;" ng-click="revoke(v.id,v.order_type)">/ {{'REVOKE'|translate}}</span><img
+                                    src="/assets/images/icon/sm_icon.png" ng-cloak ng-show='v.order_type==1 && v.status !=4'
+                                    ng-click=popStatus("打开收款账户",v.id,v.asset_price,v.asset_amount,v.remit_code)></li>
+                        <!--<li><a href="javascript://">{{'CARD_GOODS_RECEIPT'|translate}}</a></li>-->
+                    </ul>
+                    <div class="page-btn ng-hide" ng-show="params.totalItems">
+                        <ul uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" class="pagination-sm" max-size="3" ng-change="pageChanged(type,params.currentPage)" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                    </div>
+                    <!--boundary-links   是否显示第一页和最后一页的按钮-->
+                    <!--total-items   总共有多少条数据-->
+                    <!--ng-model 当前页数-->
+                    <!--max-size  可选择的页数范围-->
+                    <!--ng-change 页数变化时调用的函数-->
+                    <!--暂无数据-->
+                    <div class="no_date" ng-cloak ng-show="dataList.length==0">
+                        <label>{{'CARD_NO_DATE'|translate}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

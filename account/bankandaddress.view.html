@@ -1,0 +1,51 @@
+<div class="common-container common-wrap trade-contaner">
+	<form class="form-horizontal" name="myForm2" novalidate>
+	<div class="address_gl">
+		<a href="/#!/account/details">&larr;&nbsp;{{'Xgh_Address_management'|translate}}({{AssetType}})</a>
+			<div>
+				<input type="text" placeholder="{{'Xgh_Address'|translate}}" id="currency-address"
+                           name="balance_address" ng-model="params.address" ng-pattern="/^[a-zA-Z0-9]*$/" maxlength="50"
+                           required/ /><br/>
+			 <p class="pull-left hide"style="width: 100%;color: red;margin-bottom: 10px;"><spanclass="text-error"></span>{{'ACCOUNT.SELECT_ADDRESS_ERROR'|translate}}</p>	<br/>
+				<input type="text" ng-model="params.remarks" readonly style="width: 200px;margin-right: 20px;" />
+				<input type="text" placeholder="{{'Xgh_email_code'|translate}}" id="verify_Code" name="vcode" ng-pattern='/^[0-9]\d*$/' maxlength="6"
+                               ng-change="getVerifyphoneCode()" ng-model="params.secret" maxlength="6" style="width: 200px;" required/>
+				<button click-and-disable="getVerifyCode()"class="btn" ng-disabled="isshow" >
+					<span ng-if="!language">{{text}}</span><span ng-if="language=='zh_TW'">{{text}}</span>
+															<span ng-if="language=='en'">{{en_text}}</span>
+				</button>
+				<span class="help-block text-left code_tip" style="clear: both;color:red" ng-show="errorVcode"><span class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+				<button class="btn add_btn_a btn_add" ng-click="confirm()" ng-disabled="myForm2.$invalid || errorVcode||params.secret.length<6">{{'Xgh_add'|translate}}</button>
+			</div>
+	</div>
+	</form>
+	<!--地址列表-->
+	<div class="address_list">
+		<ul>
+			<li>
+				<div>{{'Xgh_Address'|translate}}</div>
+				<div>{{'Xgh_Remarks'|translate}}</div>
+				<div>{{'Xgh_operation'|translate}}</div>
+			</li>
+			<li ng-repeat="v in address">
+				<div>{{v.address}}</div>
+				<div>{{v.remark}}</div>
+				<div>
+					<a ng-click="deleteAddressmessage(v,v.id)" style="cursor: pointer;">{{'Xgh_delete'|translate}}</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!--地址删除确认框-->
+<script type="text/ng-template" id="templateId">
+    <h5>{{'ACCOUNT.DELETE_ADDRESS'|translate}}</h5>
+    <div class="modal-body text-center">
+        <p style="color:#fff">{{'Xgh_delete_qr'|translate}}</p>
+    </div>
+    <div class="dialog-contents" style="text-align: right;">
+        <button type="button" class="btn cancle" ng-click="closeThisDialog()">{{'TRADE.CANCEL'|translate}}</button>
+        <button type="button" class="btn btn-danger" ng-click="confirm()">{{'SETTING.MENU.TPASS_OK'|translate}}</button>
+    </div>
+</script>

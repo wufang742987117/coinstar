@@ -1,0 +1,36 @@
+<div class="common-main">
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'NEWS.NEWSANDNOTICE'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>NEWS</span>
+        </div>
+    </div>
+    <div class="container news-main">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>{{'TOPBAR.NEWS'|translate}}</h4>
+                <table class="table">
+                    <tr ng-repeat="new in param.newslist" ng-click="getDetailUrl(new.id)">
+                        <td width="15%">[{{'TOPBAR.NEWS'|translate}}]</td>
+                        <td width="65%">{{new.subject}}</td>
+                        <td width="20%">
+                            {{new.publication_date|date:'yyyy-MM-dd'}}
+                        </td>
+                    </tr>
+                </table>
+                <!--<a class="more" ng-click="newsMore('news')" ng-show="param.newslist.length>10">{{'NEWS.LOOK_MORE'|translate}}>></a>-->
+            </div>
+            <div class="col-md-6">
+                <h4>{{'HOME.NOTICE'|translate}}</h4>
+                <table class="table">
+                    <tr ng-repeat="notice in param.noticeslist" ng-click="getDetailUrl(notice.id)">
+                        <td width="15%">[{{'HOME.NOTICE'|translate}}]</td>
+                        <td width="65%">{{notice.subject}}</td>
+                        <td width="20%">{{notice.publication_date|date:'yyyy-MM-dd'}}</td>
+                    </tr>
+                </table>
+                <!--<a class="more" ng-click="newsMore('notice')" ng-show="param.noticeslist.length>10">{{'NEWS.LOOK_MORE'|translate}}>></a>-->
+            </div>
+        </div>
+    </div>
+</div>

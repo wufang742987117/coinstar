@@ -1,0 +1,119 @@
+<div class="common-main">
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'ACCOUNT.DEPOSIT'| translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>DEPOSIT</span>
+        </div>
+    </div>
+    <div class="container account-main recharge-main">
+        <div class="detail-main">
+            <div class="fund">
+                <!--<h4>充值充币</h4>-->
+                <ul class="recharge-nav-title active">
+                    <!--<li ng-class="{'active':dataCreate.tabclass}" ng-click="tab('cny')">人民币充值</li>-->
+                    <li ng-class="{'active':!dataCreate.tabclass}" >
+						<span ng-click="tab('digital')">{{'ACCOUNT.DEPOSIT_BUTTON'| translate}}</span>
+						<!--<span class="dot-top" ng-show="!dataCreate.digitalmenushow" ng-click="tab('digital')"></span>-->
+                        <!--<span class="dot-down" ng-show="dataCreate.digitalmenushow" ng-click="tab('digital')"></span>-->
+                        <!--<div class="balance-box" ng-show="dataCreate.digitalmenuss">-->
+                            <!--<div class="col-sm-4" ng-repeat="ticker in digitalResResult.tickersArr" ng-click="marketClick(ticker.symbol,$event)">{{'ASSET.'+ ticker.symbol|translate}}</div>-->
+                        <!--</div>-->
+					</li>
+                </ul>
+                <div class="charge scroll">
+                    <ul>
+                        <li ng-class="{'active':isactive == ticker.symbol}" ng-repeat="ticker in digitalResResult.tickersArr" ng-click="marketClick(ticker.symbol,ticker,$event)">{{'ASSET.'+ ticker.symbol|translate}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--数字货币充值-->
+            <div class="deposit-type">
+                <p class="mothod">{{'ASSET.'+digitalCreate.market|translate}}{{'ACCOUNT.DEPOSIT_STEP'|translate}}</p>
+
+                <div class="clain-pins-step">
+                    <div class="itemsdefault pull-left">
+                        <div class="item-number text-left">
+                            <div>1</div>
+                        </div>
+                        <p>{{'ACCOUNT.COPY_CODE'|translate}}<span class="gl hidden-xs">&gt;&gt;&gt;</span></p>
+                    </div>
+                    <div class="itemsdefault pull-left">
+                        <div class="item-number text-left">
+                            <div>2</div>
+                        </div>
+                        <p>{{'ACCOUNT.TRANSFER'|translate}}<span class="gl hidden-xs">&gt;&gt;&gt;</span></p>
+                    </div>
+                    <div class="itemsdefault pull-left">
+                        <div class="item-number text-left">
+                            <div>3</div>
+                        </div>
+                        <p>{{'ACCOUNT.TRANSFER_SUCCESS'|translate}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="bank-step1">
+                    <div class="charge-money pull-left">
+                        <div class="charge-input money-address">
+                            <span>{{'ACCOUNT.D_DEPOSIT'|translate}}：</span>
+                            <span>{{digitalResResult.depositaddress}}</span>
+                            <!--<input type="text" class="money" placeholder="{{'ACCOUNT.D_DEPOSIT_REQ'|translate}}" style="border: none;"-->
+                                   <!--maxlength="20" ng-model="digitalResResult.depositaddress"/>-->
+                            <!--<a href="#" class="copy-address">复制地址</a>-->
+                        </div>
+                        <div class="data-code" ng-show="!dataCreate.digitaladdreass">
+                            <h4>or</h4>
+                            <canvas id="qrcode" class="bigQR"></canvas>
+                        </div>
+                        <div class="data-code" ng-show="dataCreate.digitaladdreass">
+                            <h4>memo</h4>
+                            <p class="down"><b>{{digitalResResult.memo}}</b></p>
+                        </div>
+                    </div>
+                    <div class="notice pull-left">
+                        <h5>{{'ACCOUNT.REMINDER'|translate}}</h5>
+
+                        <p>{{'ACCOUNT.DEPOSIT_ONE'|translate}}</p>
+                        <p>{{'ACCOUNT.DEPOSIT_TWO'|translate}}</p>
+                        <p>{{'ACCOUNT.DEPOSIT_THREE'|translate}}</p>
+                        <!--<p>{{"ACCOUNT.DEPOSIT_FOUR_ONE"|translate}} {{limit.minimal_limit/100000000||0}} {{'ASSET.'+isactive | translate}},{{"ACCOUNT.DEPOSIT_FOUR_TWO"|translate}} {{limit.simgle_limit/100000000||0}} {{'ASSET.'+isactive | translate}},{{"ACCOUNT.DEPOSIT_FOUR_THREE"|translate}} {{limit.accumulate_limit/100000000||0}} {{'ASSET.'+isactive | translate}}</p>-->
+						
+                        <p class="text-center down hint">{{'ACCOUNT.DEPOSIT_REMIND'|translate}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <!--比特币充值记录-->
+            <div class="fund">
+                <h4>{{'ACCOUNT.DEPOSIT_REPORT'|translate}}</h4>
+                <table class="table">
+                    <tr>
+                        <th>{{'TRADE.ORDER_TIME'|translate}}</th>
+                        <th>{{'HISTORY.TRANSACTIONS'|translate}} ID</th>
+                        <th>{{'ACCOUNT.D_DEPOSIT'|translate}}</th>
+                        <th>{{'TRADE.AMOUNT'|translate}}</th>
+                        <th>{{'TRADE.STATUS'|translate}}</th>
+                    </tr>
+                    <tr ng-show="!digitalhistoryArr">
+                        <td colspan = "5">{{'ACCOUNT.NOT_DATA'|translate}}</td>
+                    </tr>
+                    <tr ng-repeat="digital in digitalhistoryArr">
+                        <td>{{digital.created_at | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                        <td>{{digital.id}}</td>
+                        <td>{{digital.address}}</td>
+                        <td>{{digital.amount/100000000}}</td>
+                        <td>
+							<span ng-if="digital.state=='REQUESTED' || digital.state=='PENDING'">{{'STATUS.PENDING'|translate}}</span>
+                            <span class="applying" ng-if="digital.state=='COMPLETE'">{{'STATUS.COMPLETE'|translate}}</span>
+                            <span ng-if="digital.state=='CANCELLED'">{{'STATUS.REJECTED'|translate}}</span>
+						</td>
+                    </tr>
+                </table>
+				<div class="page-btn"  ng-show="accountObj.digital">
+                    <ul uib-pagination boundary-links="true" total-items="params.digitaltotalItems" ng-model="params.digitalcurrentPage" class="pagination-sm" max-size="5" ng-change="pageDigitalChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

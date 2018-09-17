@@ -1,0 +1,48 @@
+.feeRate_bod{
+/*    margin-top: 80px; */ 
+    width: 100%; 
+    height: auto;
+    overflow: hidden;
+    background: #f5f5f5; 
+    float: left;
+}
+.feeRate_bod>h1{
+    width: 100%;
+    height: auto;
+    overflow:hidden;
+    float: left;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 100px;
+}
+.feeRate_bod>.feeRate_tab{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin: 50px 0 100px 0;
+}
+.feeRate_tab>table{
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+.feeRate_tab>table th,.feeRate_tab>table td{
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+}
+.feeRate_tab>table th{
+    font-size: 16px;
+    height: 60px;
+    line-height: 60px;
+}
+.feeRate_tab>table tr:nth-child(2n){
+    background: #f5f5f5;
+}

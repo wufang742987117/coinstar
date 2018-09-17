@@ -1,0 +1,14 @@
+<div class="common-container common-wrap trade-contaner mt80">
+	<div class="news_list">
+		<h1 ng-if="params.topic=='NOTICE'">公告详情</h1>
+		<h1 ng-if="params.topic=='NEWS'">新闻详情</h1>
+		<div class="newsDetails_main">
+			<h1>{{params.subject}}</h1>
+			<div class="news_user">
+				<!--<b>{{params.subject}}</b>-->
+				<p>{{params.publication_date| date:'yyyy-MM-dd HH:mm:ss'}}</p>
+			</div>
+			<div ng-bind-html="params.content | to_trusted" class="ql-editor content-text"></div>
+		</div>
+	</div>
+</div>

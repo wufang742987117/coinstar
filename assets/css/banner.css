@@ -1,0 +1,113 @@
+/*
+*@author:Jacobwang
+*@date:2015-04-15
+*@info:main.css
+*/
+
+/*reset*/
+
+body { font-family: Microsoft YaHei, "Source Sans Pro", Helvetica, Arial, sans-serif; }
+
+a { cursor: pointer; }
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wrap-index { overflow: hidden; }
+
+.dark-green { color: #4c5b52; }
+
+.light-green { color: #00853e; }
+
+.mb-50 { margin-bottom: 50px; }
+
+/*slider*/
+
+.slider { float: left; }
+
+.slider .jquery-reslider .slider-block {
+  width: 100%;
+  height:700px;
+  position: absolute;
+  z-index: 97;
+  background-position: 50% 50%;
+  background-size: cover;
+  opacity: 0;
+}
+
+.slider .jquery-reslider .slider-direction {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 45%;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.inner-content .item img {
+	height: 100%;
+}
+
+.slider .jquery-reslider .slider-direction.slider-direction-prev {
+  left: 20px;
+  background: url('/assets/images/icon/prev.png') no-repeat;
+}
+
+.slider .jquery-reslider .slider-direction.slider-direction-next {
+  right: 20px;
+  background: url('/assets/images/icon/next.png') no-repeat
+}
+
+.slider .jquery-reslider .slider-dots {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom:20px;
+}
+
+.slider .jquery-reslider .slider-dots li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+
+.slider .jquery-reslider .slider-dots li.active { background-color: #ffffff; }
+@media screen and (max-width: 768px) {
+
+.slider .jquery-reslider .slider-direction { zoom: .8; }
+
+.slider .jquery-reslider .slider-dots { position: absolute; }
+}
+
+@media screen and (max-width: 768px) { 
+	.slider .jquery-reslider .slider-block {
+			height: 300px;
+	}
+	.index_banner {
+		height: 150px;
+		padding: 0;
+		margin-top: 50px;
+	}
+	.slider .jquery-reslider .slider-direction {
+		top:22%;
+	}
+	.index_main {
+		padding: 0;
+	}
+	.slider .jquery-reslider .slider-block {
+		background-position: 25% 50%;
+	}
+	.inner-content .item img {
+		height: auto;
+	}
+	.help-block {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,82 @@
+<div class="common-container common-wrap trade-contaner" auto-height>
+    <div class="assets_title order_title">
+        <h1>{{'Xgh_Order.management'|translate}}：</h1>
+        <div>
+            <!--<select>
+                <option>ETH-USDT</option>
+                <option>ETH-USDT</option>
+                <option>ETH-USDT</option>
+            </select>-->
+			<select ng-model="selectAsset" class="type-ul-select" ng-options="value.market as value.symbols for value in balance_tickes" ng-change="marketChange()">
+				
+			</select>
+        </div>
+    </div>
+    <!--订单列表-->
+    <div class="assets_list finance_list order_list">
+        <!--TAB-->
+        <div class="finance_tab">
+            <a href="javascript://" ng-class="{'fTab_click': type =='now'}" ng-click="detailShow('now')">{{'Xgh_Current.entrustment'|translate}}</a>
+            <a href="javascript://" ng-class="{'fTab_click': type =='history'}" ng-click="detailShow('history')">{{'Xgh_Business.history'|translate}}</a>
+        </div>
+        <div class="assets_bod_overflow">
+            <ul ng-if="type =='now'">
+                <li>
+                    <div>{{'Xgh_Entrustment.time'|translate}}</div>
+    <!--                <div>币种</div>-->
+                    <div>{{'Xgh_Business.type'|translate}}</div>
+                    <div>{{'Xgh_Entrustment.price'|translate}}</div>
+                    <div>{{'Xgh_Entrustment.number'|translate}}</div>
+                    <div>{{'Xgh_Number.transactions'|translate}}</div>
+                    <div>{{'Xgh_Trading.state'|translate}}</div>
+                    <div>{{'Xgh_operation'|translate}}</div>
+                </li>
+                <li ng-repeat="v in orderCurrentData">
+                    <div>{{v.created | date:'yy/MM/dd HH:mm:ss'}}</div>
+                <!--    <div>{{selectAsset}}</div>-->
+                    <div><span ng-if="v.side=='BUY'">{{'TRADE.BUY'|translate}}</span>
+                        <span ng-if="v.side=='SELL'">{{'TRADE.SELL'|translate}}</span></div>
+                    <div>{{v.limit|amount| number:8 }}</div>
+                    <div>{{v.quantity|amount| number:8 }}</div>
+                    <div>{{v.quantity-v.rest|amount| number:8 }}</div>
+                    <div>{{'TRADE.DELEGATE.NOT_TRADED'|translate}}</div>
+                    <div>
+                        <a ng-click="cancelOrder(v)">{{'Xgh_cd'|translate}}</a>
+                    </div>
+                </li>
+                <li ng-if="orderCurrentData.length==0" style="height: 400px;line-height: 400px;text-align: center;color:#fff;">
+                    {{'Xgh_No.record'|translate}}
+                </li>
+            </ul>
+            <ul ng-if="type =='history'">
+                <li>
+                    <div>{{'Xgh_Entrustment.time'|translate}}</div>
+                  <!--  <div>交易对</div>-->
+                    <div>{{'Xgh_Entrustment.type'|translate}}</div>
+                    <div>{{'Xgh_Entrustment.number'|translate}}</div>
+                    <div>{{'Xgh_Number.transactions'|translate}}</div>
+                    <div>{{'Xgh_Entrustment.price'|translate}}</div>
+                    <div>{{'Xgh_Average.transaction.price'|translate}}</div>
+                    <div>{{'Xgh_fee'|translate}}</div>
+                </li>
+                <li ng-repeat="v in orderHistoryData">
+                    <div>{{v.order_created_time | date:'yy/MM/dd HH:mm:ss'}}</div>
+                   <!-- <div>{{selectAsset}}</div>-->
+                    <div><span ng-if="v.order_side=='B'">{{'TRADE.BUY'|translate}}</span>
+                        <span ng-if="v.order_side=='S'">{{'TRADE.SELL'|translate}}</span></div>
+                    <div>{{v.order_quantity|amount| number:8 }}</div>
+                    <div>{{v.all_trades_quantity |amount| number:8}}</div>
+                                    <div>{{v.order_price|amount| number:8}}</div>
+                    <div>{{v.avg_trades_price|number:8 }}</div>
+                    <div>{{v.trade_fee |amount| number:8}}</div>
+                </li>
+                            <li ng-if="orderHistoryData.length==0" style="height: 400px;line-height: 400px;text-align: center;color:#fff;">
+                                {{'Xgh_No.record'|translate}}
+                            </li>
+                    </ul>
+        </div>
+				<div class="page-btn" ng-show="params.totalItems&&type =='history'">
+					<ul class="page_500" style="background: none;" uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" items-per-page="10" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+				</div>
+    </div>
+</div>

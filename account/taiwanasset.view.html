@@ -1,0 +1,325 @@
+<div class="common-container common-wrap trade-contaner" auto-height>
+	<div ng-if="typeRole==5">
+		<div class="assets_title">
+			<div class="row">
+					<div class="col-md-5 title_zw">
+							{{'Xgh_TWassets'|translate}}：
+					</div>
+			</div>
+			<div class="row row_top20">
+					<div class="col-md-5 title_show">
+						<label>{{'Xgh_assets_zh'|translate}}：</label>
+						<b>{{TWDbanace}}TWD</b>
+						<button class="" ng-click="openDia('twdRecharge')">{{'DEPOSIT.DEPOSIT_BUTTON'|translate}}</button><button ng-click="openDia('twdWithdraw')">{{'WITHDRWA_BUTTON'|translate}}</button>
+					</div>
+					<div class="col-md-5 title_show">
+						<label>{{'Xgh_assets_zh'|translate}}：</label>
+						<b>{{USDTbanace}}USDT</b>
+						<button class="" ng-click="openDia('usdtbuy')">{{'CARD_BUY_f'|translate}}</button><button ng-click="openDia('usdtsell')">{{'CARD_SELL_f'|translate}}</button>
+					</div>
+					<!-- <label>{{'Xgh_assets_zh'|translate}}：</label>
+					<b>{{btcAmount}} BTC</b>
+					<b>&asymp;</b>
+					<p>&yen; {{cnyAmount}} CNY</p> -->
+			</div>
+		</div>
+		<!--资产列表-->
+		<div class="assets_list finance_list">
+			<!--TAB-->
+			<div class="finance_tab">
+				<a href="javascript://" ng-class="{'fTab_click': type =='TWD'}" ng-click="History('TWD')">{{'TWD_DETAIL'|translate}}</a>
+				<a href="javascript://" ng-class="{'fTab_click': type =='USDT'}" ng-click="History('USDT')">{{'USDT_DETAIL'|translate}}</a>
+			</div>
+			<!--充值提现-->
+			<div class="assets_bod_overflow">
+				<ul ng-if="type=='TWD'">
+					<li>
+						<div>{{'Xgh_time'|translate}}</div>
+						<div>{{'CARD_TYPE'|translate}}</div>
+						<div>{{'TWD_JINE'|translate}}</div>
+						<div>{{'Xgh_state'|translate}}</div>
+					</li>
+					<li ng-repeat="its in TWD_userData">
+						<div>{{its.create_time |  date:'yyyy-MM-dd HH:mm:ss'}}</div>
+						<div>
+							<label ng-if="its.order_type=='1'">{{'TOPBAR.DEPOSIT'|translate}}</label>
+							<label ng-if="its.order_type=='2'">{{'WITHDRWA_BUTTON'|translate}}</label>
+						</div>
+						<div>{{its.asset_amount}}</div>
+						<div ng-if="language =='en'">
+							{{its.status | statusFilter: 'en'}}
+							<span ng-show="(its.status == 1 && its.order_type == 1 ) || (its.status == 0 && its.order_type == 2)" style="margin-left: 4px; color: #11cfe0;cursor: pointer;" ng-click="revoke(its.id,its.order_type)">/ {{'REVOKE'|translate}}</span>
+							<img src="/assets/images/icon/sm_icon.png" alt="" ng-show="its.order_type=='1'&&its.status!='4'" ng-click="popStatus(its.id,its.asset_price,its.asset_amount,its.remit_code)">
+						</div>
+						<div ng-if="language =='zh_TW'">
+							{{its.status | statusFilter: 'zh'}}
+							<span ng-show="(its.status == 1 && its.order_type == 1 ) || (its.status == 0 && its.order_type == 2)" style="margin-left: 4px; color: #11cfe0;cursor: pointer;" ng-click="revoke(its.id,its.order_type)">/ {{'REVOKE'|translate}}</span>
+							<img src="/assets/images/icon/sm_icon.png" alt="" ng-show="its.order_type=='1'&&its.status!='4'" ng-click="popStatus(its.id,its.asset_price,its.asset_amount,its.remit_code)">
+						</div>
+					</li>
+					<li ng-if="TWD_userData.length==0">
+						{{'Xgh_No.record'|translate}}
+					</li>
+					</ul>
+					<ul ng-if="type=='USDT'" class="USDT_UL">
+						<li>
+							<div>{{'Xgh_time'|translate}}</div>
+							<div>{{'CARD_TYPE'|translate}}</div>
+							<div>{{'TWD_JINE'|translate}}</div>
+							<div>{{'USDT_NUM'|translate}}</div>
+							<div>{{'Xgh_state'|translate}}</div>
+						</li>
+						<li ng-repeat="its in detailList">
+							<!-- <div>{{its.created_at |  date:'yyyy-MM-dd HH:mm:ss'}}</div>
+							<div>
+								<label ng-if="its.status=='COMPLETE'">{{'ACCOUNT.A_WITHDRAWAL_SUCCESS'|translate}}</label>
+								<label ng-if="its.status=='CANCELLED'">{{'ACCOUNT.REFUSE'|translate}}</label>
+								<label ng-if="its.status=='PENDING' || its.state=='REQUESTED'">{{'STATUS.PENDING'|translate}}</label>
+								<label class="applying" ng-if="its.status=='REQUESTED'">{{'ACCOUNT.DEPOSIT_REQUEST'|translate}}</label>
+							</div>
+							<div>{{its.asset}}</div>
+							<div><td>{{its.amount/100000000}}</td></div> -->
+						</li>
+						<li  style="height: 400px;color: #fff;text-align: center;line-height: 400px;">
+							{{'Xgh_No.record'|translate}}
+						</li>
+					</ul>
+			</div>
+			<div class="page-btn" ng-show="params.totalItems">
+				<ul class="page_500" style="background: none;" uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" items-per-page="20" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</div>
+			<!--<div class="page-btn">
+				<ul uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</div>-->
+		</div>
+	</div>
+	
+	<div ng-if="typeRole==1">
+		<div class="assets_title">
+		<!-- <h1>{{'Xgh_TWassets'|translate}}：</h1> -->
+				<div class="row row_desp" style="padding-left: 20px;">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="exampleInputName2" class="label_tw_style">打款备注：</label>
+							<input type="text" class="form-control tw_input" id="exampleInputName2" ng-model="remit_code" placeholder="" style="width: 194px;margin-left: 15px;">
+						</div>
+					</form>
+				</div>
+				<div class="row row_top20" style="padding-left: 10px;">
+					<form class="form-inline">
+						<div class="form-group time-start">
+							<label style="color: #4e5b85!important;margin-top: 8px;">{{'CARD_START_TIME'|translate}}：</label>
+							<datepicker date-format="yyyy-MM-dd" style="width:160px;">
+								<input ng-model="date1" type="text" class="form-control"/>
+							</datepicker>
+						</div>
+						<div class="form-group time-start" style="margin-left: 40px;">
+							<label style="color: #4e5b85!important;margin-top: 8px;">{{'CARD_END_TIME'|translate}}：</label>
+							<datepicker date-format="yyyy-MM-dd" style="width:160px;">
+								<input ng-model="date2" type="text" class="form-control"/>
+							</datepicker>
+						</div>
+						<input type="button" value="查询" style="margin-left: 40px;width: 60px;color: #fff" ng-click="search(1,remit_code,date1,date2)">
+					</form>
+				</div>
+			</div>
+		<!--资产列表-->
+		<div class="assets_list finance_list">
+			<!--TAB-->
+			<div class="finance_tab">
+				<a href="javascript://" ng-class="{'fTab_click': type =='TWD'}" ng-click="History('TWD')">{{'TWD_DETAIL'|translate}}</a>
+				<a href="javascript://" ng-class="{'fTab_click': type =='USDT'}" ng-click="History('USDT')">{{'USDT_DETAIL'|translate}}</a>
+			</div>
+			<!--充值提现-->
+			<div class="assets_bod_overflow">
+				<ul ng-if="type=='TWD'">
+					<li>
+						<div>{{'Xgh_time'|translate}}</div>
+						<div>{{'CARD_TYPE'|translate}}</div>
+						<div>{{'TWD_JINE'|translate}}</div>
+						<div>{{'Xgh_state'|translate}}</div>
+					</li>
+					<li ng-repeat="its in TWD_userData">
+						<div>{{its.create_time |  date:'yyyy-MM-dd HH:mm:ss'}}</div>
+						<div>
+							<label ng-if="its.order_type=='1'">{{'TOPBAR.DEPOSIT'|translate}}</label>
+							<label ng-if="its.order_type=='2'">{{'WITHDRWA_BUTTON'|translate}}</label>
+						</div>
+						<div>{{its.asset_amount}}</div>
+						<div ng-if="language =='en'">
+							{{its.status | statusFilter: 'en'}}
+						</div>
+						<div ng-if="language =='zh_TW'">
+							{{its.status | statusFilter: 'zh'}}
+						</div>
+					</li>
+					<li ng-if="TWD_userData.length==0" style="height: 400px;color: #fff;text-align: center;line-height: 400px;">
+						{{'Xgh_No.record'|translate}}
+					</li>
+				</ul>
+					<ul ng-if="type=='USDT'" class="USDT_UL">
+						<li>
+							<div>{{'Xgh_time'|translate}}</div>
+							<div>{{'CARD_TYPE'|translate}}</div>
+							<div>{{'TWD_JINE'|translate}}</div>
+							<div>{{'USDT_NUM'|translate}}</div>
+							<div>{{'Xgh_state'|translate}}</div>
+						</li>
+						<li ng-repeat="its in detailList">
+							<!-- <div>{{its.created_at |  date:'yyyy-MM-dd HH:mm:ss'}}</div>
+							<div>
+								<label ng-if="its.status=='COMPLETE'">{{'ACCOUNT.A_WITHDRAWAL_SUCCESS'|translate}}</label>
+								<label ng-if="its.status=='CANCELLED'">{{'ACCOUNT.REFUSE'|translate}}</label>
+								<label ng-if="its.status=='PENDING' || its.state=='REQUESTED'">{{'STATUS.PENDING'|translate}}</label>
+								<label class="applying" ng-if="its.status=='REQUESTED'">{{'ACCOUNT.DEPOSIT_REQUEST'|translate}}</label>
+							</div>
+							<div>{{its.asset}}</div>
+							<div><td>{{its.amount/100000000}}</td></div> -->
+						</li>
+						<li  >
+							{{'Xgh_No.record'|translate}}
+						</li>
+					</ul>
+			</div>
+			<div class="page-btn" ng-show="params.totalItems">
+				<ul class="page_500" style="background: none;" uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" items-per-page="20" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</div>
+			<!--<div class="page-btn">
+				<ul uib-pagination boundary-links="true" total-items="params.totalItems" ng-model="params.currentPage" class="pagination-sm" max-size="5" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</div>-->
+		</div>
+	</div>
+	
+</div>
+
+<!--TWD充值-->
+		<div class="TW_Popup Tp_1" ng-if="twdrecharges">
+			<div class="TW_P_main">
+				<a href="javascript://" class="close" ng-click="closeDia()">X</a>
+				<h1>TWD充值</h1>
+				<ul class="Tw_bod">
+					<li ng-if="ifConfirm">
+						<label>商户真实姓名：</label>
+						<input type="text" disabled="disabled" ng-model="params.real_name"/>
+					</li>
+					<li ng-if="ifConfirm">
+						<label>银行名称：</label>
+						<input type="text" disabled="disabled" ng-model="params.bank_name"/>
+					</li>
+					<li class="Tw_bottom_bor" ng-if="ifConfirm">
+						<label>银行卡号：</label>
+						<input type="text" disabled="disabled" ng-model="params.bank_account_no"/>
+					</li>
+					<li ng-if="!ifConfirm">
+						<label>充值金额：</label>
+						<input type="number" ng-model="params.asset_amount"/>
+					</li>
+					<li ng-if="ifConfirm">
+						<label>充值金额：</label>
+						<input type="number" disabled="disabled" ng-model="params.asset_amount"/>
+					</li>
+					<li ng-if="ifConfirm">
+						<label>打款备注：</label>
+						<input type="text" disabled="disabled" ng-model="params.remit_code"/>
+					</li>
+				</ul>
+				<div class="Tw_btn">
+					<a href="javascript://" ng-click="confirm(1)"  ng-if="!ifConfirm">确认充值</a>
+					<a href="javascript://" ng-click="confirmSure()"  ng-if="ifConfirm">确认</a>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!--TWD提现-->
+		<div class="TW_Popup Tp_2" ng-if="twdwithdraws">
+			<div class="TW_P_main">
+				<a href="javascript://" class="close" ng-click="closeDia()">X</a>
+				<h1>TWD提现</h1>
+				<ul class="Tw_bod">
+					<li>
+						<label>提现金额：</label>
+						<input type="text" ng-model="params.asset_amount"/>
+					</li>
+				</ul>
+				<div class="Tw_btn">
+					<a href="javascript://" ng-click="confirm(2)">确认提现</a>
+				</div>
+			</div>
+		</div>
+		
+		<!--USDT买入-->
+		<div class="TW_Popup Tp_3" ng-if="usdtbuys">
+			<div class="TW_P_main">
+				<a href="javascript://" class="close" ng-click="closeDia()">X</a>
+				<h1>USDT买入</h1>
+				<ul class="Tw_bod">
+					<li>
+						<label>买入USDT数量：</label>
+						<input type="text" />
+					</li>
+					<li>
+						<label>折合TWD：</label>
+						<input type="text" />
+					</li>
+				</ul>
+				<div class="Tw_btn">
+					<a href="javascript://">确认买入</a>
+				</div>
+			</div>
+		</div>
+			
+		<!--USDT卖出-->
+		<div class="TW_Popup Tp_4" ng-if="usdtsells">
+			<div class="TW_P_main">
+				<a href="javascript://" class="close" ng-click="closeDia()">X</a>
+				<h1>USDT卖出</h1>
+				<ul class="Tw_bod">
+					<li>
+						<label>卖出USDT数量：</label>
+						<input type="text" />
+					</li>
+					<li>
+						<label>折合TWD：</label>
+						<input type="text" />
+					</li>
+				</ul>
+				<div class="Tw_btn">
+					<a href="javascript://">确认卖出</a>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 会员充值确认弹窗 -->
+		<div class="TW_Popup Tp_4" ng-if="twddialog">
+			<div class="TW_P_main">
+				<a href="javascript://" class="close" ng-click="closeDia()">X</a>
+				<h1>收款账户</h1>
+				<ul class="Tw_bod">
+					<li>
+						<label>户名：</label>
+						<input type="text" disabled="disabled" ng-value="account.real_name"/>
+					</li>
+					<li>
+						<label>银行名称：</label>
+						<input type="text" disabled="disabled" ng-value="account.bank_name"/>
+					</li>
+					<li class="Tw_bottom_bor">
+						<label>银行卡号：</label>
+						<input type="text" disabled="disabled" ng-value="account.bank_account_no"/>
+					</li>
+					<li>
+						<label>打款金额：</label>
+						<input type="text" disabled="disabled" ng-value="asset_amount"/>
+					</li>
+					<li>
+						<label>打款备注：</label>
+						<input type="text" disabled="disabled" ng-value="remit_code"/>
+					</li>
+				</ul>
+				<div class="Tw_btn">
+					<a href="javascript://" ng-click="closeDia()">确认</a>
+				</div>
+			</div>
+		</div>
+		

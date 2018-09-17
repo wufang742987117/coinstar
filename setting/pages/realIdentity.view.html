@@ -1,0 +1,119 @@
+<div class="common-main ng-scope">
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'ACCOUNT_REALNAME_TITLE' | translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>REAL IDENTITY </span>
+        </div>
+    </div>
+    <div class="container setting-main">
+        <!--提示，功能暂未开放-->
+        <div class="Unopened_conter">
+            <div class="Unopened_bod">
+                <h1>{{'PROMPT_TITLE' | translate}}</h1>
+                <p>{{'UNOPENED_FONT' | translate}}</p>
+            </div>
+            <!--关闭弹窗-->
+            <a href="javascript://"></a>
+        </div>
+        <!--选择校验-->
+        <div class="setting-module">
+            <div class="module-title ng-binding">{{'SELECT_CHECK_TITLE' | translate}}</div>
+            <div class="module_main chect_bod">
+                <p><input type="radio" value="" name="check"><span>{{'ANTOMATIC_SELECT' | translate}}</span></p>
+                <p><input type="radio" value="" name="check" checked><span>{{'MANUAL_SELECT' | translate}}</span></p>
+            </div>
+            <div class="chect_conter">
+                <ul>
+                    <li>
+                        <label>{{'SELECTION_TYPE' | translate}}</label>
+                        <div class="chect_bod">
+                            <p><input type="radio" value="" name="type" checked><span>{{'MAINLAND_CHINA' | translate}}</span></p>
+                            <p><input type="radio" value="" name="type"><span>{{'OTHER_COUNTRIES' | translate}}</span></p>
+                            <label>{{'PROMPT_F_1' | translate}}</label>
+                            <ul>
+                                <li><label>{{'SETTING.C1.NAME' | translate}}</label><input type="text" name=""></li>
+                                <li><label>{{'ID_NUMBER' | translate}}</label><input type="text" name=""></li>
+                                <li><label>{{'REAL_CARD_NUMBER' | translate}}</label><input type="text" name=""></li>
+                                <li><label>{{'OPENING_BANK' | translate}}</label><input type="text" name=""></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>{{'PHOTO_CARD' | translate}}</label>
+                        <div>
+                            <div class="file_btn"><input type="file">{{'CLICK_UPLOAD' | translate}}</div>
+                            <label>{{'PROMPT_F_2' | translate}}</label>
+                            <div class="file_bod"></div>
+                            <div class="file_sl">{{'SAMPLE_SL' | translate}}&nbsp;&nbsp;></div>
+                            <div class="file_bod"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <label>{{'PHOTO_BANK' | translate}}</label>
+                        <div>
+                            <div class="file_btn"><input type="file">{{'CLICK_UPLOAD' | translate}}</div>
+                            <label>{{'PROMPT_F_2' | translate}}</label>
+                            <div class="file_bod"></div>
+                            <div class="file_sl">{{'SAMPLE_SL' | translate}}&nbsp;&nbsp;></div>
+                            <div class="file_bod"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <label>{{'HANDHELD_PHOTO' | translate}}</label>
+                        <div>
+                            <div class="file_btn"><input type="file">{{'CLICK_UPLOAD' | translate}}</div>
+                            <label>{{'PROMPT_F_3' | translate}}</label>
+                            <div class="file_yz">
+                                <p>
+                                    <label>{{'CLEAR_HEAD' | translate}}</label>
+                                    <label>{{'CLEAR_PERSONAL' | translate}}</label>
+                                </p>
+                                <p>
+                                    <label>{{'IDENTITY_NUMBER' | translate}}</label>
+                                    <label>{{'NUMBER_CLEAR_PH' | translate}}</label>
+                                </p>
+                            </div>
+                            <div class="file_bod"></div>
+                            <div class="file_sl">{{'SAMPLE_SL' | translate}}&nbsp;&nbsp;></div>
+                            <div class="file_bod"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="button" value="{{'SUBMIT_BTN' | translate}}" class="submit_btn">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--实名信息-->
+        <div class="setting-module">
+            <div class="module-title ng-binding">{{'REAL_NAME_TITLE' | translate}}</div>
+            <div class="module_main real_bod">
+                <p>{{'REAL_NAME' | translate}}：<span>徐大仙</span></p>
+                <p>{{'REAL_CERTIFICATES' | translate}}：<span>110 110 110 110</span></p>
+                <p>
+                    {{'REAL_WAITFOR' | translate}}<!--等待审核-->
+                    <!--{{'REAL_ADOPT' | translate}}&lt;!&ndash;通过审核&ndash;&gt;-->
+                    <!--{{'REAL_FAIL' | translate}}&lt;!&ndash;审核失败&ndash;&gt;-->
+                </p>
+            </div>
+        </div>
+        <!--绑卡信息-->
+        <div class="setting-module">
+            <div class="module-title ng-binding">{{'TIEON_CARD_TITLE' | translate}}</div>
+            <div class="module_main card_bod">
+                <ul>
+                    <li>
+                        <label>{{'REAL_BANK_NAME' | translate}}</label>
+                        <label>{{'REAL_KH_BRANCH' | translate}}</label>
+                        <label>{{'REAL_CARD_NUMBER' | translate}}</label>
+                    </li>
+                    <li>
+                        <label>建设银行</label>
+                        <label>张江支行</label>
+                        <label>4214 4563 2154 387</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

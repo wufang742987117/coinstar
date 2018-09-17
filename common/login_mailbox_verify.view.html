@@ -1,0 +1,41 @@
+<div class="common-main" auto-height>
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'MAIL_RETYPE'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>Email Verification</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="verify-content">
+            <div class="form-group clearfix">
+                <label class="col-sm-4 control-label">{{'VERIFY_EMAIL_INPUT_TIP'|translate}}</label>
+
+                <div class="col-sm-6 email-input-button" ng-class="{'has-error':errorVcode}">
+                    <input type="text" class="form-control control-code"
+                           placeholder="{{'ACCOUNT.ENTERCODE'|translate}}" ng-model="emailList.verificationCode" ng-pattern='/^[0-9]\d*$/' ng-change="ifSubmit()" maxlength="6" required />
+                    <button class="btn" ng-click="askBind()" ng-disabled="counter>0 || code_sending">
+                        <span ng-if="counter>0">{{"SETTING.TPASS.REMAINING"|translate}} {{counter}}'S</span>
+                        <span ng-if="!counter">{{"ACCOUNT.GETCODE"|translate}}</span>
+                    </button>
+                    <span class="help-block" ng-show="errorVcode" style="color: #a94442"><span
+                            class="text-error"></span>{{'FORGET.CODE_INCORRECT'|translate}}</span>
+                </div>
+                <p></p>
+            </div>
+
+
+            <div class="form-group clearfix group-mid">
+                <div class="col-sm-6 verify-btn ">
+                    <button class="col-sm-6 btn btn-submit" ng-click="bindSubmit()" ng-disabled="!submit_sending ||errorVcode">{{'SETTING.MENU.TPASS_OK'|translate}}</button>
+                </div>
+            </div>
+            <!--<div class="form-group clearfix">-->
+                <!--<div class="col-sm-6 verify-btn ">-->
+                    <!--<button class="col-sm-6 btn-cancel">{{'SETTING.MENU.TPASS_CANCEL'|translate}}</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        </div>
+    </div>
+
+</div>

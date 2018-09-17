@@ -1,0 +1,11 @@
+<div class="common-container common-wrap trade-contaner">
+	<div class="news_list">
+		<h1>公告</h1>
+		<ul>
+			<li ng-repeat="notice in noticeslist" ng-click="noticeDetail(notice.id)">
+				<a>{{notice.subject}}</a>
+				<label>{{notice.publication_date|date:'yyyy-MM-dd'}}</label>
+			</li>
+		</ul>
+	</div>
+</div>

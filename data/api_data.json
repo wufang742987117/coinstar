@@ -1,0 +1,450 @@
+[
+  {
+    "type": "get",
+    "url": "/candlestick/:timeSymbol/:trading_pair",
+    "title": "Candlesticks",
+    "name": "Get_candlesticks__kline_",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/candlestick/day1/BTCCNY",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"status\":{\"success\":1,\"message\":null},\"result\":[[1497312000000,257689500000,1892576000000,1958910000000,1874050000000,1923589000000],[1497398400000,277186800000,1923589000000,1953699000000,1748488000000,1826233000000],[1497484800000,230748400000,1826233000000,1829151000000,1679953000000,1797087000000]]}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "result",
+            "description": "<p>candlestick, item is [time, volume, open, high, low, close], each price/quantity should divide by 1E8.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Get the candlestick data for given trading pair and time intervals.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  },
+  {
+    "type": "get",
+    "url": "/candlestick/latest/:trading_pair",
+    "title": "Candlestick Latest",
+    "name": "Get_latest_candlesticks__kline_",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/candlestick/latest/BTCCNY",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"status\":{\"success\":1,\"message\":null},\"result\":{\"hr4\":[1497600000000,16223600000,1840473000000,1841676000000,1794081000000,1804602000000],\"min5\":[1497603300000,167600000,1804782000000,1805684000000,1804000000000,1804602000000],\"hr1\":[1497600000000,16223600000,1840473000000,1841676000000,1794081000000,1804602000000],\"hr2\":[1497600000000,16223600000,1840473000000,1841676000000,1794081000000,1804602000000],\"min3\":[1497603420000,75200000,1804281000000,1805002000000,1804281000000,1804602000000],\"hr6\":[1497592800000,48484500000,1795239000000,1842678000000,1788690000000,1804602000000],\"hr12\":[1497571200000,88001900000,1797087000000,1842678000000,1774141000000,1804602000000],\"day3\":[1497398400000,595937100000,1923589000000,1953699000000,1679953000000,1804602000000],\"week\":[1497484800000,318750300000,1826233000000,1842678000000,1679953000000,1804602000000],\"day1\":[1497571200000,88001900000,1797087000000,1842678000000,1774141000000,1804602000000],\"min15\":[1497602700000,1366700000,1807609000000,1817628000000,1804000000000,1804602000000],\"min1\":[1497603480000,74700000,1805002000000,1805002000000,1804281000000,1804602000000],\"min30\":[1497601800000,5635800000,1807307000000,1817628000000,1794081000000,1804602000000]}}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "result",
+            "description": "<p>each key is a timeSymbol, and value is [time, volume, open, high, low, close], each price/quantity should divide by 1E8.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Get the candlestick data for given trading pair and time intervals.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  },
+  {
+    "type": "get",
+    "url": "/depth/:trading_pair",
+    "title": "Orderbook",
+    "name": "Get_orderbook",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/depth/BTCCNY",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"status\":{\"success\":1,\"message\":null},\"result\":{\"market\":\"BTCCNY\",\"ask\":[[2000000000000,100000000,100000000],[2000100000000,100000000,200000000],[2000200000000,100000000,300000000]],\"bid\":[[1999900000000,100000000,100000000],[1999800000000,100000000,200000000],[1999700000000,100000000,300000000]]}}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "market",
+            "description": "<p>trading pair.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "ask",
+            "description": "<p>ask depth, fisrt item is best ask, item order is [price, quantity, total quantity], each price/quantity should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "bid",
+            "description": "<p>bid depth, fisrt item is best bid, item order is [price, quantity, total quantity], each price/quantity should divide by 1E8.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Get the current orderbook for given trading pair.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  },
+  {
+    "type": "get",
+    "url": "/ticker/:trading_pair",
+    "title": "Ticker",
+    "name": "Get_ticker",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/ticker/BTCCNY",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"status\":{\"success\":1,\"message\":null},\"result\":{\"market\":\"BTCCNY\",\"date\":1497602424876,\"sell\":1801596000000,\"buy\":1799141000000,\"high\":1842678000000,\"low\":1774141000000,\"last\":1801349000000,\"last24h\":1759121000000,\"vol\":86300900000}}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "market",
+            "description": "<p>trading pair.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "date",
+            "description": "<p>time in milliseconds.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "sell",
+            "description": "<p>best sell price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "buy",
+            "description": "<p>best buy price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "high",
+            "description": "<p>highest price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "low",
+            "description": "<p>lowest price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "last",
+            "description": "<p>latest price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "last24h",
+            "description": "<p>price at 24 hours ago, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "vol",
+            "description": "<p>volume calculated by day, should divide by 1E8.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Get the ticker for given trading pair.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  },
+  {
+    "type": "get",
+    "url": "/tickers",
+    "title": "Tickers",
+    "name": "Get_tickers",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/tickers",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"status\":{\"success\":1,\"message\":null},\"result\":[{\"market\":\"OBSCNY\",\"date\":1497601212761,\"sell\":2043000000,\"buy\":1963010000,\"high\":2097200000,\"low\":1900000000,\"last\":2043000000,\"last24h\":2080000000,\"vol\":427342840000},{\"market\":\"ZECCNY\",\"date\":1497601217414,\"sell\":270900000000,\"buy\":270000000000,\"high\":287158000000,\"low\":254156000000,\"last\":270094000000,\"last24h\":256418000000,\"vol\":934208800000},{\"market\":\"ETCCNY\",\"date\":1497601216148,\"sell\":12814000000,\"buy\":12775000000,\"high\":12968000000,\"low\":12191000000,\"last\":12803000000,\"last24h\":12785000000,\"vol\":2166115000000},{\"market\":\"ETHCNY\",\"date\":1497601215973,\"sell\":264131000000,\"buy\":263898000000,\"high\":267622000000,\"low\":236690000000,\"last\":264070000000,\"last24h\":245682000000,\"vol\":11648096800000},{\"market\":\"BTSCNY\",\"date\":1497601214341,\"sell\":231240000,\"buy\":230960000,\"high\":240150000,\"low\":217930000,\"last\":231060000,\"last24h\":222780000,\"vol\":563423920490000},{\"market\":\"ETPCNY\",\"date\":1497601208510,\"sell\":3350000000,\"buy\":3349000000,\"high\":3350000000,\"low\":3156000000,\"last\":3350000000,\"last24h\":3165000000,\"vol\":3067245000000},{\"market\":\"BTCCNY\",\"date\":1497601209883,\"sell\":1826644000000,\"buy\":1826575000000,\"high\":1842678000000,\"low\":1774141000000,\"last\":1826646000000,\"last24h\":1775544000000,\"vol\":76237000000}]}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "market",
+            "description": "<p>trading pair.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "date",
+            "description": "<p>time in milliseconds.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "sell",
+            "description": "<p>best sell price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "buy",
+            "description": "<p>best buy price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "high",
+            "description": "<p>highest price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "low",
+            "description": "<p>lowest price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "last",
+            "description": "<p>latest price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "last24h",
+            "description": "<p>price at 24 hours ago, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "vol",
+            "description": "<p>volume calculated by day, should divide by 1E8.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Get the tickers for all trading pair.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  },
+  {
+    "type": "get",
+    "url": "/trades/:trading_pair",
+    "title": "Trades",
+    "name": "Get_trades",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/trades/BTCCNY",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"status\":{\"success\":1,\"message\":null},\"result\":[{\"date\":1497601992136,\"price\":1795684000000,\"amount\":4100000,\"tid\":8004750,\"side\":\"BUY\"},{\"date\":1497601992136,\"price\":1795052000000,\"amount\":18800000,\"tid\":8004752,\"side\":\"BUY\"},{\"date\":1497601999035,\"price\":1794982000000,\"amount\":22900000,\"tid\":8004784,\"side\":\"SELL\"}]}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "date",
+            "description": "<p>time in milliseconds.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>trade price, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "amount",
+            "description": "<p>trade quantity, should divide by 1E8.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "tid",
+            "description": "<p>trade ID.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "side",
+            "description": "<p>BUY or SELL.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Get the latest trades for given trading pair.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  },
+  {
+    "type": "get",
+    "url": "/trading_pairs",
+    "title": "List trading pairs",
+    "name": "Trading_pairs",
+    "group": "Data",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl https://szzc.com/api/public/trading_pairs",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"BTCCNY\":{\"name\":\"BTCCNY\",\"ask_asset_symbol\":\"CNY\",\"ask_asset_decimals\":2,\"ask_asset_type\":\"FIAT\",\"bid_asset_symbol\":\"BTC\",\"bid_asset_decimals\":3,\"bid_asset_type\":\"COIN\"},\"ETCCNY\":{\"name\":\"ETCCNY\",\"ask_asset_symbol\":\"CNY\",\"ask_asset_decimals\":2,\"ask_asset_type\":\"FIAT\",\"bid_asset_symbol\":\"ETC\",\"bid_asset_decimals\":2,\"bid_asset_type\":\"COIN\"},\"ETHCNY\":{\"name\":\"ETHCNY\",\"ask_asset_symbol\":\"CNY\",\"ask_asset_decimals\":2,\"ask_asset_type\":\"FIAT\",\"bid_asset_symbol\":\"ETH\",\"bid_asset_decimals\":3,\"bid_asset_type\":\"COIN\"},\"ETPCNY\":{\"name\":\"ETPCNY\",\"ask_asset_symbol\":\"CNY\",\"ask_asset_decimals\":2,\"ask_asset_type\":\"FIAT\",\"bid_asset_symbol\":\"ETP\",\"bid_asset_decimals\":2,\"bid_asset_type\":\"COIN\"},\"ZECCNY\":{\"name\":\"ZECCNY\",\"ask_asset_symbol\":\"CNY\",\"ask_asset_decimals\":2,\"ask_asset_type\":\"FIAT\",\"bid_asset_symbol\":\"ZEC\",\"bid_asset_decimals\":3,\"bid_asset_type\":\"COIN\"}}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>trading pair.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "ask_asset_symbol",
+            "description": "<p>FIAT.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "ask_asset_decimals",
+            "description": "<p>max decimal digits.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "bid_asset_symbol",
+            "description": "<p>COIN.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "bid_asset_decimals",
+            "description": "<p>max decimal digits.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Returns all trading pairs.</p>",
+    "version": "0.0.0",
+    "filename": "controllers/index.js",
+    "groupTitle": "Data"
+  }
+]

@@ -1,0 +1,35 @@
+.contactUs_bod{
+ /*   margin-top: 80px; */
+    height: auto;
+    float: left;
+    background: #f5f5f5;
+    width: 100%;
+}
+.contact_main{
+    width: 600px;
+    height: auto;
+    overflow: hidden;
+    margin: 100px auto;
+    background: #fff;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+.contact_main>h1,.contact_main>h2,.contact_main>p{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    line-height: 40px;
+}
+.contact_main>h1{
+    font-size: 18px;
+}
+.contact_main>h2{
+    font-size: 16px;
+    margin: 30px 0;
+}
+.contact_main>p{
+    font-size: 14px;
+    color: #555;
+}

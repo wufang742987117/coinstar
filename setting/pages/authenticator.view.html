@@ -1,0 +1,51 @@
+<div class="settingContent" ng-show="!settings.tfa && !qr_created">
+    <div>
+        <h1>{{'SETTING.GOOGLE'|translate}}</h1>
+        <form name="form" ng-submit="vm.authenticator()" role="form">
+
+            <p>{{'AUTH.INTRO1'|translate}}</p>
+            <p>{{'AUTH.INTRO2'|translate}}</p>
+
+            <button ng-click="createTfa()">
+                <span ng-show="submit_sending"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                <span ng-hide="submit_sending">{{"SETTING.API_BUTTON" | translate}}</span>
+            </button>
+
+         </form>
+
+     </div>
+</div>
+
+
+
+<div class="settingContent" ng-show="!settings.tfa && qr_created">
+    <div>
+        <h1>{{'SETTING.GOOGLE'|translate}}</h1>
+        <form name="form" ng-submit="vm.authenticator()" role="form">
+            <p class="center">{{'AUTH.SCAN_OR_ENTER'|translate}}</p>
+            <img class="centerImage" src="{{create.qr}}"><img>
+            <p>{{'AUTH.ENTER_TFA'|translate}}</p>
+            <input type="text" ng-model="enable_code"></input>
+
+            <button ng-click="enableTfa(enable_code)">
+                <span ng-show="submit_sending"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                <span ng-hide="submit_sending">{{"SETTING.API_BUTTON" | translate}}</span>
+            </button>
+         </form>
+     </div>
+</div>
+
+
+<div class="settingContent" ng-show="settings.tfa.enabled">
+    <div>
+        <h1>{{'SETTING.GOOGLE'|translate}}</h1>
+        <form name="form" ng-submit="vm.authenticator()" role="form">
+            <p>{{'AUTH.REMOVE_TFA'|translate}}</p>
+            <input type="text" ng-model="remove_code"></input>
+            <button ng-click="deleteTfa(remove_code)">
+                <span ng-show="submit_sending"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                <span ng-hide="submit_sending">{{"SETTING.API_BUTTON" | translate}}</span>
+            </button>
+         </form>
+     </div>
+</div>

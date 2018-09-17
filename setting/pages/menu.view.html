@@ -1,0 +1,90 @@
+<div class="common-container common-wrap trade-contaner" auto-height>
+    <div class="assets_title">
+        <h1>{{'Xgh_account'|translate}}：</h1>
+        <div ng-if="pcHsow" class="title_show">
+						<label>{{'Xgh_userId'|translate}}：</label>
+						<b>{{menu_display.user_id}}</b>
+            <label>{{'Xgh_userName'|translate}}：</label>
+            <b>{{menu_display.email}}</b>
+           <!-- <a href="javascript://">KYC认证&gt;</a>-->
+            <p>{{'Xgh_Binding.mailbox'|translate}}：{{menu_display.bindEmail}}</p>
+            <!--<p class="setUp_address">最近登录时间：<span>2018-07-06</span>&nbsp;&nbsp;&nbsp;&nbsp;IP：<span>106.37.174.174</span></p>-->
+        </div>
+				<div ng-if="!pcHsow" class="mobile_acc">
+						<div >
+							<label>{{'Xgh_userId'|translate}}：</label>
+							<b>{{menu_display.user_id}}</b>
+						</div>
+						<div>
+							<label>{{'Xgh_userName'|translate}}：</label>
+							<b>{{menu_display.email}}</b>
+						</div>
+						<div>
+							<label>{{'Xgh_Binding.mailbox'|translate}}：</label>
+							<b>{{menu_display.bindEmail}}</b>
+						</div>
+				</div>
+    </div>
+    <!--安全设置-->
+    <div class="setUp_bod">
+        <ul>
+            <li>
+                <h2>{{'Xgh_Login_password'|translate}}</h2>
+                <p>**********************</p>
+                <a href="#!/setting/password">{{'Xgh_modify'|translate}}</a>
+            </li>
+            <li>
+                <h2>{{'Xgh_Capital.cipher'|translate}}</h2>
+                <p>{{'Xgh_Trading.verification'|translate}}</p>
+                <a href="#!/setting/tpass" ng-if="!menu_display.tpass">
+					{{'Xgh_Set_up'|translate}}
+								</a>
+								<a href="#!/setting/tpass" ng-if="menu_display.tpass">
+									{{'Xgh_modify'|translate}}
+								</a>
+            </li>
+            <li>
+                <h2>{{'Xgh_Google.Authenticator'|translate}}</h2>
+                <p>{{'Xgh_Google.Authenticator.f'|translate}}</p>
+                <a href="javascript://" disabled style="cursor: not-allowed!important;">{{'Xgh_Suspend.bindings'|translate}}</a>
+            </li>
+						<li>
+								<h2>{{'Xgh_API_interface'|translate}}</h2>
+								<p>{{'Xgh_API_interface.f'|translate}}</p>
+								<a href="#!/setting/api">{{'Xgh_Obtain'|translate}}</a>
+						</li>
+						<li>
+								<h2>{{'Xgh_Real.name.validation'|translate}}</h2>
+								<p>{{'Xgh_Real.name.validation.f'|translate}}</p>
+								<a href="#!/c2c/c2crealIdentity">{{'Xgh_Set_up'|translate}}</a>
+						</li>
+        </ul>
+        <!--<table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>时间</th>
+                <th>IP</th>
+                <th>状态</th>
+            </tr>
+            <tr>
+                <td>2018-07-06 16:14:20</td>
+                <td>106.37.174.174(Beijing,China,Asia)</td>
+                <td>Login</td>
+            </tr>
+            <tr>
+                <td>2018-07-06 16:14:20</td>
+                <td>106.37.174.174(Beijing,China,Asia)</td>
+                <td>Login</td>
+            </tr>
+            <tr>
+                <td>2018-07-06 16:14:20</td>
+                <td>106.37.174.174(Beijing,China,Asia)</td>
+                <td>Login</td>
+            </tr>
+            <tr>
+                <td>2018-07-06 16:14:20</td>
+                <td>106.37.174.174(Beijing,China,Asia)</td>
+                <td>Login</td>
+            </tr>
+        </table>-->
+    </div>
+</div>

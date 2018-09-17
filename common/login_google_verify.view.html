@@ -1,0 +1,33 @@
+<div class="common-main" auto-height>
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">{{'GOOGLE_VERIFY'|translate}}</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>Google Verification</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="verify-content">
+            <div class="form-group clearfix">
+                <label class="col-sm-4 control-label">{{'VERIFY_EMAIL_INPUT_TIP'|translate}}</label>
+
+                <div class="col-sm-6">
+                    <input type="number" class="form-control control-code"
+                           placeholder="{{'ACCOUNT.ENTERCODE'|translate}}" ng-model="params.code" />
+                </div>
+                <p></p>
+            </div>
+
+            <div class="form-group clearfix group-mid">
+                <div class="col-sm-6 verify-btn ">
+                    <button class="col-sm-6 btn btn-submit"  ng-click="googleSubmit()">{{'SETTING.MENU.TPASS_OK'|translate}}</button>
+                </div>
+            </div>
+            <!--<div class="form-group clearfix">-->
+                <!--<div class="col-sm-6 verify-btn ">-->
+                    <!--<button class="col-sm-6 btn-cancel">{{'SETTING.MENU.TPASS_CANCEL'|translate}}</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        </div>
+    </div>
+</div>

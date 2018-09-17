@@ -1,0 +1,202 @@
+
+<div class="common-container common-wrap trade-contaner" style="color:#fff" auto-height>
+    <div class="container setting-main">
+        <!--提示，功能暂未开放-->
+        <div class="Unopened_conter">
+            <div class="Unopened_bod">
+                <h1>{{'PROMPT_TITLE' | translate}}</h1>
+                <p>{{'UNOPENED_FONT' | translate}}</p>
+            </div>
+            <a href="javascript://" ng-click="cancel()"></a>
+        </div>
+        <!--选择校验-->
+        <div class="setting-module page-form">
+						<div class="module-title ng-binding">{{'SELECT_CHECK_TITLE' | translate}}</div>
+            <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate >
+            <div class="chect_conter">
+                <ul>
+                    <li>
+                        <label>{{'SELECTION_TYPE' | translate}}</label>
+                        <div class="chect_bod">
+                            <p><input type="radio" ng-value="1" ng-model='userFrom' name="type"  ng-checked="true" ><span>{{'TAIWAN_CHINA' | translate}}</span></p>
+														<p><input type="radio" ng-value="2" ng-model='userFrom' name="type"  ><span>{{'MAINLAND_CHINA' | translate}}</span></p>
+                            <p><input type="radio" ng-value="3" ng-model='userFrom' name="type" ><span>{{'OTHER_COUNTRIES' | translate}}</span></p>
+                            <label>{{'PROMPT_F_1' | translate}}</label>
+                            <ul>
+                                <li><label>{{'SETTING.C1.NAME' | translate}}</label>
+                                    <!--ng-style="border:(userFrom.user_name.$dirty && userFrom.user_name.$error.required)?'1px solid red':'1px solid #ccc'"-->
+                                    <!-- ng-class="{true: 'error',false: ''}[userFrom.user_name.$dirty && userFrom.user_name.$error.required]"-->
+                                	<input type="text" ng-model='user_name' ng-value="" name="user_name" required maxlength="50" ng-class="(userForm.user_name.$dirty && userForm.user_name.$error.required)?'error':''">
+                               	</li>
+                                <li><label>{{'ID_NUMBER' | translate}}</label>
+                                	<input type="text" ng-model='id_card' ng-value="" name="id_card" required maxlength="50"  ng-class="(userForm.id_card.$dirty && userForm.id_card.$error.required)?'error':''">
+                                </li>
+                                <li><label>{{'REAL_CARD_NUMBER' | translate}}</label>
+                                	<input type="text" ng-model='bank_account_no' ng-value="" name="bank_account_no" required maxlength="30"  ng-class="(userForm.bank_account_no.$dirty && userForm.bank_account_no.$error.required)?'error':''">
+                                </li>
+                                <li><label>{{'OPENING_BANK' | translate}}</label>
+                                	<input type="text" ng-model='bank_branch' ng-value="" name="bank_branch" required maxlength="50"  ng-class="(userForm.bank_branch.$dirty && userForm.bank_branch.$error.required)?'error':''">
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>{{'PHOTO_CARD' | translate}}</label>
+                        <div>
+                            <div class="file_btn"><input item_id='file1' accept="image/png,image/jpeg,image/jpg" onchange="angular.element(this).scope().changeImage(this)" type="file">{{'CLICK_UPLOAD' | translate}}</div>
+                            <label>{{'PROMPT_F_2' | translate}}</label>
+                            <div class="file_bod"></div>
+                            <div class="file_sl">{{'SAMPLE_SL' | translate}}&nbsp;&nbsp;></div>
+                            <div class="file_bod"></div>
+                        </div>
+                        <div class="errImg" style="color: red;margin-top: 10px;" ng-show="imgLimit1">{{'IMG_LIMIT'| translate}}</div>
+                    </li>
+                    <li>
+                        <label>{{'PHOTO_BANK' | translate}}</label>
+                        <div>
+                            <div class="file_btn"><input item_id='file2' accept="image/png,image/jpeg,image/jpg" onchange="angular.element(this).scope().changeImage(this)" type="file">{{'CLICK_UPLOAD' | translate}}</div>
+                            <label>{{'PROMPT_F_2' | translate}}</label>
+                            <div class="file_bod"></div>
+                            <div class="file_sl">{{'SAMPLE_SL' | translate}}&nbsp;&nbsp;></div>
+                            <div class="file_bod"></div>
+                        </div>
+                        <div class="errImg" style="color: red;margin-top: 10px;" ng-show="imgLimit2">{{'IMG_LIMIT'| translate}}</div>
+                    </li>
+                    <li>
+                        <label>{{'HANDHELD_PHOTO' | translate}}</label>
+                        <div>
+                            <div class="file_btn"><input item_id='file3' accept="image/png,image/jpeg,image/jpg" onchange="angular.element(this).scope().changeImage(this)" type="file">{{'CLICK_UPLOAD' | translate}}</div>
+                            <label>{{'PROMPT_F_3' | translate}}</label>
+                            <div class="file_yz">
+                                <p>
+                                    <label>{{'CLEAR_HEAD' | translate}}</label>
+                                    <label>{{'CLEAR_PERSONAL' | translate}}</label>
+                                </p>
+                                <p>
+                                    <label>{{'IDENTITY_NUMBER' | translate}}</label>
+                                    <label>{{'NUMBER_CLEAR_PH' | translate}}</label>
+                                </p>
+                            </div>
+                            <div class="file_bod"></div>
+                            <div class="file_sl">{{'SAMPLE_SL' | translate}}&nbsp;&nbsp;></div>
+                            <div class="file_bod"></div>
+                        </div>
+                        <div class="errImg" style="color: red;margin-top: 10px;" ng-show="imgLimit3">{{'IMG_LIMIT'| translate}}</div>
+                    </li>
+                    <li>
+                        <div class="form-group" ng-if="setting.email">
+                            <label class="col-sm-4 control-label" style="width: 150px;margin: 0;color: #fff;font-weight: 500;padding: 0">{{'ACCOUNT.BIND_EMAIL'|translate}}</label>
+
+                            <div class="col-sm-8 data-num text-left"><b>{{setting.email | getUsernameFormat}}</b>
+                            </div>
+                            <p></p>
+                        </div>
+                        <div class="form-group" ng-if="setting.email">
+                            <label class="col-sm-4 control-label" style="width: 150px;margin: 0;color: #fff;font-weight: 500;padding: 0">{{'REGISTER.CHECK_CODE'|translate}}</label>
+                            <div class="col-sm-4 data-num text-left">
+                                <input type="text" class="form-control email-input-l" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}" ng-model="params.verCode" ng-change="getVerifyemailCode()">
+                            </div>
+                            <div class="col-sm-4 data-num email_set_btn">
+                                <button class="btn btn-default btn-sm btn-with" ng-disabled="counter>0" click-and-disable="askBind('EAUTH')">
+                                    <span ng-if="counter>0">{{'SETTING.TPASS.REMAINING'|translate}}{{counter}}'S</span>
+                                    <span ng-if="!counter" style="color: #fff;">{{'ACCOUNT.GETCODE'|translate}}</span>
+                                </button>
+                            </div>
+                            <span class="col-sm-4 help-block text-left c2c_tip_l"  style="padding: 0" ng-show="errorVcode"><span
+                                    class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                        </div>
+
+                        <!-- <div class="form-group" ng-if="setting.phone&&!setting.email">
+                            <label class="col-sm-4 control-label" style="width: 150px;margin: 0;color: #061623;font-weight: 500;padding: 0">{{'ACCOUNT.BIND_PHONE'|translate}}</label>
+
+                            <div class="col-sm-8 data-num text-left"><b>{{setting.phone.substr(0,3)+'.....'+setting.phone.substr(7,11)}}</b>
+                            </div>
+                            <p></p>
+                        </div> -->
+                        <!-- <div class="form-group" ng-if="setting.phone&&!setting.email">
+                            <label class="col-sm-4 control-label" style="width: 150px;margin: 0;color: #061623;font-weight: 500;padding: 0">{{'PHONE_EMLCODE'|translate}}</label>
+                            <div class="col-sm-4 data-num text-left">
+                                <input type="text" class="form-control" placeholder="{{'ACCOUNT.PHONE_EMAIL_REQ'|translate}}" ng-model="params.verCode" ng-change="getVerifyphoneCode()">
+                            </div>
+                            <div class="col-sm-4 data-num">
+                                <button class="btn btn-default btn-sm btn-with" ng-disabled="counter>0" click-and-disable="askBind('SAUTH')">
+                                    <span ng-if="counter>0">{{'SETTING.TPASS.REMAINING'|translate}}{{counter}}'S</span>
+                                    <span ng-if="!counter" style="color: #fff;">{{'ACCOUNT.GETCODE'|translate}}</span>
+                                </button>
+                            </div>
+                            <span class="col-sm-4 help-block text-left"  style="padding: 0" ng-show="errorVcode1"><span
+                                    class="text-error"></span>{{'MESSAGE.ERR_AUTH_ANSWER_REJECTED'|translate}}</span>
+                        </div>
+ -->
+                    </li>
+                    <li>
+                    	<input type="hidden" ng-model="file[0]" name="file1" required/>
+                    	<input type="hidden" ng-model="file[1]" name="file2" required/>
+                    	<input type="hidden" ng-model="file[2]" name="file3" required/>
+                        <input type="hidden" ng-model="authtoken" name="authtoken" required/>
+                        <input type="submit"  ng-class="{true: 'disabled',false: ''}[userForm.file1.$invalid || userForm.file2.$invalid || userForm.file3.$invalid||errorVcode||errorVcode1]"
+                               ng-disabled="userForm.file1.$invalid || userForm.file2.$invalid || userForm.file3.$invalid ||!params.verCode||errorVcode||errorVcode1" value="{{'SUBMIT_BTN' | translate}}" class="submit_btn">
+                    </li>
+                </ul>
+            </div>
+            </form>
+        </div>
+        <!--实名信息-->
+        <div class="setting-module page-bank page-info">
+            <div class="module-title ng-binding">{{'REAL_NAME_TITLE' | translate}}</div>
+            <div class="module_main card_bod real_bod">
+                <ul ng-if="userInfo.check_status!=2">
+                    <li>
+                        <label>{{'REAL_NAME' | translate}}</label>
+                        <label>{{'REAL_CERTIFICATES' | translate}}</label>
+                        <label>{{'AUDIT_STATUS' | translate}}</label>
+                    </li>
+                    <li>
+                        <div><span ng-if="userInfo.user_name">{{userInfo.user_name}}</span><span ng-if="!userInfo.user_name">{{'NO_INFO'|translate}}</span></div>
+                        <div><span ng-if="userInfo.id_card">{{userInfo.id_card}}</span><span ng-if="!userInfo.id_card">{{'NO_INFO'|translate}}</span></div>
+                        <div ng-if="userInfo.check_status==0">{{'WAIT_AUDIT'|translate}}</div>
+                        <div ng-if="userInfo.check_status==1">{{'AUDIT_SUSS'|translate}}</div>
+                    </li>
+                </ul>
+                <ul ng-if="userInfo.check_status==2">
+                    <li>
+                        <label style="width: 25%">{{'REAL_NAME' | translate}}</label>
+                        <label style="width: 25%">{{'REAL_CERTIFICATES' | translate}}</label>
+                        <label style="width: 25%">{{'AUDIT_STATUS' | translate}}</label>
+                        <label style="width: 25%">{{'AUDIT_FAIL_REA' | translate}}</label>
+                    </li>
+                    <li>
+                        <div style="width: 25%"><span ng-if="userInfo.user_name">{{userInfo.user_name}}</span><span ng-if="!userInfo.user_name">{{'NO_INFO'|translate}}</span></div>
+                        <div style="width: 25%"><span ng-if="userInfo.id_card">{{userInfo.id_card}}</span><span ng-if="!userInfo.id_card">{{'NO_INFO'|translate}}</span></div>
+                        <div style="width: 25%">{{'AUDIT_FAIL'|translate}}</div>
+                        <div style="width: 25%">{{userInfo.msg}}</div>
+                    </li>
+                </ul>
+
+                <!--<p>{{'REAL_NAME' | translate}}：<span>{{userInfo.user_name}}</span></p>-->
+                <!--<p>{{'REAL_CERTIFICATES' | translate}}：<span>{{userInfo.id_card}}</span></p>-->
+                <!--<p>-->
+                    <!--{{userInfo.check_status==0?'REAL_WAITFOR':(userInfo.check_status==1?'REAL_ADOPT':'REAL_FAIL') | translate}}&lt;!&ndash;等待审核&ndash;&gt;-->
+                <!--</p>-->
+            </div>
+        </div>
+        <!--绑卡信息-->
+        <div class="setting-module page-bank page-info">
+            <div class="module-title ng-binding">{{'TIEON_CARD_TITLE' | translate}}</div>
+            <div class="module_main card_bod">
+                <ul>
+                    <li>
+                        <label>{{'REAL_BANK_NAME' | translate}}</label>
+                        <label>{{'REAL_KH_BRANCH' | translate}}</label>
+                        <label>{{'REAL_CARD_NUMBER' | translate}}</label>
+                    </li>
+                    <li>
+                        <div><span ng-if="userInfo.bank_name">{{userInfo.bank_name}}</span><span ng-if="!userInfo.bank_name" style="width: 100%;text-align: center;">{{'NO_INFO'|translate}}</span></div>
+                        <div>{{userInfo.bank_branch}}</div>
+                        <div>{{userInfo.account_no}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

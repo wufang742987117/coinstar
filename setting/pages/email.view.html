@@ -1,0 +1,43 @@
+<div class="common-main">
+  <div class="common-main-title">
+    <div class="container">
+      <span class="zh-title">绑定邮箱</span>
+      <span class="en-title"><span class="line">|</span>BINDING EMAIL</span>
+    </div>
+  </div>
+  <div class="container setting-action">
+    <form name="form" novaildate class="form-horizontal">
+      <div class="form-group">
+        <label for="buy" class="col-sm-3 control-label">用户账号:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control input-sm" readonly="readonly" ng-model="setting.phone">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="amount" class="col-sm-3 control-label">邮箱地址:</label>
+        <div class="col-sm-9">
+          <input class="form-control input-sm" type="email" name="email" ng-model="formData.email">
+          <span class="error" ng-if="form.email.$dirty && form.email.$invalid">请输入正确的邮箱地址</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tpass" class="col-sm-3 control-label">验证码:</label>
+        <div class="col-sm-9">
+          <div class="code-group">
+            <input type="text" ng-minlength="6" maxlength="6" class="form-control input-sm" ng-model="formData.secret">
+            <button class="btn btn-default btn-sm" ng-disabled="!formData.email || form.email.$invalid || counter>0" ng-click="askBind()">
+              <span ng-if="counter>0">剩余{{counter}}'S</span>
+              <span ng-if="!counter">获取验证码</span>
+            </button>
+          </div>
+          <span class="error" ng-if="form.secret.$dirty && form.secret.$invalid">请输入正确的验证码</span>
+        </div>
+      </div>
+      <div class="form-group" style="padding-top: 15px;">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-submit btn-block" ng-click="answerBind()" ng-disabled="form.$invalid">确定绑定</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

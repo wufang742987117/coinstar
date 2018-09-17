@@ -1,0 +1,36 @@
+<div class="common-main">
+    <div class="common-main-title">
+        <div class="container">
+            <span class="zh-title">交易费用</span>
+            <span class="en-title hidden-xs"><span class="line">|</span>Transaction Fee</span>
+        </div>
+    </div>
+    <div class="container account-main" ng-if="language=='zh'">
+        <div class="detail-main">
+            <div class="fund">
+                <h4>交易费率</h4>
+                <div class="help-image">
+                    <p>1.BTC为分母的比重，交易手续费按固定比例0.2%双向收取BTC，最低手续费0.0001BTC。</p>
+                    <p>&nbsp;&nbsp;&nbsp;ETP为分母的币种，交易手续费按固定比例0.2%双向收取ETP，最低手续费0.01ETP。 </p>
+
+                    <p>2.主动成交和被动成交费率一致。</p>
+
+                    <p>3.数字货币提现以所在平台钱包为准，RightBTC平台不收取任何费用。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container account-main" ng-if="language=='en'">
+        <div class="detail-main">
+            <div class="fund">
+                <h4> Transaction rate</h4>
+                <div class="help-image">
+                    <p> 1. For BTC trading pairs,the transaction fee are paid both by the buyer and the seller at a fixed ratio of 0.2% BTC. The minimum fee is 0.0001BTC.
+                        For ETP trading pairs,the transaction fee are paid both by the buyer and the seller at a fixed ratio of 0.2% ETP. The minimum fee is 0.01ETP.</p>
+                    <p> 2. Active and passive transaction rates are the same.</p>
+                    <p>3. The digital currency withdrawal is in accordance with the platform wallet, and the RightBTC platform does not charge any fees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
